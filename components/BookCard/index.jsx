@@ -54,16 +54,17 @@ const BookCard = ({ title, author, badge, imgUrl }) => {
           ducimus cum nemo quasi unde, praesentium explicabo laudantium tenetur
           a id quis est accusantium quaerat in?
         </Text>
-
-        <Button
-          className={styles.createbutton}
-          variant="light"
-          color="blue"
-          fullWidth
-          style={{ marginTop: 20 }}
-        >
-          Uprav Log
-        </Button>
+        <Link href="/uprav-log">
+          <Button
+            className={styles.createbutton}
+            variant="light"
+            color="blue"
+            fullWidth
+            style={{ marginTop: 20 }}
+          >
+            Uprav Log
+          </Button>
+        </Link>
       </Card>
     </div>
   );
