@@ -1,0 +1,45 @@
+.bookcard {
+  font-family: 'Merriweather', sans-serif;
+  background-color: #fafbef;
+  width: 100%;
+  height: 100%;
+}
+
+.bookcover {
+  width: 100%;
+  max-height: 40%;
+}
+
+.booktag {
+  color: #5c475b;
+  background-color: #d3c5d2;
+  font-family: 'Merriweather', sans-serif;
+  font-size: 1vh;
+}
+
+.booktitle {
+  color: #002927;
+  font-weight: bold;
+  font-family: 'Merriweather', sans-serif;
+  font-size: 2.5vh;
+}
+
+.bookauthor {
+  font-family: 'Merriweather', sans-serif;
+  color: #003d3a;
+  font-size: 2vh;
+}
+
+.bookbio {
+  font-family: 'Merriweather', sans-serif;
+  font-size: 2vh;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.createbutton {
+  color: #ebfafe;
+  background-color: #0795c5;
+  font-family: 'Merriweather', sans-serif;
+  font-size: 2vh;
+}
