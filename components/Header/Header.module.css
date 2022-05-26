@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background-color: #ffc735;
+  padding: 2rem;
+  text-align: center;
+}
+
+.header__logo {
+  font-size: 2rem;
+}
+
+.header_btn {
+  gap: 2rem;
+}
+
+.header_btn__new,
+.header_btn__signin {
+  background-color: #035e7b;
+  color: rgb(250, 236, 209);
+  font-weight: bold;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.header_btn__new {
+  border-radius: 50%;
+  font-size: 2vw;
+  aspect-ratio: 1/1;
+  padding: 1vw;
+}
+
+.header_btn__signin {
+  border-radius: 10rem;
+}

@@ -108,6 +108,11 @@
   margin-left: 0.5rem;
 }
 
+/*---------- vlastní styly --------------------*/
+.header {
+  background-color: aquamarine;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
