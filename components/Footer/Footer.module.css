@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=McLaren&display=swap');
+
+.footer {
+  background-color: #eff1c5;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2rem;
+  font-family: 'McLaren', cursive;
+}
+
+.footer__main {
+  font-size: smaller;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.footer__main p,
+.footer__copyright {
+  color: gray;
+}
+
+.footer__navigation ul {
+  color: #035e7b;
+  font-size: smaller;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  align-items: flex-start;
+}
+
+.footer__logo {
+  color: #035e7b;
+}
+
+@media screen and (min-width: 800px) {
+  .footer__content {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+}

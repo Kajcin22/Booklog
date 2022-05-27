@@ -109,10 +109,6 @@
 }
 
 /*---------- vlastní styly --------------------*/
-.header {
-  background-color: aquamarine;
-}
-
 @media (max-width: 600px) {
   .grid {
     width: 100%;

@@ -21,12 +21,12 @@ export default function Home() {
         </Head>
         <BookCard />
 
-        <main className={styles.main}>
+        {/* <main className={styles.main}>
           <Link href="/dashboard">
             <a>Dashboard</a>
           </Link>
         </main>
-        <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+        <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} /> */}
       </div>
     </>
   );
