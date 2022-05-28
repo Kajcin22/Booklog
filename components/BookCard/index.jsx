@@ -1,6 +1,5 @@
 import {
   Card,
-  Image,
   Text,
   Badge,
   Button,
@@ -9,6 +8,8 @@ import {
 } from '@mantine/core';
 import Link from 'next/link';
 import styles from './BookCard.module.css';
+import bookIcon from './bookcover-icon.png';
+import Image from 'next/dist/client/image';
 
 const BookCard = ({ title, author, badge, imgUrl }) => {
   const theme = useMantineTheme();
@@ -21,9 +22,10 @@ const BookCard = ({ title, author, badge, imgUrl }) => {
       <Card className={styles.bookcard} shadow="sm" p="lg">
         <Card.Section>
           <Image
+            layout="responsive"
             className={styles.bookcover}
-            src="https://www.kindpng.com/picc/m/725-7251301_book-cover-placeholder-hd-png-download.png"
-            height={250}
+            height="auto"
+            src={bookIcon}
             alt="bookcover"
           />
         </Card.Section>

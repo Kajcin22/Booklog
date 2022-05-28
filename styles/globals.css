@@ -1,3 +1,8 @@
+:root {
+  --font: 'Merriweather', sans-serif;
+  --button-color: #0795c5;
+}
+
 html,
 body {
   padding: 0;

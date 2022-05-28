@@ -1,6 +1,5 @@
 import {
   Card,
-  Image,
   Text,
   Badge,
   Button,
@@ -8,6 +7,8 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import Link from 'next/link';
+import bookIcon from './bookcover-icon.png';
+import Image from 'next/dist/client/image';
 
 import styles from './Uprav.module.css';
 
@@ -20,12 +21,7 @@ export default function Home() {
   return (
     <>
       <div className={styles.book}>
-        <Image
-          className={styles.bookcover}
-          src="https://www.kindpng.com/picc/m/725-7251301_book-cover-placeholder-hd-png-download.png"
-          height={250}
-          alt="bookcover"
-        />
+        <Image className={styles.bookcover} src={bookIcon} alt="bookcover" />
 
         <div style={{ width: 500, margin: 'auto' }}>
           <Card className={styles.bookcard} shadow="sm" p="lg">
