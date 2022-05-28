@@ -22,13 +22,13 @@ export default function Home() {
       <div className={styles.book}>
         <Image
           className={styles.bookcover}
-          src="https://img.icons8.com/clouds/344/storytelling.png"
+          src="https://www.kindpng.com/picc/m/725-7251301_book-cover-placeholder-hd-png-download.png"
           height={250}
           alt="bookcover"
         />
-        <div style={{ width: 340, margin: 'auto' }}>
+
+        <div style={{ width: 500, margin: 'auto' }}>
           <Card className={styles.bookcard} shadow="sm" p="lg">
-            <Card.Section></Card.Section>
             <div>
               <Group
                 position="apart"

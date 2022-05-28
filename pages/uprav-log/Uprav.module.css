@@ -5,11 +5,13 @@
   background-color: #fafbef;
   width: 100%;
   height: 100%;
+  justify-content: baseline;
+  align-items: center;
 }
 
 .bookcover {
   width: 35%;
-  max-height: 70%;
+  height: 100%;
 }
 
 .booktag {

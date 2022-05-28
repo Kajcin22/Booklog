@@ -22,7 +22,7 @@ const BookCard = ({ title, author, badge, imgUrl }) => {
         <Card.Section>
           <Image
             className={styles.bookcover}
-            src="https://img.icons8.com/clouds/344/storytelling.png"
+            src="https://www.kindpng.com/picc/m/725-7251301_book-cover-placeholder-hd-png-download.png"
             height={250}
             alt="bookcover"
           />

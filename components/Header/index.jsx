@@ -29,8 +29,10 @@ const TopHeader = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/domu">
-                  <a className={router.pathname == '/domu' ? 'active' : ''}>
+                <Link href="/moje-knihy">
+                  <a
+                    className={router.pathname == '/moje-knihy' ? 'active' : ''}
+                  >
                     Moje knihy
                   </a>
                 </Link>
@@ -45,7 +47,7 @@ const TopHeader = () => {
               <li>
                 <Link href="/domu">
                   <a className={router.pathname == '/domu' ? 'active' : ''}>
-                    Statistiky
+                    Statistika
                   </a>
                 </Link>
               </li>
