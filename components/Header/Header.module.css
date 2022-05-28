@@ -7,6 +7,8 @@
   padding: 2rem;
   text-align: center;
   font-family: 'McLaren', cursive;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .header__navigation ul {
@@ -16,6 +18,7 @@
 
 .header__navigation a {
   padding: 10px;
+  font-size: smaller;
 }
 
 /* nechápu proč nefunguje .active */
@@ -27,31 +30,28 @@
 
 .header__logo {
   color: #035e7b;
+  font-size: 38px;
 }
 
 .header__btn {
+  font-size: larger;
   padding: 5px;
+  width: 35px;
+  height: 35px;
   color: white;
   background-color: #035e7b;
-  border: 2px solid #035e7b;
-  border-radius: 10px;
-}
-
-/* .header_btn__new,
-.header_btn__signin {
-  background-color: #035e7b;
-  color: rgb(250, 236, 209);
-  font-weight: bold;
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-.header_btn__new {
+  border: none;
   border-radius: 50%;
-  font-size: 2vw;
-  aspect-ratio: 1/1;
-  padding: 1vw;
-} */
+}
 
-.header_btn__signin {
-  border-radius: 10rem;
+.header__signIn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+@media screen and (min-width: 1060px) {
+  .header__navigation a {
+    font-size: 18px;
+  }
 }

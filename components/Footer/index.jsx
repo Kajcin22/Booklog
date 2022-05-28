@@ -27,12 +27,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="/domu">
-                  <a>Vyhledat</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/domu">
-                  <a>Přečtené</a>
+                  <a>Moje knihy</a>
                 </Link>
               </li>
               <li>
@@ -42,7 +37,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="/domu">
-                  <a>Statistiky</a>
+                  <a>Statistika</a>
                 </Link>
               </li>
             </ul>
