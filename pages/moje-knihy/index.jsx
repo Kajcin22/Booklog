@@ -9,12 +9,6 @@ export default function Home() {
         <BookCard />
         <BookCard />
         <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
       </div>
     </>
   );

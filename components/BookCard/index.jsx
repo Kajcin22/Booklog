@@ -10,12 +10,41 @@ import Link from 'next/link';
 import styles from './BookCard.module.css';
 import bookIcon from './bookcover-icon.png';
 import Image from 'next/dist/client/image';
+import { useEffect, useState } from 'react';
 
-const BookCard = ({ title, author, badge, imgUrl }) => {
+const BookCard = ({ searchInput }) => {
   const theme = useMantineTheme();
-
   const secondaryColor =
     theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
+
+  const [imgUrl, setImgUrl] = useState('');
+  const [author, setAuthor] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  useEffect(() => {
+    /*za tím q= search word, po každém slovu to chce "+" */
+    /*možná by šlo použít toto: 
+    https://www.isbndb.com/apidocs/v2
+    https://openlibrary.org/dev/docs/api/covers
+    */
+    fetch('https://www.googleapis.com/books/v1/volumes?q=intitle:babička')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        let book = data.items[1].volumeInfo;
+        console.log(book);
+        /* setImgUrl(data.items[0].volumeInfo.imageLinks.thumbnail);*/
+        setAuthor(book.authors);
+        setTitle(book.title);
+        setDescription(
+          book.description === undefined
+            ? '//popisek knížky//'
+            : book.description,
+        );
+        console.log(imgUrl);
+      });
+  }, []);
 
   return (
     <div style={{ width: 340, margin: 'auto' }}>
@@ -24,7 +53,6 @@ const BookCard = ({ title, author, badge, imgUrl }) => {
           <Image
             layout="responsive"
             className={styles.bookcover}
-            height="auto"
             src={bookIcon}
             alt="bookcover"
           />
@@ -35,13 +63,13 @@ const BookCard = ({ title, author, badge, imgUrl }) => {
           style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
         >
           <Text className={styles.booktitle} weight={500}>
-            //Jméno knihy//
+            {title}
           </Text>
           <Badge className={styles.booktag} color="pink" variant="light">
             Přečteno
           </Badge>
           <Text className={styles.bookauthor} weight={300}>
-            //Jméno autora//
+            {author}
           </Text>
         </Group>
 
@@ -50,11 +78,7 @@ const BookCard = ({ title, author, badge, imgUrl }) => {
           size="sm"
           style={{ color: secondaryColor, lineHeight: 1.5 }}
         >
-          //krátké bio, obsah, cosi// Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Quidem repudiandae porro sunt! Adipisci, eius! Dolor
-          quas minima inventore cumque distinctio suscipit ipsum sequi veniam
-          ducimus cum nemo quasi unde, praesentium explicabo laudantium tenetur
-          a id quis est accusantium quaerat in?
+          {description}
         </Text>
         <Link href="/uprav-log">
           <Button
