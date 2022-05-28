@@ -31,7 +31,7 @@ const TopHeader = () => {
               <li>
                 <Link href="/domu">
                   <a className={router.pathname == '/domu' ? 'active' : ''}>
-                    Přečtené
+                    Moje knihy
                   </a>
                 </Link>
               </li>
