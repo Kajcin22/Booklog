@@ -1,12 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=McLaren&display=swap');
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   padding: 2rem;
   text-align: center;
-  font-family: 'McLaren', cursive;
+  font-family: var(--font-menu);
   max-width: 80%;
   margin: 0 auto;
 }
@@ -24,12 +22,11 @@
 /* nechápu proč nefunguje .active */
 .header__navigation a:hover,
 .active {
-  border-bottom: 2px solid #035e7b;
-  margin-bottom: -5px;
+  border-bottom: 1px solid var(--primary-color);
 }
 
 .header__logo {
-  color: #035e7b;
+  color: var(--primary-color);
   font-size: 38px;
 }
 
@@ -39,7 +36,7 @@
   width: 35px;
   height: 35px;
   color: white;
-  background-color: #035e7b;
+  background-color: var(--button-color);
   border: none;
   border-radius: 50%;
 }

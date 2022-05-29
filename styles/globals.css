@@ -1,6 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=McLaren&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root {
-  --font: 'Merriweather', sans-serif;
+  --font: 'Roboto', sans-serif;
+  --font-menu: 'McLaren', cursive;
   --button-color: #0795c5;
+  --primary-color: #035e7b;
+  --secondary-color: #eff1c5;
+  --accent-color: #a2a77f;
 }
 
 html,

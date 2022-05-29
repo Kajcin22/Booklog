@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=McLaren&display=swap');
-
 .footer {
-  background-color: #eff1c5;
+  background-color: var(--secondary-color);
+  margin-top: 10px;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -11,8 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 2rem;
-  font-family: 'McLaren', cursive;
+  font-family: var(--font-menu);
 }
 
 .footer__main {
@@ -29,7 +27,7 @@
 }
 
 .footer__navigation ul {
-  color: #035e7b;
+  color: var(--primary-color);
   font-size: smaller;
   padding-left: 0;
   display: flex;
@@ -38,8 +36,12 @@
   align-items: flex-start;
 }
 
+.footer__navigation li:hover {
+  border-bottom: solid 1px var(--primary-color);
+}
+
 .footer__logo {
-  color: #035e7b;
+  color: var(--primary-color);
 }
 
 @media screen and (min-width: 800px) {

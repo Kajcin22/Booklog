@@ -13,8 +13,8 @@
 }
 
 .booktag {
-  color: #5c475b;
-  background-color: #d3c5d2;
+  color: white;
+  background-color: var(--accent-color);
   font-family: var(--font);
   font-size: 1vh;
 }
@@ -23,18 +23,17 @@
   color: #002927;
   font-weight: bold;
   font-family: var(--font);
-  font-size: 2.5vh;
+  font-size: 2vh;
 }
 
 .bookauthor {
   font-family: var(--font);
   color: #003d3a;
-  font-size: 2vh;
+  font-size: 1vh;
 }
 
 .bookbio {
   font-family: var(--font);
-  font-size: 2vh;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
