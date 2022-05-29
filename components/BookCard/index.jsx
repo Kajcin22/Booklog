@@ -9,7 +9,7 @@ import {
 import Link from 'next/link';
 import styles from './BookCard.module.css';
 import bookIcon from './bookcover-icon.png';
-import Image from 'next/dist/client/image';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const BookCard = ({ searchInput }) => {
@@ -28,13 +28,20 @@ const BookCard = ({ searchInput }) => {
     https://www.isbndb.com/apidocs/v2
     https://openlibrary.org/dev/docs/api/covers
     */
-    fetch('https://www.googleapis.com/books/v1/volumes?q=intitle:babička')
+    const params = new URLSearchParams({
+      q: 'intitle:lolita',
+      key: process.env.NEXT_PUBLIC_BOOKS_API_KEY || '',
+      maxResults: '20',
+      langRestrict: 'cs',
+    });
+
+    fetch(`https://www.googleapis.com/books/v1/volumes?${params}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        let book = data.items[1].volumeInfo;
+        let book = data.items[0].volumeInfo;
         console.log(book);
-        /* setImgUrl(data.items[0].volumeInfo.imageLinks.thumbnail);*/
+        setImgUrl(data.items[0].volumeInfo.imageLinks.thumbnail);
         setAuthor(book.authors);
         setTitle(book.title);
         setDescription(
@@ -50,12 +57,15 @@ const BookCard = ({ searchInput }) => {
     <div style={{ width: 340, margin: 'auto' }}>
       <Card className={styles.bookcard} shadow="sm" p="lg">
         <Card.Section>
-          <Image
-            layout="responsive"
-            className={styles.bookcover}
-            src={bookIcon}
-            alt="bookcover"
-          />
+          {imgUrl && (
+            <Image
+              width={150}
+              height={150}
+              className={styles.bookcover}
+              src={imgUrl}
+              alt="bookcover"
+            />
+          )}
         </Card.Section>
 
         <Group

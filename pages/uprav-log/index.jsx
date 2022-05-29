@@ -11,18 +11,31 @@ import bookIcon from './bookcover-icon.png';
 import Image from 'next/dist/client/image';
 
 import styles from './Uprav.module.css';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const theme = useMantineTheme();
-
+  const router = useRouter();
+  console.log(router.query);
   const secondaryColor =
     theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
 
   return (
     <>
       <div className={styles.book}>
-        <Image className={styles.bookcover} src={bookIcon} alt="bookcover" />
-
+        (
+        <Image
+          className={styles.bookcover}
+          width={200}
+          height={200}
+          src={
+            router?.query?.imgUrl
+              ? router?.query?.imgUrl
+              : '/bookcover-icon.png'
+          }
+          alt="bookcover"
+        />
+        )
         <div style={{ width: 500, margin: 'auto' }}>
           <Card className={styles.bookcard} shadow="sm" p="lg">
             <div>
@@ -31,13 +44,13 @@ export default function Home() {
                 style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
               >
                 <Text className={styles.booktitle} weight={500}>
-                  //Jméno knihy//
+                  {router?.query?.title}
                 </Text>
                 <Badge className={styles.booktag} color="pink" variant="light">
                   Přečteno
                 </Badge>
                 <Text className={styles.bookauthor} weight={300}>
-                  //Jméno autora//
+                  {router?.query?.author}
                 </Text>
               </Group>
 
@@ -46,12 +59,7 @@ export default function Home() {
                 size="sm"
                 style={{ color: secondaryColor, lineHeight: 1.5 }}
               >
-                //krátké bio, obsah, cosi// Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Quidem repudiandae porro sunt!
-                Adipisci, eius! Dolor quas minima inventore cumque distinctio
-                suscipit ipsum sequi veniam ducimus cum nemo quasi unde,
-                praesentium explicabo laudantium tenetur a id quis est
-                accusantium quaerat in?
+                {router?.query?.description}
               </Text>
 
               <Button
