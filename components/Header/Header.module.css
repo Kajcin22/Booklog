@@ -19,10 +19,10 @@
   font-size: smaller;
 }
 
-/* nechápu proč nefunguje .active */
 .header__navigation a:hover {
   border-bottom: 1px solid var(--primary-color);
 }
+
 .active {
   border-bottom: 1px solid var(--primary-color);
 }

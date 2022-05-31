@@ -58,12 +58,12 @@ const SearchModal = ({ opened, setOpened }) => {
       >
         <form onSubmit={form.onSubmit(handleSearch)}>
           <TextInput
-            label="title"
+            label="Název knihy"
             placeholder="zadejte název knihy"
             {...form.getInputProps('title')}
           />
           <TextInput
-            label="author"
+            label="Autor"
             placeholder="zadejte autora knihy"
             {...form.getInputProps('author')}
           />

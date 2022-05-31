@@ -18,9 +18,7 @@ const TopHeader = () => {
         <div className={styles.header}>
           <div className={styles.header__logo}>
             <Link href="/">
-              <a className={router.pathname == '/' ? styles.active : ''}>
-                Booklog
-              </a>
+              <a>Booklog</a>
             </Link>
           </div>
           <div className={styles.header__navigation}>

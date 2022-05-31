@@ -14,7 +14,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Merriweather', sans-serif;
+  font-family: var(--font);
 }
 
 a {

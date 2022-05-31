@@ -62,7 +62,7 @@ const SearchResult = ({ imgUrl, author, title, description }) => {
             fullWidth
             style={{ marginTop: 20 }}
           >
-            +
+            Přidat do mých knih
           </Button>
         </Link>
       </Card>
