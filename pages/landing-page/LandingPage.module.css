@@ -1,3 +1,4 @@
+/*------------- styly header---------------------*/
 .header {
   display: flex;
   justify-content: space-between;
@@ -5,8 +6,10 @@
   padding: 2rem;
   text-align: center;
   font-family: var(--font-menu);
-  max-width: 80%;
-  margin: 0 auto;
+  width: 100%;
+  margin-left: 2rem;
+
+  margin-bottom: 4rem;
 }
 
 .header__navigation ul {
@@ -34,7 +37,7 @@
 
 .header__btn {
   font-size: large;
-  padding: 5px;
+  padding: 2vh;
   color: white;
   background-color: var(--button-color);
   border: none;
@@ -44,13 +47,90 @@
 .header__signIn {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 1rem;
+  margin-right: 2rem;
 }
 
 .header__signIn:hover,
 .header__btn:hover {
   cursor: pointer;
 }
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/*-------------- styly hero image ------------------------*/
+.hero_image {
+  background-color: var(--secondary-color);
+  width: 70%;
+  border-radius: 2rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 3rem;
+}
+/*-------------- styly sekce "populární knihy" a " naposledy čteno" ------------------------*/
+
+.book_section {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-bottom: 5rem;
+}
+
+.book_section_heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+}
+
+.book_section_heading p:hover {
+  cursor: pointer;
+  text-shadow: 2px 2px var(--secondary-color);
+}
+
+.book_section_cards {
+  display: flex;
+  gap: 2rem;
+}
+
+/*-------------- registrace ------------------------*/
+
+.registrace {
+  background-color: var(--secondary-color);
+  width: 70%;
+  border-radius: 2rem;
+  padding: 2rem;
+  margin-bottom: 10rem;
+
+  font-family: var(--font);
+  color: var(--primary-color);
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.registrace label {
+  display: flex;
+  gap: 1rem;
+}
+
+.registrace input {
+  border-radius: 1rem;
+}
+
+/*-------------- media queries----------------------------*/
 
 @media screen and (min-width: 1060px) {
   .header__navigation a {
