@@ -33,7 +33,7 @@ export default function Home() {
           </div>
         </div>
       </header>
-      <div className={styles.container}>
+      <div className="container">
         <div className={styles.hero_image}>
           <div>
             <h3>Kniha je okno do celého vesmíru</h3>
