@@ -1,7 +1,7 @@
 import { Modal, TextInput, Group, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
-import SearchResult from '../SearchResult';
+import SearchResult from '../SearchResult/search-result';
 
 const SearchModal = ({ opened, setOpened }) => {
   const form = useForm({

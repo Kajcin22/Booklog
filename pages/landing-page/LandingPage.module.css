@@ -29,18 +29,16 @@
 
 .header__logo {
   color: var(--primary-color);
-  font-size: 38px;
+  font-size: 10vh;
 }
 
 .header__btn {
-  font-size: larger;
+  font-size: large;
   padding: 5px;
-  width: 35px;
-  height: 35px;
   color: white;
   background-color: var(--button-color);
   border: none;
-  border-radius: 50%;
+  border-radius: 10rem;
 }
 
 .header__signIn {
@@ -49,8 +47,8 @@
   gap: 5px;
 }
 
-.header__btn:hover,
-.header__signIn:hover {
+.header__signIn:hover,
+.header__btn:hover {
   cursor: pointer;
 }
 

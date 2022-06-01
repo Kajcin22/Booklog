@@ -6,7 +6,7 @@ import userImg from './img/user_icon.jpg';
 import { Modal, TextInput, Group, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
-import SearchModal from '../SearchModal';
+import SearchModal from '../SearchModal/search-modal';
 
 const TopHeader = () => {
   const router = useRouter();
@@ -51,9 +51,11 @@ const TopHeader = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/domu">
+                <Link href="/landing-page">
                   <a
-                    className={router.pathname == '/domu' ? styles.active : ''}
+                    className={
+                      router.pathname == '/landing-page' ? styles.active : ''
+                    }
                   >
                     Statistika
                   </a>
@@ -62,12 +64,14 @@ const TopHeader = () => {
             </ul>
           </div>
           <div className={styles.header__signIn}>
-            <button
-              onClick={() => setOpened(true)}
+            <Image
               className={styles.header__btn}
-            >
-              +
-            </button>
+              onClick={() => setOpened(true)}
+              src="/icon-search.svg"
+              alt="hledej"
+              width={35}
+              height={35}
+            />
             <Image src={userImg} alt="prihlaseni" width={35} height={35} />
           </div>
         </div>

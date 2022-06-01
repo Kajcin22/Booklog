@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import TopHeader from '../components/Header';
-import Layout from '../components/Layout';
-import BookCard from '../components/BookCard';
+import TopHeader from '../components/Header/header';
+import Layout from '../components/Layout/layout';
+import BookCard from '../components/BookCard/book-card';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
