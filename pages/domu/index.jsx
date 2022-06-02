@@ -1,11 +1,21 @@
 import styles from './Domu.module.css';
+import { supabase } from '../../lib/supabase_client';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [session, setSession] = useState(null);
+
+  useEffect(() => {
+    setSession(supabase.auth.session());
+  }, []);
+
+  console.log(session);
+
   return (
     <>
       <div className="container">
         <div className={styles.welcome}>
-          <h2>Vítej //username//</h2>
+          <h2>Vítej {session?.user?.email}</h2>
           <p>
             {' '}
             Králík na smetaně po staročesku vás nezklame, pokud hledáte
