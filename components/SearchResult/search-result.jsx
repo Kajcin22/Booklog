@@ -8,7 +8,6 @@ import {
 } from '@mantine/core';
 import Link from 'next/link';
 import styles from '../BookCard/BookCard.module.css';
-import bookIcon from '../BookCard/bookcover-icon.png';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 

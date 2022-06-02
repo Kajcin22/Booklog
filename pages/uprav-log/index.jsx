@@ -1,4 +1,6 @@
 import {
+  Modal,
+  TextInput,
   Card,
   Text,
   Badge,
@@ -6,12 +8,16 @@ import {
   Group,
   useMantineTheme,
 } from '@mantine/core';
+import { useForm } from '@mantine/form';
+
 import Link from 'next/link';
-import bookIcon from './bookcover-icon.png';
+import { useRouter } from 'next/router';
 import Image from 'next/dist/client/image';
 
+import { useState } from 'react';
+
 import styles from './Uprav.module.css';
-import { useRouter } from 'next/router';
+import CreateComment from '../../components/CreateComment/create-comment';
 
 export default function Home() {
   const theme = useMantineTheme();
@@ -19,6 +25,8 @@ export default function Home() {
   console.log(router.query);
   const secondaryColor =
     theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
+
+  const [opened, setOpened] = useState(false);
 
   return (
     <>
@@ -63,6 +71,7 @@ export default function Home() {
               </Text>
 
               <Button
+                onClick={() => setOpened(true)}
                 className={styles.createbutton}
                 variant="light"
                 color="blue"
@@ -83,6 +92,7 @@ export default function Home() {
             </div>
           </Card>
         </div>
+        <CreateComment opened={opened} setOpened={setOpened} />
       </div>
     </>
   );
