@@ -49,7 +49,6 @@ export default function Home() {
           </form>
         </div>
       </div>
-      <LoginModal opened={opened} setOpened={setOpened} />
     </>
   );
 }

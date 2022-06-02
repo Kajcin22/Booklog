@@ -37,6 +37,7 @@ export default function LandingHeader() {
           </div>
         </div>
       </header>
+      <LoginModal opened={opened} setOpened={setOpened} />
     </>
   );
 }

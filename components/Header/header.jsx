@@ -23,7 +23,7 @@ const TopHeader = () => {
           <div className={styles.header__navigation}>
             <ul>
               <li>
-                <Link href="/">
+                <Link href="/domu">
                   <a className={router.pathname == '/' ? styles.active : ''}>
                     Domů
                   </a>

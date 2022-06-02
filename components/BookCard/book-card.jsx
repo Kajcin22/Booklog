@@ -57,15 +57,13 @@ const BookCard = ({ searchInput }) => {
     <div style={{ width: 340, margin: 'auto' }}>
       <Card className={styles.bookcard} shadow="sm" p="lg">
         <Card.Section>
-          {imgUrl && (
-            <Image
-              width={150}
-              height={150}
-              className={styles.bookcover}
-              src={imgUrl}
-              alt="bookcover"
-            />
-          )}
+          <Image
+            width={150}
+            height={150}
+            className={styles.bookcover}
+            src={imgUrl || '/bookcover-icon.png'}
+            alt="bookcover"
+          />
         </Card.Section>
 
         <Group

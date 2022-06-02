@@ -11,7 +11,7 @@ import styles from '../BookCard/BookCard.module.css';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const SearchResult = ({ imgUrl, author, title, description }) => {
+const SearchResult = ({ imgUrl, author, title, description, setOpened }) => {
   const theme = useMantineTheme();
   const secondaryColor =
     theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
@@ -20,15 +20,13 @@ const SearchResult = ({ imgUrl, author, title, description }) => {
     <div style={{ width: 340, margin: 'auto' }}>
       <Card className={styles.bookcard} shadow="sm" p="lg">
         <Card.Section>
-          {imgUrl && (
-            <Image
-              width={150}
-              height={150}
-              className={styles.bookcover}
-              src={imgUrl}
-              alt="bookcover"
-            />
-          )}
+          <Image
+            width={150}
+            height={150}
+            className={styles.bookcover}
+            src={imgUrl || '/bookcover-icon.png'}
+            alt="bookcover"
+          />
         </Card.Section>
 
         <Group
@@ -55,6 +53,7 @@ const SearchResult = ({ imgUrl, author, title, description }) => {
           })}`}
         >
           <Button
+            onClick={() => setOpened(false)}
             className={styles.createbutton}
             variant="light"
             color="blue"
