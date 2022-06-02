@@ -1,0 +1,9 @@
+.hero_image {
+  background-color: var(--secondary-color);
+  width: 100%;
+  border-radius: 2rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 3rem;
+}

@@ -2,10 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 2rem;
+  padding: 10px 20px;
   text-align: center;
   font-family: var(--font-menu);
-  max-width: 80%;
   margin: 0 auto;
 }
 
@@ -16,11 +15,7 @@
 
 .header__navigation a {
   padding: 10px;
-  font-size: smaller;
-}
-
-.header__navigation a:hover {
-  border-bottom: 1px solid var(--primary-color);
+  font-size: 12px;
 }
 
 .active {
@@ -55,7 +50,15 @@
 }
 
 @media screen and (min-width: 1060px) {
+  .header {
+    max-width: 80%;
+  }
+
   .header__navigation a {
     font-size: 18px;
+  }
+
+  .header__navigation a:hover {
+    border-bottom: 1px solid var(--primary-color);
   }
 }

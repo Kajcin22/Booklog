@@ -2,7 +2,6 @@ import styles from './Header.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import userImg from './img/user_icon.jpg';
 import { Modal, TextInput, Group, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
@@ -69,10 +68,15 @@ const TopHeader = () => {
               onClick={() => setOpened(true)}
               src="/icon-search.svg"
               alt="hledej"
-              width={35}
-              height={35}
+              width={30}
+              height={30}
             />
-            <Image src={userImg} alt="prihlaseni" width={35} height={35} />
+            <Image
+              src={'/user_icon.png'}
+              alt="prihlaseni"
+              width={25}
+              height={25}
+            />
           </div>
         </div>
         <SearchModal opened={opened} setOpened={setOpened} />

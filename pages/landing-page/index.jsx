@@ -2,7 +2,7 @@ import BookCard from '../../components/BookCard/book-card';
 import styles from './LandingPage.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import Hero from '../../components/HeroSection';
 import { Modal, TextInput, Group, Button } from '@mantine/core';
 
 import SearchModal from '../../components/SearchModal/search-modal';
@@ -19,10 +19,10 @@ export default function Home() {
 
           <div className={styles.header__signIn}>
             <Image
-              src={'/user-icon.jpg'}
+              src={'/user_icon.png'}
               alt="prihlaseni"
-              width={35}
-              height={35}
+              width={30}
+              height={30}
             />
             <button
               onClick={() => setOpened(true)}
@@ -34,15 +34,7 @@ export default function Home() {
         </div>
       </header>
       <div className="container">
-        <div className={styles.hero_image}>
-          <div>
-            <h3>Kniha je okno do celého vesmíru</h3>
-            <p>probuď své sny každodenním čtením</p>
-            <button className={styles.header__btn}>Číst nyní!</button>
-          </div>
-
-          <Image src="/reading-book.png" width={250} height={200} />
-        </div>
+        <Hero />
         <div className={styles.book_section}>
           <div className={styles.book_section_heading}>
             <h3>Populární knihy</h3>
