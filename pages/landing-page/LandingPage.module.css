@@ -41,7 +41,7 @@
   color: white;
   background-color: var(--button-color);
   border: none;
-  border-radius: 10rem;
+  border-radius: 10px;
 }
 
 .header__signIn {
@@ -54,15 +54,6 @@
 .header__signIn:hover,
 .header__btn:hover {
   cursor: pointer;
-}
-
-.container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 5rem;
-  justify-content: center;
-  align-items: center;
 }
 
 /*-------------- styly sekce "populární knihy" a " naposledy čteno" ------------------------*/
@@ -88,7 +79,8 @@
 
 .book_section_cards {
   display: flex;
-  gap: 2rem;
+  flex-wrap: wrap;
+  flex: 1 1 calc(100% - 20px / 2);
 }
 
 /*-------------- registrace ------------------------*/
@@ -96,9 +88,9 @@
 .registrace {
   background-color: var(--secondary-color);
   width: 100%;
-  border-radius: 2rem;
+  border-radius: 20px;
   padding: 2rem;
-  margin-bottom: 10rem;
+  margin-bottom: 20px;
 
   font-family: var(--font);
   color: var(--primary-color);
@@ -117,7 +109,7 @@
 }
 
 .registrace input {
-  border-radius: 1rem;
+  border-radius: 10px;
 }
 
 /*-------------- media queries----------------------------*/

@@ -1,9 +1,28 @@
 .hero_image {
   background-color: var(--secondary-color);
   width: 100%;
-  border-radius: 2rem;
+  border-radius: 20px;
   padding: 2rem;
   display: flex;
   justify-content: space-around;
+  margin-top: 3rem;
   margin-bottom: 3rem;
+}
+
+.hero_image h3 {
+  font-family: var(--font-menu);
+  color: var(--primary-color);
+}
+
+.header__btn {
+  font-size: 15px;
+  padding: 15px;
+  color: white;
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 10px;
+}
+
+.header__btn:hover {
+  cursor: pointer;
 }

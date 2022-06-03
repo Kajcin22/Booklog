@@ -43,7 +43,7 @@ export default function Home() {
           <h1>Zaregistruj se nyní a měj svou četbu pod kontrolou!</h1>
           <form>
             <label>
-              <input type="email" placeholder="zadej svůj email" />
+              <input type="email" placeholder=" Zadej svůj e-mail" />
               <button className={styles.header__btn}>Registrovat</button>
             </label>
           </form>
