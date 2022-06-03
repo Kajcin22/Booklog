@@ -18,6 +18,7 @@ import { useState } from 'react';
 
 import styles from './Uprav.module.css';
 import CreateComment from '../../components/CreateComment/create-comment';
+import Comment from '../../components/Comment/comment';
 
 export default function Home() {
   const theme = useMantineTheme();
@@ -28,6 +29,8 @@ export default function Home() {
 
   const [opened, setOpened] = useState(false);
 
+  let text =
+    "“Friends told me that the latest trend, at least in Europe, is public sex. They showed me some clips, and they're terrifying. A couple enters a streetcar, half-full, simply takes a seat, undresses, and starts to do it. You can see from surprised faces that it's not staged. It's pure working-class suburb. But what's fascinating is that the people all look, and then they politely ignore it. The message is that even if you're together in public with people, it still counts as private space.”";
   return (
     <>
       <div className={styles.book}>
@@ -90,6 +93,28 @@ export default function Home() {
                 Vytvoř záložku
               </Button>
             </div>
+            <section className={styles.comments}>
+              <Comment
+                title={'Rozklikni komentář'}
+                dateCreated={'03. 06. 2022'}
+                content={text}
+              />
+              <Comment
+                title={'Rozklikni komentář'}
+                dateCreated={'03. 06. 2022'}
+                content={text}
+              />
+              <Comment
+                title={'Rozklikni komentář'}
+                dateCreated={'03. 06. 2022'}
+                content={text}
+              />
+              <Comment
+                title={'Rozklikni komentář'}
+                dateCreated={'03. 06. 2022'}
+                content={text}
+              />
+            </section>
           </Card>
         </div>
         <CreateComment opened={opened} setOpened={setOpened} />

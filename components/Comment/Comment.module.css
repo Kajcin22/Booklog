@@ -1,0 +1,27 @@
+.comment {
+  margin: 0;
+  padding: 1rem;
+  font-family: var(--font);
+  background-color: var(--secondary-color);
+  border-radius: 1rem;
+}
+
+.comment h3 {
+  font-size: 2vh;
+}
+
+.comment_btn {
+  background-color: var(--accent-color);
+  font-family: var(--font-menu);
+  font-weight: lighter;
+}
+
+.comment_btn:hover {
+  background-color: #d0e062;
+  color: var(--accent-color);
+}
+
+.comment_content {
+  font-family: var(--font-menu);
+  font-size: 2vh;
+}

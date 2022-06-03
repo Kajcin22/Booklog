@@ -7,6 +7,8 @@
   height: 100%;
   justify-content: baseline;
   align-items: center;
+
+  margin-bottom: 15rem;
 }
 
 .bookcover {
@@ -51,4 +53,14 @@
 
 .createbutton:hover {
   color: #002927;
+}
+
+.comments {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: baseline;
+  align-items: center;
+  margin: 2rem;
+  gap: 1vh;
+  width: 100%;
 }
