@@ -36,7 +36,7 @@ export default function Login() {
   if (success) {
     return (
       <Notification title="Default notification">
-        Check your email and click the login link.
+        Mrkni se do e-mailu a klikni na potvrzovací link.
       </Notification>
     );
   }
@@ -44,16 +44,17 @@ export default function Login() {
   return (
     <>
       <div className={styles.registrace}>
-        <Box sx={{ maxWidth: 300 }} mx="auto">
-          <form onSubmit={form.onSubmit(onLogin)}>
+        {/* <Box sx={{ maxWidth: 300 }} mx="auto"> */}
+        <form onSubmit={form.onSubmit(onLogin)}>
+          <div className={styles.registrace}>
             <TextInput
               required
-              label="Zadejte Váš email:"
+              label="Zadejte Váš e-mail:"
               placeholder="your@email.com"
               {...form.getInputProps('email')}
             />
 
-            <Group position="right" mt="md">
+            <Group mt="md">
               <Button
                 styles={(theme) => ({
                   root: {
@@ -75,11 +76,12 @@ export default function Login() {
                 type="submit"
                 loading={loading}
               >
-                Submit
+                Registrovat se
               </Button>
             </Group>
-          </form>
-        </Box>
+          </div>
+        </form>
+        {/* </Box> */}
       </div>
     </>
   );
