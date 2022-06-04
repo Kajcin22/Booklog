@@ -11,11 +11,29 @@ import styles from '../BookCard/BookCard.module.css';
 // import styles from './SearchResult.module.css';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { supabase } from '../../lib/supabase_client';
+import { useRouter } from 'next/router';
 
 const SearchResult = ({ imgUrl, author, title, description, setOpened }) => {
   const theme = useMantineTheme();
   const secondaryColor =
     theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
+
+  const router = useRouter();
+
+  const onAddBook = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('Book')
+        .insert([{ title, author, description, imgUrl, state: 'unread' }]);
+      if (!error) {
+        setOpened(false);
+        router.push(`/moje-knihy?q=${title}`);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     // <div style={{ width: '50%', marginLeft: 'auto', marginRight: 'auto' }}>
@@ -55,24 +73,16 @@ const SearchResult = ({ imgUrl, author, title, description, setOpened }) => {
         </Text>
       </Group>
 
-      <Link
-        href={`/uprav-log?${new URLSearchParams({
-          author,
-          title,
-          imgUrl: imgUrl || '',
-        })}`}
+      <Button
+        onClick={onAddBook}
+        className={styles.createbutton}
+        variant="light"
+        color="blue"
+        fullWidth
+        style={{ marginTop: 20 }}
       >
-        <Button
-          onClick={() => setOpened(false)}
-          className={styles.createbutton}
-          variant="light"
-          color="blue"
-          fullWidth
-          style={{ marginTop: 20 }}
-        >
-          Přidat do mých knih
-        </Button>
-      </Link>
+        Přidat do mých knih
+      </Button>
     </Card>
     // </div>
   );

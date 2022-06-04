@@ -12,7 +12,7 @@ import bookIcon from './bookcover-icon.png';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const BookCard = ({ searchInput }) => {
+const BookCard = ({ book }) => {
   const theme = useMantineTheme();
   const secondaryColor =
     theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
@@ -22,20 +22,16 @@ const BookCard = ({ searchInput }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  useEffect(() => {
-    /*za tím q= search word, po každém slovu to chce "+" */
-    /*možná by šlo použít toto: 
-    https://www.isbndb.com/apidocs/v2
-    https://openlibrary.org/dev/docs/api/covers
-    */
+  /*   useEffect(() => {
+   
     const params = new URLSearchParams({
       q: 'intitle:lolita',
       key: process.env.NEXT_PUBLIC_BOOKS_API_KEY || '',
       maxResults: '20',
       langRestrict: 'cs',
     });
-
-    fetch(`https://www.googleapis.com/books/v1/volumes?${params}`)
+ */
+  /*  fetch(`https://www.googleapis.com/books/v1/volumes?${params}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -51,7 +47,7 @@ const BookCard = ({ searchInput }) => {
         );
         console.log(imgUrl);
       });
-  }, []);
+  }, []); */
 
   return (
     <div style={{ width: 250, marginLeft: 'auto', marginRight: 'auto' }}>
@@ -70,7 +66,7 @@ const BookCard = ({ searchInput }) => {
               height={200}
               fit="contain"
               className={styles.bookcover}
-              src={imgUrl || '/bookcover-icon.png'}
+              src={book.imgUrl || '/bookcover-icon.png'}
               alt="bookcover"
             />
           </div>
@@ -81,13 +77,13 @@ const BookCard = ({ searchInput }) => {
           style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
         >
           <Text className={styles.booktitle} weight={500}>
-            {title}
+            {book.title}
           </Text>
           <Badge className={styles.booktag} color="pink" variant="light">
             Přečteno
           </Badge>
           <Text className={styles.bookauthor} weight={300}>
-            {author}
+            {book.author}
           </Text>
         </Group>
 
@@ -96,7 +92,7 @@ const BookCard = ({ searchInput }) => {
           size="sm"
           style={{ color: secondaryColor, lineHeight: 1.5 }}
         >
-          {description}
+          {book.description}
         </Text>
         <Link href="/uprav-log">
           <Button
