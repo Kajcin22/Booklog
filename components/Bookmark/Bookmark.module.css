@@ -1,0 +1,11 @@
+.bookmark {
+  background-color: var(--secondary-color);
+  border-radius: 1rem;
+  padding: 1vh;
+  margin: 1rem;
+}
+
+.bookmark_title {
+  display: flex;
+  justify-content: space-between;
+}

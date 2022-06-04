@@ -59,7 +59,7 @@ const SearchResult = ({ imgUrl, author, title, description, setOpened }) => {
         href={`/uprav-log?${new URLSearchParams({
           author,
           title,
-          imgUrl,
+          imgUrl: imgUrl || '',
         })}`}
       >
         <Button

@@ -1,13 +1,11 @@
 import BookCard from '../../components/BookCard/book-card';
 import styles from './LandingPage.module.css';
-import Link from 'next/link';
-import Image from 'next/image';
 import Hero from '../../components/HeroSection';
-import { Modal, TextInput, Group, Button } from '@mantine/core';
+import Login from '../../components/Login/login';
 import LoginModal from '../../components/Login/login-modal';
 import { useState } from 'react';
+import { useForm } from '@mantine/form';
 
-import SearchModal from '../../components/SearchModal/search-modal';
 export default function Home() {
   const [opened, setOpened] = useState(false);
 
@@ -41,13 +39,10 @@ export default function Home() {
         </div>
         <div className={styles.registrace}>
           <h1>Zaregistruj se nyní a měj svou četbu pod kontrolou!</h1>
-          <form>
-            <label>
-              <input type="email" placeholder=" Zadej svůj e-mail" />
-              <button className={styles.header__btn}>Registrovat</button>
-            </label>
-          </form>
+
+          <Login />
         </div>
+        <LoginModal />
       </div>
     </>
   );
