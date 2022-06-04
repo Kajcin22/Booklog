@@ -20,7 +20,7 @@ const BookCard = ({ searchInput }) => {
   const [imgUrl, setImgUrl] = useState('');
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
-  // const [description, setDescription] = useState('');
+  const [description, setDescription] = useState('');
 
   useEffect(() => {
     /*za tím q= search word, po každém slovu to chce "+" */
@@ -44,11 +44,11 @@ const BookCard = ({ searchInput }) => {
         setImgUrl(data.items[0].volumeInfo.imageLinks.thumbnail);
         setAuthor(book.authors);
         setTitle(book.title);
-        // setDescription(
-        //   book.description === undefined
-        //     ? '//popisek knížky//'
-        //     : book.description,
-        // );
+        setDescription(
+          book.description === undefined
+            ? '//popisek knížky//'
+            : book.description,
+        );
         console.log(imgUrl);
       });
   }, []);
@@ -91,13 +91,13 @@ const BookCard = ({ searchInput }) => {
           </Text>
         </Group>
 
-        {/* <Text
+        <Text
           className={styles.bookbio}
           size="sm"
           style={{ color: secondaryColor, lineHeight: 1.5 }}
         >
           {description}
-        </Text> */}
+        </Text>
         <Link href="/uprav-log">
           <Button
             className={styles.createbutton}

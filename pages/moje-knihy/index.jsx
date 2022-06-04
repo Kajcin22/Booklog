@@ -5,11 +5,13 @@ export default function Home() {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.book_section_cards}>
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
+        <div className={styles.book_section}>
+          <div className={styles.book_section_cards}>
+            <BookCard />
+            <BookCard />
+            <BookCard />
+            <BookCard />
+          </div>
         </div>
       </div>
     </>
