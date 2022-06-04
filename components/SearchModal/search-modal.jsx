@@ -90,6 +90,7 @@ const SearchModal = ({ opened, setOpened }) => {
                 description={item?.volumeInfo?.description}
                 key={item?.id}
                 setOpened={setOpened}
+                bookId={item?.id}
               />
             ))}
         </div>
