@@ -7,6 +7,7 @@ import {
   useState,
 } from 'react';
 import { supabase } from '../../lib/supabase_client';
+import { useAuth } from '../AuthProvider/auth-provider';
 
 const initialState = {
   addedBooks: null,
@@ -16,13 +17,14 @@ const AddedBooksContext = createContext(initialState);
 
 export function AddedBooksProvider({ children }) {
   const [bookResponse, setBookResponse] = useState([]);
+  const { session } = useAuth();
 
-  const getBooks = async (booksLimit) => {
+  const getBooks = async () => {
     const { data, error } = await supabase
       .from('Book')
-      .select()
-      .order('created_at', { ascending: false })
-      .limit(booksLimit);
+      .select(`*,Library(userId)`)
+      .eq('Library.userId', session?.user?.id)
+      .order('created_at', { ascending: false });
     console.log({ data });
     console.log({ error });
     if (data) {
