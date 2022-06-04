@@ -7,6 +7,7 @@ import { useAddedBooks } from '../../components/AddedBooksProvider/added-books-p
 import { useState, useEffect } from 'react';
 import { useForm } from '@mantine/form';
 import Slider from 'react-slick';
+import Head from 'next/head';
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
@@ -22,11 +23,24 @@ export default function Home() {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
   };
 
   return (
     <>
+      <Head>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+      </Head>
       <div className="container">
         <Hero />
         <div className={styles.book_section}>
