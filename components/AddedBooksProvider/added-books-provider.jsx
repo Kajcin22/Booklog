@@ -16,6 +16,12 @@ const AddedBooksContext = createContext(initialState);
 
 export function AddedBooksProvider({ children }) {
   const [bookResponse, setBookResponse] = useState([]);
+  const [singleBookResponse, setSingleBookResponse] = useState(null);
+
+  const getBook = async (id) => {
+    const { data, error } = await supabase.from('Book').select().eq('id', id);
+    setSingleBookResponse(data?.[0]);
+  };
 
   const getBooks = async (booksLimit) => {
     const { data, error } = await supabase
@@ -38,8 +44,10 @@ export function AddedBooksProvider({ children }) {
     () => ({
       bookResponse,
       getBooks,
+      getBook,
+      singleBookResponse,
     }),
-    [bookResponse, getBooks],
+    [bookResponse, getBooks, getBook, singleBookResponse],
   );
 
   return (
