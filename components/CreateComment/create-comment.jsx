@@ -9,6 +9,7 @@ const CreateComment = ({ opened, setOpened }) => {
       commentName: '',
       commentDate: '',
       commentInput: '',
+      commentPage: '',
     },
   });
 
@@ -42,6 +43,12 @@ const CreateComment = ({ opened, setOpened }) => {
             type="text"
             placeholder="zde napište váš komentář"
             {...form.getInputProps('commentInput')}
+          />
+          <TextInput
+            label="Stránka:"
+            type="number"
+            placeholder="zadejte číslo stránky"
+            {...form.getInputProps('commentPage')}
           />
 
           <Group position="right" mt="md">
