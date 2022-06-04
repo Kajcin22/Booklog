@@ -2,7 +2,7 @@ import { Collapse, Button } from '@mantine/core';
 import { useState } from 'react';
 import styles from './Comment.module.css';
 
-const Comment = ({ title, dateCreated, content }) => {
+const Comment = ({ title, dateCreated, content, page }) => {
   const [opened, setOpen] = useState(false);
   return (
     <>
@@ -12,6 +12,7 @@ const Comment = ({ title, dateCreated, content }) => {
           className={styles.comment_btn}
         >
           {title}
+          ....str: {page}
         </Button>
 
         <Collapse in={opened}>

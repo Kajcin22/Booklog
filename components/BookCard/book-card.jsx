@@ -93,7 +93,7 @@ const BookCard = ({ book }) => {
         >
           {book.description}
         </Text>
-        <Link href="/uprav-log">
+        <Link href={`/moje-knihy/${book.id}`}>
           <Button
             className={styles.createbutton}
             variant="light"

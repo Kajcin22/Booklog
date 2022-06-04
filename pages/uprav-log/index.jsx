@@ -101,21 +101,25 @@ export default function Home() {
                 title={'Rozklikni komentář'}
                 dateCreated={'03. 06. 2022'}
                 content={text}
+                page={233}
               />
               <Comment
                 title={'Rozklikni komentář'}
                 dateCreated={'03. 06. 2022'}
                 content={text}
+                page={233}
               />
               <Comment
                 title={'Rozklikni komentář'}
                 dateCreated={'03. 06. 2022'}
                 content={text}
+                page={233}
               />
               <Comment
                 title={'Rozklikni komentář'}
                 dateCreated={'03. 06. 2022'}
                 content={text}
+                page={233}
               />
             </section>
           </Card>
