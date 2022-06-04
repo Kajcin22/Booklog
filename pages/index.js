@@ -5,8 +5,11 @@ import TopHeader from '../components/Header/header';
 import Layout from '../components/Layout/layout';
 import BookCard from '../components/BookCard/book-card';
 import styles from '../styles/Home.module.css';
+import { useAuth } from '../components/AuthProvider/auth-provider';
 
 export default function Home() {
+  const { session } = useAuth();
+
   return (
     <>
       <div className={styles.container}>
@@ -16,7 +19,7 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div>
-          <h2>Vítej //username//</h2>
+          <h2>Vítej {session?.user?.email}</h2>
           <p>
             {' '}
             Králík na smetaně po staročesku vás nezklame, pokud hledáte
