@@ -3,7 +3,7 @@ import { useForm } from '@mantine/form';
 
 import { useState } from 'react';
 
-const CreateBookmark = ({ opened, setOpened }) => {
+const CreateBookmark = ({ opened, setOpenedBookmark }) => {
   const form = useForm({
     initialValues: {
       pageNumber: '',
@@ -20,7 +20,7 @@ const CreateBookmark = ({ opened, setOpened }) => {
     <>
       <Modal
         opened={opened}
-        onClose={() => setOpened(false)}
+        onClose={() => setOpenedBookmark(false)}
         title="Vytvoř záložku"
       >
         <form onSubmit={form.onSubmit(handleBookmark)}>
