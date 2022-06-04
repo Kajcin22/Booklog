@@ -21,6 +21,10 @@
   font-weight: bold;
   font-family: var(--font);
   font-size: 2vh;
+  word-break: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .bookauthor {

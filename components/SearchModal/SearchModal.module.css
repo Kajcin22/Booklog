@@ -4,3 +4,7 @@
   justify-content: center;
   gap: 20px;
 }
+
+.bookcard {
+  flex: 0 1 50%;
+}

@@ -3,6 +3,7 @@
   background-color: #fafbef;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  flex: 0 1 30%;
 }
 
 .bookcover {
