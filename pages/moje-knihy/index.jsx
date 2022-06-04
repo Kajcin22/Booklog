@@ -31,7 +31,7 @@ export default function Home() {
     if (session?.user?.id) {
       getBooks();
     }
-  }, [router?.query?.q]);
+  }, [router?.query?.q, session?.user?.id]);
   console.log(bookResponse);
   return (
     <>
