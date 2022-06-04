@@ -34,7 +34,6 @@ export default function Home() {
   return (
     <>
       <div className={styles.book}>
-        (
         {router?.query?.imgUrl && (
           <Image
             className={styles.bookcover}
@@ -48,7 +47,7 @@ export default function Home() {
             alt="bookcover"
           />
         )}
-        )
+
         <div style={{ width: 500, margin: 'auto' }}>
           <Card className={styles.bookcard} shadow="sm" p="lg">
             <div>
