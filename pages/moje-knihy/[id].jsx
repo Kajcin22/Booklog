@@ -22,9 +22,13 @@ import Comment from '../../components/Comment/comment';
 import CreateBookmark from '../../components/CreateBookmark/create-bookmark';
 import { useAddedBooks } from '../../components/AddedBooksProvider/added-books-provider';
 
+import { supabase } from '../../lib/supabase_client';
+import { useAuth } from '../../components/AuthProvider/auth-provider';
+
 export default function Home() {
   const theme = useMantineTheme();
   const router = useRouter();
+  const { userId } = useAuth();
   const { getBook, singleBookResponse } = useAddedBooks();
   const secondaryColor =
     theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
@@ -37,7 +41,20 @@ export default function Home() {
       getBook(router.query.id);
     }
   }, [router.query.id]);
-  console.log(singleBookResponse);
+
+  const onDelete = async () => {
+    await supabase
+      .from('Bookmark')
+      .delete()
+      .eq('title', singleBookResponse.title);
+    await supabase
+      .from('Library')
+      .delete()
+      .eq('userId', userId)
+      .eq('bookId', singleBookResponse.bookId);
+    await supabase.from('Book').delete().eq('id', router.query.id);
+    router.push('/moje-knihy');
+  };
   let text =
     "“Friends told me that the latest trend, at least in Europe, is public sex. They showed me some clips, and they're terrifying. A couple enters a streetcar, half-full, simply takes a seat, undresses, and starts to do it. You can see from surprised faces that it's not staged. It's pure working-class suburb. But what's fascinating is that the people all look, and then they politely ignore it. The message is that even if you're together in public with people, it still counts as private space.”";
 
@@ -103,6 +120,15 @@ export default function Home() {
               >
                 Vytvoř záložku
               </Button>
+              <Button
+                onClick={onDelete}
+                variant="light"
+                color="red"
+                fullWidth
+                style={{ marginTop: 20 }}
+              >
+                Odebrat knihu
+              </Button>
             </div>
             <section className={styles.comments}>
               <Comment
@@ -136,6 +162,7 @@ export default function Home() {
         <CreateBookmark
           opened={openedBookmark}
           setOpenedBookmark={setOpenedBookmark}
+          bookTitle={singleBookResponse.title}
         />
       </div>
     </>
