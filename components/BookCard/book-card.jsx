@@ -29,7 +29,7 @@ const BookCard = ({ searchInput }) => {
     https://openlibrary.org/dev/docs/api/covers
     */
     const params = new URLSearchParams({
-      q: 'intitle:babicka',
+      q: 'intitle:lolita',
       key: process.env.NEXT_PUBLIC_BOOKS_API_KEY || '',
       maxResults: '20',
       langRestrict: 'cs',

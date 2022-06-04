@@ -6,10 +6,14 @@ import { Modal, TextInput, Group, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import SearchModal from '../SearchModal/search-modal';
+import LogoutModal from '../Logout/logoutModal';
 
 const TopHeader = () => {
   const router = useRouter();
   const [opened, setOpened] = useState(false);
+  const [openedSignout, setOpenedSignout] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   return (
     <>
@@ -72,6 +76,7 @@ const TopHeader = () => {
               height={30}
             />
             <Image
+              onClick={() => setOpenedSignout(true)}
               src={'/user_icon.png'}
               alt="prihlaseni"
               width={25}
@@ -80,6 +85,7 @@ const TopHeader = () => {
           </div>
         </div>
         <SearchModal opened={opened} setOpened={setOpened} />
+        <LogoutModal opened={openedSignout} setOpened={setOpenedSignout} />
       </header>
     </>
   );
