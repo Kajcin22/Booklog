@@ -39,7 +39,8 @@ export default function Home() {
             <Image
               className={styles.bookcover}
               width={200}
-              height={200}
+              height={300}
+              fit="contain"
               src={
                 router?.query?.imgUrl
                   ? router?.query?.imgUrl

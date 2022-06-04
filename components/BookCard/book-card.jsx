@@ -8,7 +8,6 @@ import {
 } from '@mantine/core';
 import Link from 'next/link';
 import styles from './BookCard.module.css';
-import bookIcon from './bookcover-icon.png';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -41,7 +40,7 @@ const BookCard = ({ searchInput }) => {
         console.log(data);
         let book = data.items[0].volumeInfo;
         console.log(book);
-        setImgUrl(data.items[0].volumeInfo.imageLinks.thumbnail);
+        setImgUrl(data?.items[0]?.volumeInfo?.imageLinks?.thumbnail);
         setAuthor(book.authors);
         setTitle(book.title);
         setDescription(
