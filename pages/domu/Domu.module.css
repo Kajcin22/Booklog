@@ -1,5 +1,15 @@
 .welcome {
+  height: 100%;
   font-family: var(--font);
   margin-left: 2rem;
   margin-right: 2rem;
+}
+
+.container {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 }

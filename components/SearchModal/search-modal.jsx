@@ -2,6 +2,7 @@ import { Modal, TextInput, Group, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import SearchResult from '../SearchResult/search-result';
+import styles from './SearchModal.module.css';
 
 const SearchModal = ({ opened, setOpened }) => {
   const form = useForm({
@@ -53,6 +54,8 @@ const SearchModal = ({ opened, setOpened }) => {
     <>
       <Modal
         opened={opened}
+        overflow="inside"
+        size="80%"
         onClose={() => setOpened(false)}
         title="Vyhledej knížku"
       >
@@ -77,17 +80,19 @@ const SearchModal = ({ opened, setOpened }) => {
             <Button type="submit">Vyhledej</Button>
           </Group>
         </form>
-        {response &&
-          response.map((item) => (
-            <SearchResult
-              imgUrl={item?.volumeInfo?.imageLinks?.thumbnail}
-              author={item?.volumeInfo?.authors?.toString()}
-              title={item?.volumeInfo?.title}
-              description={item?.volumeInfo?.description}
-              key={item?.id}
-              setOpened={setOpened}
-            />
-          ))}
+        <div className={styles.searchResults}>
+          {response &&
+            response.map((item) => (
+              <SearchResult
+                imgUrl={item?.volumeInfo?.imageLinks?.thumbnail}
+                author={item?.volumeInfo?.authors?.toString()}
+                title={item?.volumeInfo?.title}
+                description={item?.volumeInfo?.description}
+                key={item?.id}
+                setOpened={setOpened}
+              />
+            ))}
+        </div>
       </Modal>
     </>
   );

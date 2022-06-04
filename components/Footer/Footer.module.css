@@ -1,4 +1,5 @@
 .footer {
+  position: relative;
   background-color: var(--secondary-color);
   margin-top: 10px;
   bottom: 0;

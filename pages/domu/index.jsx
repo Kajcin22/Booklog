@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="container">
+      <div className={styles.container}>
         <div className={styles.welcome}>
           <h2>Vítej {session?.user?.email}</h2>
           <p>
