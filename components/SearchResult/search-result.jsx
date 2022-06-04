@@ -13,19 +13,40 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase_client';
 import { useRouter } from 'next/router';
+import { useAuth } from '../AuthProvider/auth-provider';
 
-const SearchResult = ({ imgUrl, author, title, description, setOpened }) => {
+const SearchResult = ({
+  imgUrl,
+  author,
+  title,
+  description,
+  setOpened,
+  bookId,
+}) => {
   const theme = useMantineTheme();
   const secondaryColor =
     theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
 
   const router = useRouter();
+  const { session } = useAuth();
 
   const onAddBook = async () => {
     try {
-      const { data, error } = await supabase
+      const { data: bookFound, error } = await supabase
         .from('Book')
-        .insert([{ title, author, description, imgUrl, state: 'unread' }]);
+        .select()
+        .eq('bookId', bookId);
+      console.log({ bookFound });
+      if (bookFound.length === 0) {
+        const { data, error } = await supabase
+          .from('Book')
+          .insert([
+            { title, author, description, imgUrl, state: 'unread', bookId },
+          ]);
+      }
+      await supabase
+        .from('Library')
+        .insert([{ userId: session.user.id, bookId }]);
       if (!error) {
         setOpened(false);
         router.push(`/moje-knihy?q=${title}`);
