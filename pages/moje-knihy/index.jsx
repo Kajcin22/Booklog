@@ -11,13 +11,17 @@ export default function Home() {
   const { session } = useAuth();
 
   const getBooks = async () => {
+    const { data: library, error: libraryError } = await supabase
+      .from('Library')
+      .select('bookId')
+      .eq('userId', session?.user?.id);
+    console.log({ library });
+    const bookIds = library?.map((it) => it.bookId);
     const { data, error } = await supabase
       .from('Book')
-      .select(`*,Library(userId)`)
-      .eq('Library.userId', session?.user?.id)
-      .order('created_at', { ascending: false });
-    console.log({ data });
-    console.log({ error });
+      .select()
+      .in('bookId', bookIds);
+
     if (data) {
       setBookResponse(data);
     }
