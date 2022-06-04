@@ -9,7 +9,7 @@ const LoginModal = ({ opened, setOpened }) => {
       <Modal
         opened={opened}
         onClose={() => setOpened(false)}
-        title="Vyhledej knížku"
+        title="Zadejte Váš email"
       >
         <Login />
       </Modal>

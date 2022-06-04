@@ -19,6 +19,7 @@ import { useState } from 'react';
 import styles from './Uprav.module.css';
 import CreateComment from '../../components/CreateComment/create-comment';
 import Comment from '../../components/Comment/comment';
+import CreateBookmark from '../../components/CreateBookmark/create-bookmark';
 
 export default function Home() {
   const theme = useMantineTheme();
@@ -28,6 +29,7 @@ export default function Home() {
     theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
 
   const [opened, setOpened] = useState(false);
+  const [openedBookmark, setOpenedBookmark] = useState(false);
 
   let text =
     "“Friends told me that the latest trend, at least in Europe, is public sex. They showed me some clips, and they're terrifying. A couple enters a streetcar, half-full, simply takes a seat, undresses, and starts to do it. You can see from surprised faces that it's not staged. It's pure working-class suburb. But what's fascinating is that the people all look, and then they politely ignore it. The message is that even if you're together in public with people, it still counts as private space.”";
@@ -85,6 +87,7 @@ export default function Home() {
                 Přidej komentář
               </Button>
               <Button
+                onClick={() => setOpenedBookmark(true)}
                 className={styles.createbutton}
                 variant="light"
                 color="blue"
@@ -119,6 +122,10 @@ export default function Home() {
           </Card>
         </div>
         <CreateComment opened={opened} setOpened={setOpened} />
+        <CreateBookmark
+          opened={openedBookmark}
+          setOpenedBookmark={setOpenedBookmark}
+        />
       </div>
     </>
   );

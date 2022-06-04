@@ -3,6 +3,7 @@ import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { Notification } from '@mantine/core';
 import { supabase } from '../../lib/supabase_client';
+import styles from './Login.module.css';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -41,21 +42,45 @@ export default function Login() {
   }
 
   return (
-    <Box sx={{ maxWidth: 300 }} mx="auto">
-      <form onSubmit={form.onSubmit(onLogin)}>
-        <TextInput
-          required
-          label="Email"
-          placeholder="your@email.com"
-          {...form.getInputProps('email')}
-        />
+    <>
+      <div className={styles.registrace}>
+        <Box sx={{ maxWidth: 300 }} mx="auto">
+          <form onSubmit={form.onSubmit(onLogin)}>
+            <TextInput
+              required
+              label="Zadejte Váš email:"
+              placeholder="your@email.com"
+              {...form.getInputProps('email')}
+            />
 
-        <Group position="right" mt="md">
-          <Button type="submit" loading={loading}>
-            Submit
-          </Button>
-        </Group>
-      </form>
-    </Box>
+            <Group position="right" mt="md">
+              <Button
+                styles={(theme) => ({
+                  root: {
+                    backgroundColor: '#00acee',
+                    border: 0,
+                    height: 42,
+                    paddingLeft: 20,
+                    paddingRight: 20,
+
+                    '&:hover': {
+                      backgroundColor: theme.fn.darken('#00acee', 0.05),
+                    },
+                  },
+
+                  leftIcon: {
+                    marginRight: 15,
+                  },
+                })}
+                type="submit"
+                loading={loading}
+              >
+                Submit
+              </Button>
+            </Group>
+          </form>
+        </Box>
+      </div>
+    </>
   );
 }

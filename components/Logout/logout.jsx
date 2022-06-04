@@ -3,10 +3,12 @@ import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { Notification, Checkbox } from '@mantine/core';
 import { supabase } from '../../lib/supabase_client';
+import { useRouter } from 'next/router';
 
 export default function Logout() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const router = useRouter();
   /*  const form = useForm({
     initialValues: {
       email: '',
@@ -20,11 +22,10 @@ export default function Logout() {
   const onLogout = async () => {
     setLoading(true);
     try {
-      await supabase.auth.signOut({
-        email: values.email,
-      });
+      await supabase.auth.signOut();
       setLoading(false);
       setSuccess(true);
+      router.push('/');
     } catch (err) {
       console.log(err);
       setLoading(false);
@@ -41,7 +42,7 @@ export default function Logout() {
 
   return (
     <Box sx={{ maxWidth: 300 }} mx="auto">
-      <form onSubmit={() => onLogout}>
+      <form onSubmit={() => onLogout()}>
         <Group position="right" mt="md">
           <Button type="submit" loading={loading}>
             Odhlásit se

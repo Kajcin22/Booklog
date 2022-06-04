@@ -1,0 +1,35 @@
+.registrace {
+  background-color: var(--secondary-color);
+  width: 100%;
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 20px;
+
+  font-family: var(--font);
+  color: var(--primary-color);
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+
+  flex-direction: row;
+  align-items: center;
+}
+
+.registrace_btn {
+  font-size: large;
+  padding: 2vh;
+  color: white;
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 10px;
+}
+
+.registrace label {
+  display: flex;
+  gap: 1rem;
+}
+
+.registrace input {
+  border-radius: 10px;
+}

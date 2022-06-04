@@ -12,8 +12,6 @@ const TopHeader = () => {
   const router = useRouter();
   const [opened, setOpened] = useState(false);
   const [openedSignout, setOpenedSignout] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   return (
     <>
@@ -45,9 +43,11 @@ const TopHeader = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/domu">
+                <Link href="/moje-zalozky">
                   <a
-                    className={router.pathname == '/domu' ? styles.active : ''}
+                    className={
+                      router.pathname == '/moje-zalozky' ? styles.active : ''
+                    }
                   >
                     Moje záložky
                   </a>
