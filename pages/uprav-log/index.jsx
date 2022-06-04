@@ -34,7 +34,6 @@ export default function Home() {
   return (
     <>
       <div className={styles.book}>
-        (
         <Image
           className={styles.bookcover}
           width={200}
@@ -46,7 +45,7 @@ export default function Home() {
           }
           alt="bookcover"
         />
-        )
+
         <div style={{ width: 500, margin: 'auto' }}>
           <Card className={styles.bookcard} shadow="sm" p="lg">
             <div>

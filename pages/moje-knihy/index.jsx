@@ -5,10 +5,12 @@ export default function Home() {
   return (
     <>
       <div className={styles.container}>
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
+        <div className={styles.book_section_cards}>
+          <BookCard />
+          <BookCard />
+          <BookCard />
+          <BookCard />
+        </div>
       </div>
     </>
   );

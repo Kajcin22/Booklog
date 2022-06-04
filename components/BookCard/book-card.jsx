@@ -20,7 +20,7 @@ const BookCard = ({ searchInput }) => {
   const [imgUrl, setImgUrl] = useState('');
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  // const [description, setDescription] = useState('');
 
   useEffect(() => {
     /*za tím q= search word, po každém slovu to chce "+" */
@@ -44,26 +44,36 @@ const BookCard = ({ searchInput }) => {
         setImgUrl(data.items[0].volumeInfo.imageLinks.thumbnail);
         setAuthor(book.authors);
         setTitle(book.title);
-        setDescription(
-          book.description === undefined
-            ? '//popisek knížky//'
-            : book.description,
-        );
+        // setDescription(
+        //   book.description === undefined
+        //     ? '//popisek knížky//'
+        //     : book.description,
+        // );
         console.log(imgUrl);
       });
   }, []);
 
   return (
-    <div style={{ width: 340, margin: 'auto' }}>
+    <div style={{ width: 250, marginLeft: 'auto', marginRight: 'auto' }}>
       <Card className={styles.bookcard} shadow="sm" p="lg">
         <Card.Section>
-          <Image
-            width={150}
-            height={150}
-            className={styles.bookcover}
-            src={imgUrl || '/bookcover-icon.png'}
-            alt="bookcover"
-          />
+          <div
+            style={{
+              width: 150,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              paddingTop: 15,
+            }}
+          >
+            <Image
+              width={150}
+              height={200}
+              fit="contain"
+              className={styles.bookcover}
+              src={imgUrl || '/bookcover-icon.png'}
+              alt="bookcover"
+            />
+          </div>
         </Card.Section>
 
         <Group
@@ -81,13 +91,13 @@ const BookCard = ({ searchInput }) => {
           </Text>
         </Group>
 
-        <Text
+        {/* <Text
           className={styles.bookbio}
           size="sm"
           style={{ color: secondaryColor, lineHeight: 1.5 }}
         >
           {description}
-        </Text>
+        </Text> */}
         <Link href="/uprav-log">
           <Button
             className={styles.createbutton}

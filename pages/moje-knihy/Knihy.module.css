@@ -1,5 +1,10 @@
-.container {
+/* .container {
   display: flex;
   flex-wrap: wrap;
   width: 95%;
+} */
+
+.book_section_cards {
+  display: flex;
+  flex-wrap: wrap;
 }
