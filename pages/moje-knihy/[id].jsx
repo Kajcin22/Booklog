@@ -64,107 +64,99 @@ export default function Home() {
 
   return (
     <>
-      <div className={styles.book}>
-        <div style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+      <div className={styles.bookView}>
+        <div className={styles.bookcover}>
           <Image
-            className={styles.bookcover}
             width={200}
-            height={200}
+            height={300}
             src={singleBookResponse.imgUrl || '/bookcover-icon.png'}
             alt="bookcover"
           />
         </div>
-        <div style={{ width: 500, margin: 'auto' }}>
-          <Card className={styles.bookcard} shadow="sm" p="lg">
-            <div>
-              <Group
-                position="apart"
-                style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
-              >
-                <Text className={styles.booktitle} weight={500}>
-                  {singleBookResponse.title}
-                </Text>
-                <Badge className={styles.booktag} color="pink" variant="light">
-                  Přečteno
-                </Badge>
-                <Text className={styles.bookauthor} weight={300}>
-                  {singleBookResponse.author}
-                </Text>
-              </Group>
-
-              <Text
-                className={styles.bookbio}
-                size="sm"
-                style={{ color: secondaryColor, lineHeight: 1.5 }}
-              >
-                {singleBookResponse.description}
+        <div className={styles.bookinfo} style={{ width: 500, margin: 'auto' }}>
+          {/* <Card className={styles.bookcard} shadow="sm" p="lg"> */}
+          <div className={styles.bookcard}>
+            <Group
+              position="apart"
+              style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
+            >
+              <Text className={styles.booktitle}>
+                {singleBookResponse.title}
               </Text>
+              <Badge className={styles.booktag} color="pink" variant="light">
+                Přečteno
+              </Badge>
+              <Text className={styles.bookauthor} weight={300}>
+                {singleBookResponse.author}
+              </Text>
+            </Group>
 
-              <Button
-                onClick={() => setOpened(true)}
-                className={styles.createbutton}
-                variant="light"
-                color="blue"
-                fullWidth
-                style={{ marginTop: 20 }}
-              >
-                Přidej komentář
-              </Button>
-              <Button
-                onClick={() => setOpenedBookmark(true)}
-                className={styles.createbutton}
-                variant="light"
-                color="blue"
-                fullWidth
-                style={{ marginTop: 20 }}
-              >
-                Vytvoř záložku
-              </Button>
-              <Button
-                onClick={onDelete}
-                variant="light"
-                color="red"
-                fullWidth
-                style={{ marginTop: 20 }}
-              >
-                Odebrat knihu
-              </Button>
-            </div>
-            <section className={styles.comments}>
-              <Comment
-                title={'Rozklikni komentář'}
-                dateCreated={'03. 06. 2022'}
-                content={text}
-                page={233}
-              />
-              <Comment
-                title={'Rozklikni komentář'}
-                dateCreated={'03. 06. 2022'}
-                content={text}
-                page={233}
-              />
-              <Comment
-                title={'Rozklikni komentář'}
-                dateCreated={'03. 06. 2022'}
-                content={text}
-                page={233}
-              />
-              <Comment
-                title={'Rozklikni komentář'}
-                dateCreated={'03. 06. 2022'}
-                content={text}
-                page={233}
-              />
-            </section>
-          </Card>
+            <Text
+              className={styles.bookbio}
+              size="sm"
+              style={{ color: secondaryColor, lineHeight: 1.5 }}
+            >
+              {singleBookResponse.description}
+            </Text>
+
+            <Button
+              onClick={() => setOpened(true)}
+              className={styles.createbutton}
+              fullWidth
+            >
+              Přidej komentář
+            </Button>
+            <Button
+              onClick={() => setOpenedBookmark(true)}
+              className={styles.createbutton}
+              fullWidth
+            >
+              Vytvoř záložku
+            </Button>
+            <Button
+              onClick={onDelete}
+              variant="light"
+              color="red"
+              fullWidth
+              style={{ marginTop: 20 }}
+            >
+              Odebrat knihu
+            </Button>
+          </div>
         </div>
-        <CreateComment opened={opened} setOpened={setOpened} />
-        <CreateBookmark
-          opened={openedBookmark}
-          setOpenedBookmark={setOpenedBookmark}
-          bookTitle={singleBookResponse.title}
-        />
+        <div className={styles.comments}>
+          <Comment
+            title={'Rozklikni komentář'}
+            dateCreated={'03. 06. 2022'}
+            content={text}
+            page={233}
+          />
+          <Comment
+            title={'Rozklikni komentář'}
+            dateCreated={'03. 06. 2022'}
+            content={text}
+            page={233}
+          />
+          <Comment
+            title={'Rozklikni komentář'}
+            dateCreated={'03. 06. 2022'}
+            content={text}
+            page={233}
+          />
+          <Comment
+            title={'Rozklikni komentář'}
+            dateCreated={'03. 06. 2022'}
+            content={text}
+            page={233}
+          />
+        </div>
       </div>
+      {/* </Card> */}
+      <CreateComment opened={opened} setOpened={setOpened} />
+      <CreateBookmark
+        opened={openedBookmark}
+        setOpenedBookmark={setOpenedBookmark}
+      />
     </>
   );
 }

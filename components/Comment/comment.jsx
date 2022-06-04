@@ -11,8 +11,10 @@ const Comment = ({ title, dateCreated, content, page }) => {
           onClick={() => setOpen((o) => !o)}
           className={styles.comment_btn}
         >
-          {title}
-          ....str: {page}
+          <div className={styles.comment__btn}>
+            <div className={styles.comment__title}>{title}</div>
+            <div className={styles.comment__page}>strana: {page}</div>
+          </div>
         </Button>
 
         <Collapse in={opened}>

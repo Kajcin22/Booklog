@@ -1,66 +1,76 @@
 .book {
   display: flex;
-
-  font-family: 'Merriweather', sans-serif;
+  flex-direction: column;
   background-color: #fafbef;
   width: 100%;
   height: 100%;
-  justify-content: baseline;
   align-items: center;
+}
 
-  margin-bottom: 15rem;
+.bookView {
+  display: flex;
+  flex-direction: column;
 }
 
 .bookcover {
-  max-height: 50%;
-  padding: 1rem;
-  margin-left: 2rem;
+  max-height: 100%;
+  padding: 2rem;
+  margin: 0 auto;
 }
 
 .booktag {
   color: #5c475b;
   background-color: #d3c5d2;
-  font-family: 'Merriweather', sans-serif;
   font-size: 1vh;
 }
 
 .booktitle {
   color: #002927;
   font-weight: bold;
-  font-family: 'Merriweather', sans-serif;
   font-size: 2.5vh;
 }
 
 .bookauthor {
-  font-family: 'Merriweather', sans-serif;
   color: #003d3a;
   font-size: 2vh;
 }
 
 .bookbio {
-  font-family: 'Merriweather', sans-serif;
   font-size: 2vh;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  word-break: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .createbutton {
+  margin-top: 10px;
   color: #ebfafe;
-  background-color: #0795c5;
-  font-family: 'Merriweather', sans-serif;
+  background-color: var(--button-color);
   font-size: 2vh;
 }
 
 .createbutton:hover {
+  background-color: white;
   color: #002927;
 }
 
 .comments {
-  display: flex;
+  display: block;
   flex-wrap: wrap;
-  justify-content: baseline;
   align-items: center;
-  margin: 2rem;
   gap: 1vh;
   width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .book {
+    flex-direction: row;
+  }
+
+  .bookView {
+    flex-direction: row;
+  }
 }
