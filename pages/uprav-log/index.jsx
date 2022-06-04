@@ -35,17 +35,19 @@ export default function Home() {
     <>
       <div className={styles.book}>
         (
-        <Image
-          className={styles.bookcover}
-          width={200}
-          height={200}
-          src={
-            router?.query?.imgUrl
-              ? router?.query?.imgUrl
-              : '/bookcover-icon.png'
-          }
-          alt="bookcover"
-        />
+        {router?.query?.imgUrl && (
+          <Image
+            className={styles.bookcover}
+            width={200}
+            height={200}
+            src={
+              router?.query?.imgUrl
+                ? router?.query?.imgUrl
+                : '/bookcover-icon.png'
+            }
+            alt="bookcover"
+          />
+        )}
         )
         <div style={{ width: 500, margin: 'auto' }}>
           <Card className={styles.bookcard} shadow="sm" p="lg">
