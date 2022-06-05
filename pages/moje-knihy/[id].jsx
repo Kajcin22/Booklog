@@ -156,6 +156,7 @@ export default function Home() {
       <CreateBookmark
         opened={openedBookmark}
         setOpenedBookmark={setOpenedBookmark}
+        bookTitle={singleBookResponse.title}
       />
     </>
   );
