@@ -27,6 +27,7 @@
     "react-dom": "18.1.0",
     "react-icons": "^4.4.0",
     "react-slick": "^0.29.0",
+    "react-stars": "^2.2.5",
     "swiper": "^8.2.2"
   },
   "devDependencies": {

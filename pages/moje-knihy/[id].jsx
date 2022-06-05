@@ -28,6 +28,9 @@ import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { getBookmark } from '../../lib/api';
 import { getLibrary } from '../../lib/api';
 
+import React from 'react';
+import ReactStars from 'react-stars';
+
 export default function Home() {
   const theme = useMantineTheme();
   const router = useRouter();
@@ -41,6 +44,7 @@ export default function Home() {
   const [value, setValue] = useState('react');
   const [comments, setComments] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
+  const [ratingValue, setRatingvalue] = useState(null);
 
   useEffect(() => {
     if (router.query.id) {
@@ -102,6 +106,16 @@ export default function Home() {
     setValue(response?.data?.[0]?.readingState);
   };
 
+  const onRating = async (newRating) => {
+    const userRating = await supabase
+      .from('Library')
+      .update({ rating: newRating })
+      .match({ userId, bookId: singleBookResponse.bookId });
+    console.log('Rating: ' + newRating);
+    setRatingvalue(userRating?.data?.[0]?.rating);
+    console.log('ratingValue: ' + ratingValue);
+  };
+
   if (!singleBookResponse) {
     return null;
   }
@@ -136,6 +150,17 @@ export default function Home() {
                     { label: 'Přečteno', value: 'C' },
                   ]}
                 />
+
+                <ReactStars
+                  onChange={onRating}
+                  edit={true}
+                  count={5}
+                  size={30}
+                  isHalf={false}
+                  color2={'#ffd700'}
+                  value={ratingValue}
+                />
+
                 <Text className={styles.bookauthor} weight={300}>
                   {singleBookResponse.author}
                 </Text>
