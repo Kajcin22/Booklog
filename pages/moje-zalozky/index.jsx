@@ -30,6 +30,7 @@ export default function Home() {
             return (
               <div key={bookmark.id}>
                 <Bookmark
+                  bookId={bookmark.bookId}
                   pageNum={bookmark.pageNum}
                   dateCreated={dayjs(bookmark.created_at).format(
                     'DD. MM. YYYY',

@@ -16,37 +16,7 @@ const BookCard = ({ book }) => {
   const secondaryColor =
     theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
 
-  const [imgUrl, setImgUrl] = useState('');
-  const [author, setAuthor] = useState('');
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-
-  /*   useEffect(() => {
-   
-    const params = new URLSearchParams({
-      q: 'intitle:lolita',
-      key: process.env.NEXT_PUBLIC_BOOKS_API_KEY || '',
-      maxResults: '20',
-      langRestrict: 'cs',
-    });
- */
-  /*  fetch(`https://www.googleapis.com/books/v1/volumes?${params}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        let book = data.items[0].volumeInfo;
-        console.log(book);
-        setImgUrl(data?.items[0]?.volumeInfo?.imageLinks?.thumbnail);
-        setAuthor(book.authors);
-        setTitle(book.title);
-        setDescription(
-          book.description === undefined
-            ? '//popisek knížky//'
-            : book.description,
-        );
-        console.log(imgUrl);
-      });
-  }, []); */
+  console.log(book);
 
   return (
     <div style={{ width: 250, marginLeft: 'auto', marginRight: 'auto' }}>
@@ -78,9 +48,10 @@ const BookCard = ({ book }) => {
           <Text className={styles.booktitle} weight={500}>
             {book.title}
           </Text>
-          {/* <Badge className={styles.booktag} color="pink" variant="light">
-            Přečteno
-          </Badge> */}
+          <Badge className={styles.booktag} color="pink" variant="light">
+            {book?.readingState}
+          </Badge>
+
           <Text className={styles.bookauthor} weight={300}>
             {book.author}
           </Text>
