@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase_client';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
+import { getAllBookmarks } from '../../lib/api';
 
 const readingStates = { A: 'Chci si přečíst', B: 'Čtu', C: 'Přečteno' };
+
 export default function Home() {
   const [bookResponse, setBookResponse] = useState([]);
   const [readingState, setReadingState] = useState(null);
@@ -23,15 +25,14 @@ export default function Home() {
       });
 
   const router = useRouter();
-  const { session } = useAuth();
+  const { userId } = useAuth();
 
   const getBooks = async (searchQuery) => {
     const { data: library } = await supabase
       .from('Library')
       .select('bookId, readingState')
-      .eq('userId', session?.user?.id);
+      .eq('userId', userId);
 
-    console.log({ library });
     const bookIds = library?.map((it) => it.bookId);
 
     const query = supabase.from('Book').select().in('bookId', bookIds);
@@ -42,14 +43,21 @@ export default function Home() {
 
     const { data, error } = await query;
 
+    const allBookmarks = await getAllBookmarks(userId);
+
     if (data) {
       const enrichedData = data.map((book) => {
         const state = library?.find(
           (item) => item.bookId === book.bookId,
         )?.readingState;
+        const bookmark = allBookmarks?.find(
+          (item) => parseInt(item.bookId) === book.id,
+        );
+        console.log(bookmark);
         return {
           ...book,
           readingState: readingStates[state] || 'Chci si přečíst',
+          bookmark,
         };
       });
       setBookResponse(enrichedData);
@@ -61,11 +69,12 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (session?.user?.id) {
+    if (userId) {
       getBooks();
     }
-  }, [router?.query?.q, session?.user?.id]);
-  console.log(bookResponse, 'hledat', searchInput);
+  }, [router?.query?.q, userId]);
+  console.log(bookResponse);
+
   return (
     <>
       <div className={styles.container}>

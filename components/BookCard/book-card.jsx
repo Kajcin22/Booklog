@@ -30,6 +30,9 @@ const BookCard = ({ book }) => {
               paddingTop: 15,
             }}
           >
+            {book?.bookmark?.pageNum && (
+              <div className={styles.bookmark}>{book?.bookmark?.pageNum}</div>
+            )}
             <Image
               width={150}
               height={200}

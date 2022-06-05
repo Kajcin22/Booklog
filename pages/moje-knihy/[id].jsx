@@ -25,6 +25,8 @@ import { useAddedBooks } from '../../components/AddedBooksProvider/added-books-p
 
 import { supabase } from '../../lib/supabase_client';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
+import { getBookmark } from '../../lib/api';
+import { getLibrary } from '../../lib/api';
 
 export default function Home() {
   const theme = useMantineTheme();
@@ -38,6 +40,7 @@ export default function Home() {
   const [openedBookmark, setOpenedBookmark] = useState(false);
   const [value, setValue] = useState('react');
   const [comments, setComments] = useState([]);
+  const [bookmarks, setBookmarks] = useState([]);
 
   useEffect(() => {
     if (router.query.id) {
@@ -45,40 +48,13 @@ export default function Home() {
     }
   }, [router.query.id]);
 
-  const getLibrary = async () => {
-    const { data } = await supabase
-      .from('Library')
-      .select()
-      .eq('userId', userId)
-      .eq('bookId', singleBookResponse.bookId)
-      .maybeSingle();
-    setValue(data?.readingState);
-  };
-
   useEffect(() => {
-    if (singleBookResponse) {
-      getLibrary();
+    if (singleBookResponse && userId) {
+      getLibrary(userId, singleBookResponse?.bookId).then((response) =>
+        setValue(response?.readingState),
+      );
     }
-  }, [singleBookResponse]);
-
-  const subscribeToComments = () => {
-    const { subscription } = supabase
-      .from(
-        `Comment:userId=eq.${userId},bookId=eq.${singleBookResponse?.bookId}`,
-      )
-      .on('UPDATE', (payload) => {
-        console.log({ payload });
-        setComments((prev) => {
-          return [...prev, ...payload];
-        });
-      });
-    /*    .select()
-      .eq('userId', userId)
-      .eq('bookId', singleBookResponse.bookId); */
-
-    /*  setComments(data); */
-    return subscription;
-  };
+  }, [singleBookResponse, userId]);
 
   const getComment = async () => {
     const { data } = await supabase
@@ -91,17 +67,18 @@ export default function Home() {
   };
 
   useEffect(() => {
-    let subscription;
     if (userId && singleBookResponse?.bookId) {
       getComment();
-      subscription = subscribeToComments();
     }
-    return () => {
-      if (subscription) {
-        supabase.removeSubscription(subscription);
-      }
-    };
   }, [userId, singleBookResponse?.bookId]);
+
+  useEffect(() => {
+    if (userId && router?.query?.id) {
+      getBookmark(userId, router?.query?.id).then((response) =>
+        setBookmarks(response),
+      );
+    }
+  }, [userId, router?.query?.id]);
 
   const onDelete = async () => {
     await supabase
@@ -214,6 +191,13 @@ export default function Home() {
                 />
               );
             })}
+        </div>
+        <div className={styles.bookmarks}>
+          {bookmarks && (
+            <div className={styles.bookmarks_elm}>
+              <p>{bookmarks.pageNum}</p>
+            </div>
+          )}
         </div>
       </div>
       <CreateComment
