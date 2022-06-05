@@ -44,6 +44,22 @@ export default function Home() {
     }
   }, [router.query.id]);
 
+  const getLibrary = async () => {
+    const { data } = await supabase
+      .from('Library')
+      .select()
+      .eq('userId', userId)
+      .eq('bookId', singleBookResponse.bookId)
+      .maybeSingle();
+    setValue(data?.readingState);
+  };
+
+  useEffect(() => {
+    if (singleBookResponse) {
+      getLibrary();
+    }
+  }, [singleBookResponse]);
+
   const onDelete = async () => {
     await supabase
       .from('Bookmark')
