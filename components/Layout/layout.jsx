@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div style={{ maxWidth: '80%', margin: 'auto' }}>
+      <div style={{ maxWidth: '80%', margin: '0 auto' }}>
         {session ? <TopHeader /> : <LandingHeader />}
 
         {children}
