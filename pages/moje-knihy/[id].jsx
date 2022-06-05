@@ -7,6 +7,7 @@ import {
   Button,
   Group,
   useMantineTheme,
+  SegmentedControl,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
@@ -35,6 +36,7 @@ export default function Home() {
 
   const [opened, setOpened] = useState(false);
   const [openedBookmark, setOpenedBookmark] = useState(false);
+  const [value, setValue] = useState('react');
 
   useEffect(() => {
     if (router.query.id) {
@@ -54,6 +56,14 @@ export default function Home() {
       .eq('bookId', singleBookResponse.bookId);
     await supabase.from('Book').delete().eq('id', router.query.id);
     router.push('/moje-knihy');
+  };
+
+  const onStateUpdate = async (value) => {
+    const response = await supabase
+      .from('Library')
+      .update({ readingState: value })
+      .match({ userId, bookId: singleBookResponse.bookId });
+    setValue(response?.data?.[0]?.readingState);
   };
   let text =
     "“Friends told me that the latest trend, at least in Europe, is public sex. They showed me some clips, and they're terrifying. A couple enters a streetcar, half-full, simply takes a seat, undresses, and starts to do it. You can see from surprised faces that it's not staged. It's pure working-class suburb. But what's fascinating is that the people all look, and then they politely ignore it. The message is that even if you're together in public with people, it still counts as private space.”";
@@ -83,9 +93,15 @@ export default function Home() {
               <Text className={styles.booktitle}>
                 {singleBookResponse.title}
               </Text>
-              <Badge className={styles.booktag} color="pink" variant="light">
-                Přečteno
-              </Badge>
+              <SegmentedControl
+                value={value}
+                onChange={onStateUpdate}
+                data={[
+                  { label: 'Chci si přečíst', value: 'A' },
+                  { label: 'Čtu', value: 'B' },
+                  { label: 'Přečteno', value: 'C' },
+                ]}
+              />
               <Text className={styles.bookauthor} weight={300}>
                 {singleBookResponse.author}
               </Text>
@@ -157,6 +173,7 @@ export default function Home() {
         opened={openedBookmark}
         setOpenedBookmark={setOpenedBookmark}
         bookTitle={singleBookResponse.title}
+        bookId={singleBookResponse.id}
       />
     </>
   );

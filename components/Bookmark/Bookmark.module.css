@@ -23,6 +23,10 @@
   width: 60%;
 }
 
+.bookmark_title h2:hover {
+  cursor: pointer;
+}
+
 .bookmark_title p {
   font-size: 1.5vh;
 }

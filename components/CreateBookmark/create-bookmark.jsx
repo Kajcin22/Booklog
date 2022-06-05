@@ -5,7 +5,7 @@ import { useAuth } from '../AuthProvider/auth-provider';
 
 import { useState } from 'react';
 
-const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle }) => {
+const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
   const form = useForm({
     initialValues: {
       pageNumber: '',
@@ -26,6 +26,7 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle }) => {
         pageNum: formValues.pageNumber,
         title: bookTitle,
         userId,
+        bookId,
       },
     ]);
     setOpenedBookmark(false);
