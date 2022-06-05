@@ -7,9 +7,26 @@
   align-items: center;
 }
 
+@media screen and (min-width: 800px) {
+  .book {
+    flex-direction: row;
+  }
+}
+
 .bookView {
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (min-width: 800px) {
+  .bookView {
+    flex-direction: row;
+  }
+}
+
+.bookinfo {
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .bookcover {
@@ -63,14 +80,4 @@
   align-items: center;
   gap: 1vh;
   width: 100%;
-}
-
-@media screen and (min-width: 800px) {
-  .book {
-    flex-direction: row;
-  }
-
-  .bookView {
-    flex-direction: row;
-  }
 }

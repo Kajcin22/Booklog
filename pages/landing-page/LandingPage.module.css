@@ -65,6 +65,11 @@
   margin-bottom: 5rem;
 }
 
+.book_section h3 {
+  color: purple;
+  font-family: var(--font-menu);
+}
+
 .book_section_heading {
   display: flex;
   justify-content: space-between;

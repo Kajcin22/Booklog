@@ -31,6 +31,6 @@
 }
 
 .comment_content {
-  font-family: var(--font-menu);
+  font-family: var(--font);
   font-size: 2vh;
 }

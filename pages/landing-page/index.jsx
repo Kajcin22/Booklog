@@ -46,9 +46,23 @@ export default function Home() {
             <Swiper
               modules={[Navigation, Pagination, Scrollbar, A11y]}
               onSwiper={(swiper) => (window.swiper = swiper)}
-              slidesPerView={3}
-              spaceBetween={100}
-              slidesPerGroup={2}
+              breakpoints={{
+                320: {
+                  slidesPerView: 2,
+                  slidesPerGroup: 2,
+                  spaceBetween: 50,
+                },
+                1000: {
+                  slidesPerView: 3,
+                  slidesPerGroup: 3,
+                  spaceBetween: 50,
+                },
+                1400: {
+                  slidesPerView: 4,
+                  slidesPerGroup: 4,
+                  spaceBetween: 50,
+                },
+              }}
               navigation
               loop
               scrollbar={{ draggable: true }}

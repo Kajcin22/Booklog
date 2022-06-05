@@ -83,8 +83,7 @@ export default function Home() {
             alt="bookcover"
           />
         </div>
-        <div className={styles.bookinfo} style={{ width: 500, margin: 'auto' }}>
-          {/* <Card className={styles.bookcard} shadow="sm" p="lg"> */}
+        <div className={styles.bookinfo}>
           <div className={styles.bookcard}>
             <Group
               position="apart"
@@ -167,7 +166,6 @@ export default function Home() {
           />
         </div>
       </div>
-      {/* </Card> */}
       <CreateComment opened={opened} setOpened={setOpened} />
       <CreateBookmark
         opened={openedBookmark}
