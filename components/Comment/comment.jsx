@@ -7,15 +7,13 @@ const Comment = ({ title, dateCreated, content, page }) => {
   return (
     <>
       <div className={styles.comment}>
-        <Button
+        <button
+          className={styles.comment__btn}
           onClick={() => setOpen((o) => !o)}
-          className={styles.comment_btn}
         >
-          <div className={styles.comment__btn}>
-            <div className={styles.comment__title}>{title}</div>
-            <div className={styles.comment__page}>strana: {page}</div>
-          </div>
-        </Button>
+          <div className={styles.comment__title}>{title}</div>
+          <div className={styles.comment__page}>strana: {page}</div>
+        </button>
 
         <Collapse in={opened}>
           <h3>vytvořeno: {dateCreated}</h3>

@@ -65,62 +65,64 @@ export default function Home() {
   return (
     <>
       <div className={styles.bookView}>
-        <div className={styles.bookcover}>
-          <Image
-            width={200}
-            height={300}
-            src={singleBookResponse.imgUrl || '/bookcover-icon.png'}
-            alt="bookcover"
-          />
-        </div>
-        <div className={styles.bookinfo}>
-          <div className={styles.bookcard}>
-            <Group
-              position="apart"
-              style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
-            >
-              <Text className={styles.booktitle}>
-                {singleBookResponse.title}
-              </Text>
-              <Badge className={styles.booktag} color="pink" variant="light">
-                Přečteno
-              </Badge>
-              <Text className={styles.bookauthor} weight={300}>
-                {singleBookResponse.author}
-              </Text>
-            </Group>
+        <div className={styles.bookMain}>
+          <div className={styles.bookcover}>
+            <Image
+              width={200}
+              height={300}
+              src={singleBookResponse.imgUrl || '/bookcover-icon.png'}
+              alt="bookcover"
+            />
+          </div>
+          <div className={styles.bookinfo}>
+            <div className={styles.bookcard}>
+              <Group
+                position="apart"
+                style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
+              >
+                <Text className={styles.booktitle}>
+                  {singleBookResponse.title}
+                </Text>
+                <Badge className={styles.booktag} color="pink" variant="light">
+                  Přečteno
+                </Badge>
+                <Text className={styles.bookauthor} weight={300}>
+                  {singleBookResponse.author}
+                </Text>
+              </Group>
 
-            <Text
-              className={styles.bookbio}
-              size="sm"
-              style={{ color: secondaryColor, lineHeight: 1.5 }}
-            >
-              {singleBookResponse.description}
-            </Text>
+              <Text
+                className={styles.bookbio}
+                size="sm"
+                style={{ color: secondaryColor, lineHeight: 1.5 }}
+              >
+                {singleBookResponse.description}
+              </Text>
 
-            <Button
-              onClick={() => setOpened(true)}
-              className={styles.createbutton}
-              fullWidth
-            >
-              Přidej komentář
-            </Button>
-            <Button
-              onClick={() => setOpenedBookmark(true)}
-              className={styles.createbutton}
-              fullWidth
-            >
-              Vytvoř záložku
-            </Button>
-            <Button
-              onClick={onDelete}
-              variant="light"
-              color="red"
-              fullWidth
-              style={{ marginTop: 20 }}
-            >
-              Odebrat knihu
-            </Button>
+              <Button
+                onClick={() => setOpened(true)}
+                className={styles.createbutton}
+                fullWidth
+              >
+                Přidej komentář
+              </Button>
+              <Button
+                onClick={() => setOpenedBookmark(true)}
+                className={styles.createbutton}
+                fullWidth
+              >
+                Vytvoř záložku
+              </Button>
+              <Button
+                onClick={onDelete}
+                variant="light"
+                color="red"
+                fullWidth
+                style={{ marginTop: 20 }}
+              >
+                Odebrat knihu
+              </Button>
+            </div>
           </div>
         </div>
         <div className={styles.comments}>

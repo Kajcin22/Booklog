@@ -10,6 +10,10 @@
   margin-bottom: 3rem;
 }
 
+.hero__image {
+  width: fit-content;
+}
+
 .hero__section h3 {
   font-family: var(--font-menu);
   color: var(--primary-color);
@@ -26,10 +30,4 @@
 
 .header__btn:hover {
   cursor: pointer;
-}
-
-@media screen and (min-width: 400px) {
-  .hero__image {
-    width: 100%;
-  }
 }

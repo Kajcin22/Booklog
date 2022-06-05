@@ -50,10 +50,6 @@
 }
 
 @media screen and (min-width: 1060px) {
-  .header {
-    max-width: 80%;
-  }
-
   .header__navigation a {
     font-size: 18px;
   }

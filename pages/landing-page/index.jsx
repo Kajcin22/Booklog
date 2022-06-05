@@ -7,19 +7,23 @@ import { useAddedBooks } from '../../components/AddedBooksProvider/added-books-p
 import { useState, useEffect } from 'react';
 import { useForm } from '@mantine/form';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
+import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // import Head from 'next/head';
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
-
   const { bookResponse, getBooks } = useAddedBooks();
   console.log(bookResponse, 'bookResponse');
+
+  const { session } = useAuth();
+
   useEffect(() => {
-    getBooks(4);
-  }, []);
+    if (session?.user?.id) {
+      getBooks();
+    }
+  }, [session?.user?.id]);
 
   return (
     <>

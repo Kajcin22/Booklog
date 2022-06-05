@@ -15,10 +15,11 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      {session ? <TopHeader /> : <LandingHeader />}
+      <div style={{ maxWidth: '80%', margin: 'auto' }}>
+        {session ? <TopHeader /> : <LandingHeader />}
 
-      {children}
-
+        {children}
+      </div>
       <Footer />
     </>
   );

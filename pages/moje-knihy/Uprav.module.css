@@ -16,11 +16,18 @@
 .bookView {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 800px) {
   .bookView {
     flex-direction: row;
+  }
+
+  .bookMain {
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
   }
 }
 
