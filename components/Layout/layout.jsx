@@ -12,13 +12,8 @@ const Layout = ({ children }) => {
 
   return (
     <>
-<<<<<<< HEAD
       <div style={{ maxWidth: '80%', margin: '0 auto' }}>
         {userId ? <TopHeader /> : <LandingHeader />}
-=======
-      <div style={{ width: '80%', margin: '0 auto' }}>
-        {session ? <TopHeader /> : <LandingHeader />}
->>>>>>> f4d3411bbccd7dfe9e28ee7abdb5f4ca595dd4e2
 
         {children}
       </div>

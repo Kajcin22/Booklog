@@ -24,6 +24,7 @@ export default function Home() {
     const bookIds = library?.map((it) => it.bookId);
 
     const allBookmarks = await getAllBookmarks(userId);
+    console.log(allBookmarks);
 
     const { data, error } = await supabase
       .from('Book')
@@ -35,7 +36,10 @@ export default function Home() {
         const state = library?.find(
           (item) => item.bookId === book.bookId,
         )?.readingState;
-        const bookmark = allBookmarks?.find((item) => item.bookId === book.id);
+        const bookmark = allBookmarks?.find(
+          (item) => parseInt(item.bookId) === book.id,
+        );
+        console.log(bookmark);
         return {
           ...book,
           readingState: readingStates[state] || 'Chci si přečíst',

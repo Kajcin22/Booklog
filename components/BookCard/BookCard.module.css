@@ -60,3 +60,23 @@
 .createbutton:hover {
   color: #002927;
 }
+
+.bookmark {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+
+  width: 2rem;
+  height: 5vh;
+  font-size: 2vh;
+  text-align: center;
+
+  color: var(--secondary-color);
+
+  background-color: var(--button-color);
+  background-image: url('/icon-bookmark.png');
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
