@@ -37,6 +37,7 @@ export default function Home() {
   const [opened, setOpened] = useState(false);
   const [openedBookmark, setOpenedBookmark] = useState(false);
   const [value, setValue] = useState('react');
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     if (router.query.id) {
@@ -59,6 +60,48 @@ export default function Home() {
       getLibrary();
     }
   }, [singleBookResponse]);
+
+  const subscribeToComments = () => {
+    const { subscription } = supabase
+      .from(
+        `Comment:userId=eq.${userId},bookId=eq.${singleBookResponse?.bookId}`,
+      )
+      .on('UPDATE', (payload) => {
+        console.log({ payload });
+        setComments((prev) => {
+          return [...prev, ...payload];
+        });
+      });
+    /*    .select()
+      .eq('userId', userId)
+      .eq('bookId', singleBookResponse.bookId); */
+
+    /*  setComments(data); */
+    return subscription;
+  };
+
+  const getComment = async () => {
+    const { data } = await supabase
+      .from('Comment')
+      .select()
+      .eq('userId', userId)
+      .eq('bookId', singleBookResponse.bookId);
+
+    setComments(data);
+  };
+
+  useEffect(() => {
+    let subscription;
+    if (userId && singleBookResponse?.bookId) {
+      getComment();
+      subscription = subscribeToComments();
+    }
+    return () => {
+      if (subscription) {
+        supabase.removeSubscription(subscription);
+      }
+    };
+  }, [userId, singleBookResponse?.bookId]);
 
   const onDelete = async () => {
     await supabase
@@ -158,33 +201,27 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.comments}>
-          <Comment
-            title={'Rozklikni komentář'}
-            dateCreated={'03. 06. 2022'}
-            content={text}
-            page={233}
-          />
-          <Comment
-            title={'Rozklikni komentář'}
-            dateCreated={'03. 06. 2022'}
-            content={text}
-            page={233}
-          />
-          <Comment
-            title={'Rozklikni komentář'}
-            dateCreated={'03. 06. 2022'}
-            content={text}
-            page={233}
-          />
-          <Comment
-            title={'Rozklikni komentář'}
-            dateCreated={'03. 06. 2022'}
-            content={text}
-            page={233}
-          />
+          {comments &&
+            comments.length > 0 &&
+            comments.map((comment) => {
+              return (
+                <Comment
+                  key={comment.id}
+                  title={comment.title}
+                  content={comment.content}
+                  page={comment.pageNum}
+                  id={comment.id}
+                />
+              );
+            })}
         </div>
       </div>
-      <CreateComment opened={opened} setOpened={setOpened} />
+      <CreateComment
+        opened={opened}
+        setOpened={setOpened}
+        bookId={singleBookResponse.bookId}
+        userId={userId}
+      />
       <CreateBookmark
         opened={openedBookmark}
         setOpenedBookmark={setOpenedBookmark}
