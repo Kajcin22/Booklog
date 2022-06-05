@@ -16,6 +16,7 @@ const Bookmark = ({ pageNum, dateCreated, bookTitle }) => {
             <span className={styles.bookmark_pagenumb}>{pageNum}</span>
           </p>
         </div>
+        <button className={styles.delete_btn}>x</button>
       </div>
     </>
   );

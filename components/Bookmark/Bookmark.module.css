@@ -55,3 +55,19 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+.delete_btn {
+  background-color: rgba(255, 0, 0, 0.684);
+  border-radius: 50%;
+  border: 0px dashed red;
+  text-align: center;
+
+  position: relative;
+  right: -10px;
+  top: 2px;
+}
+
+.delete_btn:hover {
+  background-color: rgba(255, 30, 30, 0.684);
+  cursor: pointer;
+}
