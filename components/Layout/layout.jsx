@@ -5,17 +5,14 @@ import TopHeader from '../Header/header';
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase_client';
 import LandingHeader from '../LandingHeader';
+import { useAuth } from '../AuthProvider/auth-provider';
 
 const Layout = ({ children }) => {
-  const [session, setSession] = useState(null);
-
-  useEffect(() => {
-    setSession(supabase.auth.session());
-  }, []);
+  const { userId } = useAuth();
 
   return (
     <>
-      {session ? <TopHeader /> : <LandingHeader />}
+      {userId ? <TopHeader /> : <LandingHeader />}
 
       {children}
 
