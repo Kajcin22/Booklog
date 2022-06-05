@@ -2,21 +2,37 @@ import { Modal, TextInput, Button, Group } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 import { useState } from 'react';
+import { supabase } from '../../lib/supabase_client';
 
-const CreateComment = ({ opened, setOpened }) => {
+import { useRouter } from 'next/router';
+
+const CreateComment = ({ opened, setOpened, bookId, userId }) => {
   const form = useForm({
     initialValues: {
       commentName: '',
-      commentDate: '',
       commentInput: '',
       commentPage: '',
     },
   });
 
-  const handleComment = (formValues) => {
-    return console.log(formValues);
+  const router = useRouter();
+
+  const handleComment = async (formValues) => {
+    const { data, error } = await supabase.from('Comment').insert([
+      {
+        userId,
+        bookId,
+        title: formValues.commentName,
+        content: formValues.commentInput,
+        pageNum: formValues.commentPage,
+      },
+    ]);
+
+    if (data) {
+      setOpened(false);
+      router.reload();
+    }
   };
-  const [response, setResponse] = useState('');
 
   return (
     <>
@@ -32,12 +48,7 @@ const CreateComment = ({ opened, setOpened }) => {
             placeholder="název komentáře"
             {...form.getInputProps('commentName')}
           />
-          <TextInput
-            label="Datum:"
-            type="date"
-            placeholder="zadejte datum"
-            {...form.getInputProps('commentDate')}
-          />
+
           <TextInput
             label="Komentář:"
             type="text"

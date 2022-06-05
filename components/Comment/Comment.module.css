@@ -32,3 +32,14 @@
   font-family: var(--font);
   font-size: 2vh;
 }
+
+.delete_btn {
+  background-color: rgb(225, 23, 23);
+  border-radius: 50%;
+  border: 0px dashed red;
+}
+
+.delete_btn:hover {
+  background-color: rgba(225, 23, 23, 0.692);
+  cursor: pointer;
+}
