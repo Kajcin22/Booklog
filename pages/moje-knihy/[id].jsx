@@ -110,7 +110,7 @@ export default function Home() {
     <>
       <div className={styles.bookView}>
         <div className={styles.bookMain}>
-          <div className={styles.bookcover}>
+          <div className={styles.bookCover}>
             <Image
               width={200}
               height={300}
@@ -119,82 +119,69 @@ export default function Home() {
             />
           </div>
           <div className={styles.bookinfo}>
-            <div className={styles.bookcard}>
-              <Group
-                position="apart"
-                style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
-              >
-                <Text className={styles.booktitle}>
-                  {singleBookResponse.title}
-                </Text>
-                <SegmentedControl
-                  value={value}
-                  onChange={onStateUpdate}
-                  data={[
-                    { label: 'Chci si přečíst', value: 'A' },
-                    { label: 'Čtu', value: 'B' },
-                    { label: 'Přečteno', value: 'C' },
-                  ]}
-                />
-                <Text className={styles.bookauthor} weight={300}>
-                  {singleBookResponse.author}
-                </Text>
-              </Group>
-
-              <Text
-                className={styles.bookbio}
-                size="sm"
-                style={{ color: secondaryColor, lineHeight: 1.5 }}
-              >
-                {singleBookResponse.description}
-              </Text>
-
-              <Button
-                onClick={() => setOpened(true)}
-                className={styles.createbutton}
-                fullWidth
-              >
-                Přidej komentář
-              </Button>
-              <Button
-                onClick={() => setOpenedBookmark(true)}
-                className={styles.createbutton}
-                fullWidth
-              >
-                Vytvoř záložku
-              </Button>
-              <Button
-                onClick={onDelete}
-                variant="light"
-                color="red"
-                fullWidth
-                style={{ marginTop: 20 }}
-              >
-                Odebrat knihu
-              </Button>
+            <div className={styles.booktitle}>{singleBookResponse.title}</div>
+            <div className={styles.bookReadingStatus}>
+              <SegmentedControl
+                value={value}
+                onChange={onStateUpdate}
+                data={[
+                  { label: 'Chci si přečíst', value: 'A' },
+                  { label: 'Čtu', value: 'B' },
+                  { label: 'Přečteno', value: 'C' },
+                ]}
+              />
             </div>
+            <div className={styles.bookauthor}>{singleBookResponse.author}</div>
+
+            <div className={styles.bookbio}>
+              {singleBookResponse.description}
+            </div>
+
+            <button className={styles.buttonDelete} onClick={onDelete}>
+              Odebrat knihu
+            </button>
           </div>
         </div>
-        <div className={styles.comments}>
-          {comments &&
-            comments.length > 0 &&
-            comments.map((comment) => {
-              return (
-                <Comment
-                  key={comment.id}
-                  title={comment.title}
-                  content={comment.content}
-                  page={comment.pageNum}
-                  id={comment.id}
-                />
-              );
-            })}
+        <div className={styles.commentsBookmarks}>
           <div className={styles.bookmarks}>
+            <div className={styles.bookmarksMain}>
+              <h2>Záložka</h2>
+              <button
+                onClick={() => setOpenedBookmark(true)}
+                className={styles.createbutton}
+              >
+                +
+              </button>
+            </div>
             {bookmarks && (
               <div className={styles.bookmarks_elm}>
                 <p>{bookmarks.pageNum}</p>
               </div>
             )}
+          </div>
+          <div className={styles.comments}>
+            <div className={styles.commentsMain}>
+              <h2>Poznámky</h2>
+              <button
+                onClick={() => setOpened(true)}
+                className={styles.createbutton}
+              >
+                +
+              </button>
+            </div>
+            {comments &&
+              comments.length > 0 &&
+              comments.map((comment) => {
+                return (
+                  <Comment
+                    key={comment.id}
+                    title={comment.title}
+                    content={comment.content}
+                    page={comment.pageNum}
+                    id={comment.id}
+                  />
+                );
+              })}
           </div>
         </div>
       </div>
