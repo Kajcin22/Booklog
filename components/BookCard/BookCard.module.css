@@ -34,6 +34,10 @@
   font-family: var(--font);
   margin-top: 1rem;
   margin-bottom: 1rem;
+  word-break: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .createbutton {

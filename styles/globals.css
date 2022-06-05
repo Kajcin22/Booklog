@@ -43,8 +43,15 @@ a {
   justify-content: space-between;
 }
 
-.slick-slider {
+.swiper {
   width: 100%;
+  margin: 50px auto;
+}
+
+.swiper-slide {
+  color: #000;
+  text-align: center;
+  line-height: 300px;
 }
 
 @media screen and (min-width: 800px) {

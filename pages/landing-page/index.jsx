@@ -6,8 +6,11 @@ import LoginModal from '../../components/Login/login-modal';
 import { useAddedBooks } from '../../components/AddedBooksProvider/added-books-provider';
 import { useState, useEffect } from 'react';
 import { useForm } from '@mantine/form';
-import Slider from 'react-slick';
-import Head from 'next/head';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// import Head from 'next/head';
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
@@ -18,29 +21,8 @@ export default function Home() {
     getBooks(4);
   }, []);
 
-  const settingsSlick = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-  };
-
   return (
     <>
-      <Head>
-        <link
-          rel="stylesheet"
-          type="text/css"
-          charSet="UTF-8"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-        />
-      </Head>
       <div className="container">
         <Hero />
         <div className={styles.book_section}>
@@ -61,11 +43,23 @@ export default function Home() {
             <button>procházet</button>
           </div>
           <div className={styles.book_section_cards}>
-            <Slider {...settingsSlick}>
+            <Swiper
+              modules={[Navigation, Pagination, Scrollbar, A11y]}
+              onSwiper={(swiper) => (window.swiper = swiper)}
+              slidesPerView={3}
+              spaceBetween={100}
+              slidesPerGroup={2}
+              navigation
+              loop
+              scrollbar={{ draggable: true }}
+              pagination={{ clickable: true }}
+            >
               {bookResponse?.map((book) => (
-                <BookCard book={book} />
+                <SwiperSlide key={book.id}>
+                  <BookCard book={book} />
+                </SwiperSlide>
               ))}
-            </Slider>
+            </Swiper>
           </div>
         </div>
         <div className={styles.registrace}>
