@@ -12,7 +12,8 @@
 
 html,
 body {
-  height: 100vh;
+  min-height: 100%;
+  background-color: rgba(218, 216, 216, 0.2);
   padding: 0;
   margin: 0;
   font-family: var(--font);
@@ -28,7 +29,6 @@ a {
 }
 
 .container {
-  /* max-width: 80%; */
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -37,7 +37,7 @@ a {
 }
 
 #__next {
-  height: 100%;
+  min-height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -46,32 +46,41 @@ a {
 
 .swiper {
   width: 100%;
-  margin: 50px auto;
+  margin: 30px auto;
 }
 
 .swiper-slide {
-  color: #000;
   text-align: center;
+}
+
+.swiper-wrapper {
+  max-width: 80%;
 }
 
 .swiper-button-prev {
   position: absolute;
   top: calc(50% - 1rem);
-  left: 0;
+  left: 10px;
   height: 2rem;
   width: 2rem;
-  color: black;
-  background-color: black;
   z-index: 1;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(135deg);
 }
 
 .swiper-button-next {
   position: absolute;
   top: calc(50% - 1rem);
-  right: 0;
+  right: 10px;
   height: 2rem;
   width: 2rem;
-  color: black;
-  background-color: black;
   z-index: 1;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
 }

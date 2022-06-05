@@ -48,32 +48,22 @@ const BookCard = ({ book }) => {
           <Text className={styles.booktitle} weight={500}>
             {book.title}
           </Text>
-          <Badge className={styles.booktag} color="pink" variant="light">
-            {book?.readingState}
-          </Badge>
+          <Badge className={styles.booktag}>{book?.readingState}</Badge>
 
           <Text className={styles.bookauthor} weight={300}>
             {book.author}
           </Text>
         </Group>
 
-        <Text
+        {/* <Text
           className={styles.bookbio}
           size="sm"
           style={{ color: secondaryColor, lineHeight: 1.5 }}
         >
           {book.description}
-        </Text>
+        </Text> */}
         <Link href={`/moje-knihy/${book.id}`}>
-          <Button
-            className={styles.createbutton}
-            variant="light"
-            color="blue"
-            fullWidth
-            style={{ marginTop: 20 }}
-          >
-            Uprav Log
-          </Button>
+          <button className={styles.createbutton}>Upravit</button>
         </Link>
       </Card>
     </div>

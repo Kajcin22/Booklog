@@ -31,7 +31,6 @@ export default function Home() {
         <div className={styles.book_section}>
           <div className={styles.book_section_heading}>
             <h3>Populární knihy</h3>
-            <button>procházet</button>
           </div>
           <div className={styles.book_section_cards}>
             {
@@ -45,7 +44,6 @@ export default function Home() {
         <div className={styles.book_section}>
           <div className={styles.book_section_heading}>
             <h3>Naposledy čteno</h3>
-            <button>procházet</button>
           </div>
           <div className={styles.book_section_cards}>
             <Swiper
