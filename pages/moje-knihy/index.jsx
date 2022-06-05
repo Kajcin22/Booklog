@@ -50,10 +50,33 @@ export default function Home() {
     <>
       <div className={styles.container}>
         <div className={styles.book_section}>
+          <h2>Právě čtu</h2>
           <div className={styles.book_section_cards}>
-            {bookResponse.map((book) => {
-              return <BookCard key={book.id} book={book} />;
-            })}
+            {bookResponse
+              ?.filter((book) => book.readingState === 'Čtu')
+              ?.map((book) => {
+                return <BookCard key={book.id} book={book} />;
+              })}
+          </div>
+        </div>
+        <div className={styles.book_section}>
+          <h2>Chci si přečíst</h2>
+          <div className={styles.book_section_cards}>
+            {bookResponse
+              ?.filter((book) => book.readingState === 'Chci si přečíst')
+              ?.map((book) => {
+                return <BookCard key={book.id} book={book} />;
+              })}
+          </div>
+        </div>
+        <div className={styles.book_section}>
+          <h2>Přečteno</h2>
+          <div className={styles.book_section_cards}>
+            {bookResponse
+              ?.filter((book) => book.readingState === 'Přečteno')
+              ?.map((book) => {
+                return <BookCard key={book.id} book={book} />;
+              })}
           </div>
         </div>
       </div>

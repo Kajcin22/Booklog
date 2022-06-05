@@ -49,6 +49,7 @@ export default function Home() {
             <Swiper
               modules={[Navigation, Pagination, Scrollbar, A11y]}
               onSwiper={(swiper) => (window.swiper = swiper)}
+              setWrapperSize
               breakpoints={{
                 320: {
                   slidesPerView: 2,
