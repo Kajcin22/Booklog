@@ -34,9 +34,8 @@
 }
 
 .delete_btn {
-  background-color: rgb(225, 23, 23);
+  background-color: rgba(249, 45, 45, 0.664);
   border-radius: 50%;
-  border: 0px dashed red;
 }
 
 .delete_btn:hover {

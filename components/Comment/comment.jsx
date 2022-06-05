@@ -2,6 +2,7 @@ import { Collapse, Button } from '@mantine/core';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../../lib/supabase_client';
+import { RiDeleteBinLine } from 'react-icons/ri';
 
 import styles from './Comment.module.css';
 
@@ -11,7 +12,6 @@ const Comment = ({ title, dateCreated, content, page, id }) => {
 
   const onDeleteComment = async () => {
     await supabase.from('Comment').delete().eq('id', id);
-
     router.reload();
   };
 
@@ -24,9 +24,11 @@ const Comment = ({ title, dateCreated, content, page, id }) => {
         >
           <div className={styles.comment__title}>{title}</div>
           <div className={styles.comment__page}>strana: {page}</div>
-          <button onClick={onDeleteComment} className={styles.delete_btn}>
-            x
-          </button>
+
+          <RiDeleteBinLine
+            onClick={onDeleteComment}
+            className={styles.delete_btn}
+          />
         </button>
 
         <Collapse in={opened}>
