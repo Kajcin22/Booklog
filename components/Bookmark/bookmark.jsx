@@ -8,12 +8,14 @@ const Bookmark = ({ pageNum, dateCreated, bookTitle }) => {
       <div className={styles.bookmark}>
         <div className={styles.bookmark_title}>
           <h2>{bookTitle}</h2>
+          <p>vytvořeno: {dateCreated}</p>
+        </div>
+        <div className={styles.bookmark_page}>
+          <p className={styles.pin}></p>
           <p>
-            stránka: <span>{pageNum}</span>
+            <span className={styles.bookmark_pagenumb}>{pageNum}</span>
           </p>
         </div>
-
-        <p>vytvořeno: {dateCreated}</p>
       </div>
     </>
   );

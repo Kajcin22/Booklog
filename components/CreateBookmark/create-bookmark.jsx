@@ -1,20 +1,29 @@
 import { Modal, TextInput, Button, Group } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { supabase } from '../../lib/supabase_client';
+import { useAuth } from '../AuthProvider/auth-provider';
 
 import { useState } from 'react';
 
-const CreateBookmark = ({ opened, setOpenedBookmark }) => {
+const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle }) => {
   const form = useForm({
     initialValues: {
       pageNumber: '',
-      commentDate: '',
     },
   });
 
-  const handleBookmark = (formValues) => {
-    return console.log(formValues);
+  const { userId } = useAuth();
+
+  const handleBookmark = async (formValues) => {
+    await supabase.from('Bookmark').insert([
+      {
+        pageNum: formValues.pageNumber,
+        title: bookTitle,
+        userId,
+      },
+    ]);
+    setOpenedBookmark(false);
   };
-  const [response, setResponse] = useState('');
 
   return (
     <>

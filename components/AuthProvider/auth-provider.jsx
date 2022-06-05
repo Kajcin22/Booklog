@@ -28,6 +28,7 @@ export function AuthProvider({ children }) {
   const value = useMemo(
     () => ({
       session,
+      userId: session?.user?.id,
     }),
     [session],
   );

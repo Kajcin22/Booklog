@@ -1,11 +1,57 @@
 .bookmark {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: var(--secondary-color);
   border-radius: 1rem;
-  padding: 1vh;
+  padding: 1rem;
   margin: 1rem;
+  width: 100%;
+}
+.bookmark p {
+  text-align: left;
+  font-size: 1.5vh;
 }
 
 .bookmark_title {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.bookmark_title h2 {
+  font-size: 2vh;
+  width: 60%;
+}
+
+.bookmark_title p {
+  font-size: 1.5vh;
+}
+
+.bookmark_page {
+  background-color: white;
+  background-image: url('/icon-bookmark.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  border-radius: 5rem;
+  padding: 1rem;
+  width: 40%;
+
+  text-align: right;
+}
+.bookmark_page p {
+  text-align: center;
+}
+
+.bookmark_pagenumb {
+  color: var(--primary-color);
+  font-size: 4vh;
+  border-radius: 50%;
+}
+
+.pin {
+  background-image: url('/pin.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
