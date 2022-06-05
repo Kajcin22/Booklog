@@ -63,9 +63,12 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.registrace}>
-          <h1>Zaregistruj se nyní a měj svou četbu pod kontrolou!</h1>
-
-          <Login />
+          <div className={styles.registrace__main}>
+            <h1>Zaregistruj se nyní a měj svou četbu pod kontrolou!</h1>
+          </div>
+          <div className={styles.registrace__form}>
+            <Login />
+          </div>
         </div>
         <LoginModal />
       </div>

@@ -8,8 +8,8 @@ const Hero = () => {
 
   return (
     <>
-      <div className={styles.hero_image}>
-        <div>
+      <div className={styles.hero__section}>
+        <div className={styles.hero__textcontent}>
           <h3>Kniha je okno do celého vesmíru</h3>
           <p>probuď své sny každodenním čtením</p>
           <button
@@ -19,7 +19,9 @@ const Hero = () => {
             Číst nyní!
           </button>
         </div>
-        <Image src="/hero_img.png" width={300} height={200} />
+        <div className={styles.hero__image}>
+          <Image src="/hero_img.png" width={350} height={200} />
+        </div>
         <LoginModal opened={opened} setOpened={setOpened} />
       </div>
     </>
