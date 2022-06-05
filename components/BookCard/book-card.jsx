@@ -78,9 +78,9 @@ const BookCard = ({ book }) => {
           <Text className={styles.booktitle} weight={500}>
             {book.title}
           </Text>
-          <Badge className={styles.booktag} color="pink" variant="light">
+          {/* <Badge className={styles.booktag} color="pink" variant="light">
             Přečteno
-          </Badge>
+          </Badge> */}
           <Text className={styles.bookauthor} weight={300}>
             {book.author}
           </Text>
