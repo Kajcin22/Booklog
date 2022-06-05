@@ -1,15 +1,16 @@
-.hero_image {
+.hero__section {
   background-color: var(--secondary-color);
   width: 100%;
   border-radius: 20px;
   padding: 2rem;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
 
-.hero_image h3 {
+.hero__section h3 {
   font-family: var(--font-menu);
   color: var(--primary-color);
 }
@@ -25,4 +26,10 @@
 
 .header__btn:hover {
   cursor: pointer;
+}
+
+@media screen and (min-width: 400px) {
+  .hero__image {
+    width: 100%;
+  }
 }

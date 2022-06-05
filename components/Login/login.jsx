@@ -14,7 +14,7 @@ export default function Login() {
     },
 
     validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Neplatný e-mail'),
     },
   });
 
@@ -44,44 +44,23 @@ export default function Login() {
   return (
     <>
       <div className={styles.registrace}>
-        {/* <Box sx={{ maxWidth: 300 }} mx="auto"> */}
         <form onSubmit={form.onSubmit(onLogin)}>
           <div className={styles.registrace}>
-            <TextInput
-              required
-              label="Zadejte Váš e-mail:"
-              placeholder="your@email.com"
-              {...form.getInputProps('email')}
-            />
-
-            <Group mt="md">
-              <Button
-                styles={(theme) => ({
-                  root: {
-                    backgroundColor: '#00acee',
-                    border: 0,
-                    height: 42,
-                    paddingLeft: 20,
-                    paddingRight: 20,
-
-                    '&:hover': {
-                      backgroundColor: theme.fn.darken('#00acee', 0.05),
-                    },
-                  },
-
-                  leftIcon: {
-                    marginRight: 15,
-                  },
-                })}
-                type="submit"
-                loading={loading}
-              >
-                Registrovat se
+            <div className={styles.registrace__input}>
+              <TextInput
+                required
+                label="Zadej e-mail:"
+                placeholder="muj@mail.com"
+                {...form.getInputProps('email')}
+              />
+            </div>
+            <div className={styles.registrace__button}>
+              <Button type="submit" loading={loading}>
+                Přihlásit se
               </Button>
-            </Group>
+            </div>
           </div>
         </form>
-        {/* </Box> */}
       </div>
     </>
   );
