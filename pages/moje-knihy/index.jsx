@@ -4,22 +4,26 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase_client';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
+import { getAllBookmarks } from '../../lib/api';
 
 const readingStates = { A: 'Chci si přečíst', B: 'Čtu', C: 'Přečteno' };
+
 export default function Home() {
   const [bookResponse, setBookResponse] = useState([]);
   const [readingState, setReadingState] = useState(null);
 
   const router = useRouter();
-  const { session } = useAuth();
+  const { userId } = useAuth();
 
   const getBooks = async () => {
     const { data: library, error: libraryError } = await supabase
       .from('Library')
       .select('bookId, readingState')
-      .eq('userId', session?.user?.id);
+      .eq('userId', userId);
     console.log({ library });
     const bookIds = library?.map((it) => it.bookId);
+
+    const allBookmarks = await getAllBookmarks(userId);
 
     const { data, error } = await supabase
       .from('Book')
@@ -31,9 +35,11 @@ export default function Home() {
         const state = library?.find(
           (item) => item.bookId === book.bookId,
         )?.readingState;
+        const bookmark = allBookmarks?.find((item) => item.bookId === book.id);
         return {
           ...book,
           readingState: readingStates[state] || 'Chci si přečíst',
+          bookmark,
         };
       });
       setBookResponse(enrichedData);
@@ -41,11 +47,12 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (session?.user?.id) {
+    if (userId) {
       getBooks();
     }
-  }, [router?.query?.q, session?.user?.id]);
+  }, [router?.query?.q, userId]);
   console.log(bookResponse);
+
   return (
     <>
       <div className={styles.container}>

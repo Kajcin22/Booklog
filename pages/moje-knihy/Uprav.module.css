@@ -88,3 +88,7 @@
   gap: 1vh;
   width: 100%;
 }
+
+.bookmarks_elm {
+  background-color: aqua;
+}

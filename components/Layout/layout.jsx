@@ -8,12 +8,12 @@ import LandingHeader from '../LandingHeader';
 import { useAuth } from '../AuthProvider/auth-provider';
 
 const Layout = ({ children }) => {
-  const { userId, session } = useAuth();
+  const { userId } = useAuth();
 
   return (
     <>
       <div style={{ maxWidth: '80%', margin: '0 auto' }}>
-        {session ? <TopHeader /> : <LandingHeader />}
+        {userId ? <TopHeader /> : <LandingHeader />}
 
         {children}
       </div>
