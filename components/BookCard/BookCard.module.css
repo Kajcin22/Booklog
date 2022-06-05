@@ -1,5 +1,7 @@
 .bookcard {
+  border-radius: 10px;
   font-family: var(--font);
+  height: 500px;
   background-color: #fafbef;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -28,9 +30,13 @@
   font-family: var(--font);
   color: #003d3a;
   font-size: 1.5vh;
+  word-break: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.bookbio {
+/* .bookbio {
   font-family: var(--font);
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -38,10 +44,14 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
+} */
 
 .createbutton {
-  color: #ebfafe;
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+  border: 1px solid var(--button-color);
+  border-radius: 5px;
   background-color: var(--button-color);
   font-family: var(--font);
   font-size: 2vh;
