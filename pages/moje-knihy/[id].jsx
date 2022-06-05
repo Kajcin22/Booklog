@@ -101,8 +101,6 @@ export default function Home() {
       .match({ userId, bookId: singleBookResponse.bookId });
     setValue(response?.data?.[0]?.readingState);
   };
-  let text =
-    "“Friends told me that the latest trend, at least in Europe, is public sex. They showed me some clips, and they're terrifying. A couple enters a streetcar, half-full, simply takes a seat, undresses, and starts to do it. You can see from surprised faces that it's not staged. It's pure working-class suburb. But what's fascinating is that the people all look, and then they politely ignore it. The message is that even if you're together in public with people, it still counts as private space.”";
 
   if (!singleBookResponse) {
     return null;
@@ -191,13 +189,13 @@ export default function Home() {
                 />
               );
             })}
-        </div>
-        <div className={styles.bookmarks}>
-          {bookmarks && (
-            <div className={styles.bookmarks_elm}>
-              <p>{bookmarks.pageNum}</p>
-            </div>
-          )}
+          <div className={styles.bookmarks}>
+            {bookmarks && (
+              <div className={styles.bookmarks_elm}>
+                <p>{bookmarks.pageNum}</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <CreateComment

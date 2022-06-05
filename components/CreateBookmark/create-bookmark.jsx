@@ -2,10 +2,12 @@ import { Modal, TextInput, Button, Group } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { supabase } from '../../lib/supabase_client';
 import { useAuth } from '../AuthProvider/auth-provider';
+import { useRouter } from 'next/router';
 
 import { useState } from 'react';
 
 const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
+  const router = useRouter();
   const form = useForm({
     initialValues: {
       pageNumber: '',
@@ -30,6 +32,7 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
       },
     ]);
     setOpenedBookmark(false);
+    router.reload();
   };
 
   return (

@@ -89,6 +89,19 @@
   width: 100%;
 }
 
+.bookmarks {
+  width: 7vw;
+  height: 14vw;
+
+  padding: 2vh;
+}
+
 .bookmarks_elm {
-  background-color: aqua;
+  background-image: url('/icon-bookmark.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.bookmarks_elm p {
+  font-size: 4vh;
 }
