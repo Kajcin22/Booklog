@@ -10,7 +10,7 @@ const Hero = () => {
     <>
       <div className={styles.hero__section}>
         <div className={styles.hero__textcontent}>
-          <h3>Kniha je okno do celého vesmíru</h3>
+          <h1>Kniha je okno do celého vesmíru</h1>
           <p>probuď své sny každodenním čtením</p>
           <button
             onClick={() => setOpened(true)}

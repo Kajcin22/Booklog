@@ -14,7 +14,7 @@
   width: fit-content;
 }
 
-.hero__section h3 {
+.hero__section h1 {
   font-family: var(--font-menu);
   color: var(--primary-color);
 }

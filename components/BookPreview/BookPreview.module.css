@@ -1,0 +1,34 @@
+.bookCard {
+  height: 400px;
+  font-family: var(--font);
+  background-color: #fafbef;
+  margin-top: 1rem;
+  flex: 0 1 30%;
+  padding: 15px;
+}
+
+.cardImg {
+  margin-bottom: 0;
+  max-width: 100%;
+}
+
+.bookTitle {
+  color: #002927;
+  font-weight: bold;
+  font-family: var(--font);
+  font-size: 2vh;
+  word-break: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.bookAuthor {
+  font-family: var(--font);
+  color: #003d3a;
+  font-size: 1.5vh;
+  word-break: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

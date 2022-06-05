@@ -9,8 +9,7 @@ import { useForm } from '@mantine/form';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// import Head from 'next/head';
+import BookPreview from '../../components/BookPreview/book-preview';
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
@@ -35,10 +34,12 @@ export default function Home() {
             <button>procházet</button>
           </div>
           <div className={styles.book_section_cards}>
-            {/* <BookCard />
+            {
+              // <BookPreview />
+              /*<BookCard />
             <BookCard />
-            <BookCard />
-            <BookCard /> */}
+            <BookCard /> */
+            }
           </div>
         </div>
         <div className={styles.book_section}>
@@ -74,7 +75,7 @@ export default function Home() {
             >
               {bookResponse?.map((book) => (
                 <SwiperSlide key={book.id}>
-                  <BookCard book={book} />
+                  <BookPreview book={book} />
                 </SwiperSlide>
               ))}
             </Swiper>
