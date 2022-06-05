@@ -15,8 +15,14 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle }) => {
   const { userId } = useAuth();
 
   const handleBookmark = async (formValues) => {
-    await supabase.from('Bookmark').insert([
+    const { data } = await supabase
+      .from('Bookmark')
+      .select()
+      .eq('title', bookTitle)
+      .maybeSingle();
+    await supabase.from('Bookmark').upsert([
       {
+        id: data?.id,
         pageNum: formValues.pageNumber,
         title: bookTitle,
         userId,
@@ -38,12 +44,6 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle }) => {
             type="number"
             placeholder="číslo stránky"
             {...form.getInputProps('pageNumber')}
-          />
-          <TextInput
-            label="Datum:"
-            type="date"
-            placeholder="zadejte datum"
-            {...form.getInputProps('commentDate')}
           />
 
           <Group position="right" mt="md">
