@@ -64,6 +64,17 @@ export default function Home() {
     }
   };
 
+  const getBookWithStatus = (condition) => {
+    const filteredBooks = bookResponse?.filter(
+      (book) => book.readingState === condition,
+    );
+    return !!filteredBooks.length ? (
+      filteredBooks?.map((book) => <BookCard key={book.id} book={book} />)
+    ) : (
+      <p>Momentálně nic nečteš.</p>
+    );
+  };
+
   const onSearch = () => {
     getBooks(searchInput);
   };
@@ -89,31 +100,19 @@ export default function Home() {
         <div className={styles.book_section}>
           <h2>Právě čtu</h2>
           <div className={styles.book_section_cards}>
-            {bookResponse
-              ?.filter((book) => book.readingState === 'Čtu')
-              ?.map((book) => {
-                return <BookCard key={book.id} book={book} />;
-              })}
+            {getBookWithStatus('Čtu')}
           </div>
         </div>
         <div className={styles.book_section}>
           <h2>Chci si přečíst</h2>
           <div className={styles.book_section_cards}>
-            {bookResponse
-              ?.filter((book) => book.readingState === 'Chci si přečíst')
-              ?.map((book) => {
-                return <BookCard key={book.id} book={book} />;
-              })}
+            {getBookWithStatus('Chci si přečíst')}
           </div>
         </div>
         <div className={styles.book_section}>
           <h2>Přečteno</h2>
           <div className={styles.book_section_cards}>
-            {bookResponse
-              ?.filter((book) => book.readingState === 'Přečteno')
-              ?.map((book) => {
-                return <BookCard key={book.id} book={book} />;
-              })}
+            {getBookWithStatus('Přečteno')}
           </div>
         </div>
       </div>
