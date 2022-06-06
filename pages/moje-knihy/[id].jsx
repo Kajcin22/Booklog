@@ -25,8 +25,7 @@ import { useAddedBooks } from '../../components/AddedBooksProvider/added-books-p
 
 import { supabase } from '../../lib/supabase_client';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
-import { getBookmark } from '../../lib/api';
-import { getLibrary } from '../../lib/api';
+import { getBookmark, getLibrary, getLibraryBookInfo } from '../../lib/api';
 
 import React from 'react';
 import ReactStars from 'react-stars';
@@ -84,6 +83,14 @@ export default function Home() {
     }
   }, [userId, router?.query?.id]);
 
+  useEffect(() => {
+    if (singleBookResponse?.bookId && userId) {
+      getLibraryBookInfo(userId, singleBookResponse.bookId).then((response) =>
+        setRatingvalue(response?.rating),
+      );
+    }
+  }, [singleBookResponse?.bookId, userId]);
+
   const onDelete = async () => {
     await supabase
       .from('Bookmark')
@@ -113,7 +120,6 @@ export default function Home() {
       .match({ userId, bookId: singleBookResponse.bookId });
     console.log('Rating: ' + newRating);
     setRatingvalue(userRating?.data?.[0]?.rating);
-    console.log('ratingValue: ' + ratingValue);
   };
 
   if (!singleBookResponse) {
