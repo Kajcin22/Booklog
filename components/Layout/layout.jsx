@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div style={{ maxWidth: '80%', margin: '0 auto' }}>
+      <div style={{ width: '80%', margin: '0 auto' }}>
         {userId ? <TopHeader /> : <LandingHeader />}
 
         {children}

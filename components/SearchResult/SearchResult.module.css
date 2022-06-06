@@ -1,22 +1,23 @@
 .bookcard {
+  border-radius: 5px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
   font-family: var(--font);
   background-color: #fafbef;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
+  padding: 1.5rem;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 10%);
 }
 
-.bookcover {
+.bookCover {
+  display: flex;
+  justify-content: center;
   max-width: 100%;
 }
 
-.booktag {
-  color: white;
-  background-color: var(--accent-color);
-  font-family: var(--font);
-  font-size: 1vh;
-}
-
 .booktitle {
+  text-align: center;
   color: #002927;
   font-weight: bold;
   font-family: var(--font);
@@ -25,25 +26,31 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-bottom: 0;
 }
 
 .bookauthor {
+  text-align: center;
   font-family: var(--font);
   color: #003d3a;
   font-size: 1.5vh;
 }
 
-.bookbio {
-  font-family: var(--font);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.bookauthor p {
+  margin-bottom: 1.5rem;
 }
 
 .createbutton {
-  color: #ebfafe;
+  cursor: pointer;
+  width: 60%;
+  margin: auto;
+  color: white;
+  padding: 5px;
+  border: 1px solid var(--button-color);
+  border-radius: 5px;
   background-color: var(--button-color);
   font-family: var(--font);
-  font-size: 2vh;
+  font-size: 1em;
 }
 
 .createbutton:hover {

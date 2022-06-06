@@ -47,6 +47,10 @@
     margin: 0 auto;
   }
 
+  .footer__navigation li {
+    border-bottom: solid 1px transparent;
+  }
+
   .footer__navigation li:hover {
     border-bottom: solid 1px var(--primary-color);
   }

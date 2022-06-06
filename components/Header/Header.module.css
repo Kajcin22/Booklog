@@ -2,19 +2,26 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 10px 20px;
   text-align: center;
   font-family: var(--font-menu);
-  margin: 0 auto;
+  margin: 0 auto 2rem auto;
+  line-height: 2.5;
 }
 
 .header__navigation ul {
   display: flex;
   list-style: none;
+  padding-left: 0;
+}
+
+.header__navigation li {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .header__navigation a {
-  padding: 10px;
+  padding: 0.5rem;
+  margin: 0.3rem;
   font-size: 12px;
 }
 

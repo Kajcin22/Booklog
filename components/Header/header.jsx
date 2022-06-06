@@ -54,10 +54,10 @@ const TopHeader = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/landing-page">
+                <Link href="/statistika">
                   <a
                     className={
-                      router.pathname == '/landing-page' ? styles.active : ''
+                      router.pathname == '/statistika' ? styles.active : ''
                     }
                   >
                     Statistika

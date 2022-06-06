@@ -6,6 +6,7 @@ import Layout from '../components/Layout/layout';
 import BookCard from '../components/BookCard/book-card';
 import styles from '../styles/Home.module.css';
 import { useAuth } from '../components/AuthProvider/auth-provider';
+import LandingPage from '../pages/landing-page/index';
 
 export default function Home() {
   const { session } = useAuth();
@@ -20,7 +21,7 @@ export default function Home() {
         </Head>
         <div>
           <h2>Vítej {session?.user?.email}</h2>
-          <p>Tady bude landing page</p>
+          <LandingPage />
         </div>
       </div>
     </>

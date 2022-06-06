@@ -14,16 +14,19 @@
 }
 
 .comment h3 {
-  font-size: 2vh;
+  font-size: 1em;
 }
 
 .comment__btn {
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
   width: 100%;
   border: 0;
   font-family: var(--font-menu);
+  font-size: 1.2em;
   font-weight: lighter;
   background-color: transparent;
 }
@@ -34,11 +37,11 @@
 }
 
 .delete_btn {
-  background-color: rgba(249, 45, 45, 0.664);
+  fill: rgba(249, 45, 45, 0.664);
   border-radius: 50%;
 }
 
 .delete_btn:hover {
-  background-color: rgba(225, 23, 23, 0.692);
+  transform: scale(1.2);
   cursor: pointer;
 }

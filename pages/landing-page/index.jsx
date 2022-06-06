@@ -11,7 +11,7 @@ import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import BookPreview from '../../components/BookPreview/book-preview';
 
-export default function Home() {
+export default function LandingPage() {
   const [opened, setOpened] = useState(false);
   const { bookResponse, getBooks } = useAddedBooks();
   console.log(bookResponse, 'bookResponse');

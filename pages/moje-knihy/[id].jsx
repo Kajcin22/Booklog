@@ -144,6 +144,8 @@ export default function Home() {
                   { label: 'Přečteno', value: 'C' },
                 ]}
               />
+            </div>
+            <div className={styles.bookRating}>
               <ReactStars
                 onChange={onRating}
                 edit={true}
