@@ -10,9 +10,12 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import BookPreview from '../../components/BookPreview/book-preview';
+import { supabase } from '../../lib/supabase_client';
+import { getBookPopularBooks } from '../../lib/api';
 
 export default function LandingPage() {
   const [opened, setOpened] = useState(false);
+  const [popularBooks, setPopularBooks] = useState([]);
   const { bookResponse, getBooks } = useAddedBooks();
   console.log(bookResponse, 'bookResponse');
 
@@ -24,6 +27,12 @@ export default function LandingPage() {
     }
   }, [session?.user?.id]);
 
+  useEffect(() => {
+    getBookPopularBooks().then((response) => {
+      setPopularBooks(response);
+    });
+  }, []);
+
   return (
     <>
       <div className="container">
@@ -33,12 +42,38 @@ export default function LandingPage() {
             <h3>Populární knihy</h3>
           </div>
           <div className={styles.book_section_cards}>
-            {
-              // <BookPreview />
-              /*<BookCard />
-            <BookCard />
-            <BookCard /> */
-            }
+            <Swiper
+              modules={[Navigation, Pagination, Scrollbar, A11y]}
+              onSwiper={(swiper) => (window.swiper = swiper)}
+              setWrapperSize
+              breakpoints={{
+                320: {
+                  slidesPerView: 2,
+                  slidesPerGroup: 2,
+                  spaceBetween: 50,
+                },
+                1000: {
+                  slidesPerView: 3,
+                  slidesPerGroup: 3,
+                  spaceBetween: 50,
+                },
+                1400: {
+                  slidesPerView: 4,
+                  slidesPerGroup: 4,
+                  spaceBetween: 50,
+                },
+              }}
+              navigation
+              loop
+              scrollbar={{ draggable: true }}
+              pagination={{ clickable: true }}
+            >
+              {popularBooks?.map((book) => (
+                <SwiperSlide key={book.id}>
+                  <BookPreview book={book} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
         <div className={styles.book_section}>
