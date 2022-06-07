@@ -81,7 +81,8 @@ const SearchModal = ({ opened, setOpened }) => {
           </Group>
         </form>
         <div className={styles.searchResults}>
-          {!!response?.totalItems ? (
+          {response &&
+            response?.items &&
             response?.items?.map((item) => (
               <SearchResult
                 imgUrl={item?.volumeInfo?.imageLinks?.thumbnail}
@@ -92,10 +93,8 @@ const SearchModal = ({ opened, setOpened }) => {
                 setOpened={setOpened}
                 bookId={item?.id}
               />
-            ))
-          ) : (
-            <p>Nenalezeny žádné výsledky.</p>
-          )}
+            ))}
+          {response?.totalItems === 0 && <p>Nenalezeny žádné výsledky.</p>}
         </div>
       </Modal>
     </>
