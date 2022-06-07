@@ -71,7 +71,7 @@ export default function Home() {
     return !!filteredBooks.length ? (
       filteredBooks?.map((book) => <BookCard key={book.id} book={book} />)
     ) : (
-      <p>Momentálně nic nečteš.</p>
+      <p>V této kategorii nemáš žádné knihy.</p>
     );
   };
 
@@ -90,9 +90,10 @@ export default function Home() {
     <>
       <div className={styles.container}>
         <div className={styles.searchWrapper}>
+          <label>Vyhledat v mých knihách:</label>
           <input
             type="text"
-            placeholder="Vyhledat v mých knihách"
+            placeholder="autor nebo název knihy"
             onChange={(event) => setSearchInput(event.target.value)}
           ></input>
           <button onClick={onSearch}>Hledat</button>
@@ -102,12 +103,14 @@ export default function Home() {
           <div className={styles.book_section_cards}>
             {getBookWithStatus('Čtu')}
           </div>
+          <hr />
         </div>
         <div className={styles.book_section}>
           <h2>Chci si přečíst</h2>
           <div className={styles.book_section_cards}>
             {getBookWithStatus('Chci si přečíst')}
           </div>
+          <hr />
         </div>
         <div className={styles.book_section}>
           <h2>Přečteno</h2>

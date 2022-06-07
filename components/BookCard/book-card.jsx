@@ -19,7 +19,7 @@ const BookCard = ({ book }) => {
   console.log(book);
 
   return (
-    <div style={{ width: 250, marginLeft: 'auto', marginRight: 'auto' }}>
+    <div style={{ width: 250 }}>
       <Card className={styles.bookcard} shadow="sm" p="lg">
         <Card.Section>
           <div
