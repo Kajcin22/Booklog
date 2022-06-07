@@ -51,7 +51,13 @@ const BookCard = ({ book }) => {
           <Text className={styles.booktitle} weight={500}>
             {book.title}
           </Text>
-          <Badge className={styles.booktag}>{book?.readingState}</Badge>
+
+          <div
+            style={{ backgroundColor: book?.readingState?.color }}
+            className={styles.booktag}
+          >
+            {book?.readingState?.status}
+          </div>
 
           <Text className={styles.bookauthor} weight={300}>
             {book.author}

@@ -6,7 +6,11 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { getAllBookmarks } from '../../lib/api';
 
-const readingStates = { A: 'Chci si přečíst', B: 'Čtu', C: 'Přečteno' };
+const readingStates = {
+  A: { status: 'Chci si přečíst', color: 'green' },
+  B: { status: 'Čtu', color: 'blue' },
+  C: { status: 'Přečteno', color: 'red' },
+};
 
 export default function Home() {
   const [bookResponse, setBookResponse] = useState([]);
@@ -56,7 +60,10 @@ export default function Home() {
         console.log(bookmark);
         return {
           ...book,
-          readingState: readingStates[state] || 'Chci si přečíst',
+          readingState: {
+            status: readingStates[state].status || 'Chci si přečíst',
+            color: readingStates[state].color,
+          },
           bookmark,
         };
       });
@@ -66,7 +73,7 @@ export default function Home() {
 
   const getBookWithStatus = (condition) => {
     const filteredBooks = bookResponse?.filter(
-      (book) => book.readingState === condition,
+      (book) => book.readingState.status === condition,
     );
     return !!filteredBooks.length ? (
       filteredBooks?.map((book) => <BookCard key={book.id} book={book} />)

@@ -23,10 +23,14 @@ const Bookmark = ({ pageNum, dateCreated, bookTitle, bookId }) => {
   return (
     <>
       <div className={styles.bookmark}>
+        <button onClick={onDeleteBookmark} className={styles.delete_btn}>
+          x
+        </button>
         <div className={styles.bookmark_title}>
           <Link href={`/moje-knihy/${bookId}`}>
             <h2>{bookTitle}</h2>
           </Link>
+
           <p>vytvořeno: {dateCreated}</p>
         </div>
         <div className={styles.bookmark_page}>
@@ -34,9 +38,6 @@ const Bookmark = ({ pageNum, dateCreated, bookTitle, bookId }) => {
             <span className={styles.bookmark_pagenumb}>{pageNum}</span>
           </p>
         </div>
-        <button onClick={onDeleteBookmark} className={styles.delete_btn}>
-          x
-        </button>
       </div>
     </>
   );
