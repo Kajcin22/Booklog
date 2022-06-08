@@ -48,9 +48,9 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
         >
           <TextInput
             label="Název:"
+            required
             type="text"
             placeholder="název komentáře"
-            required
             {...form.getInputProps('commentName')}
           />
           <TextInput

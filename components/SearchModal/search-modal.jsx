@@ -106,6 +106,7 @@ const SearchModal = ({ opened, setOpened }) => {
                 key={item?.id}
                 setOpened={setOpened}
                 bookId={item?.id}
+                pageNumber={item?.volumeInfo?.pageCount}
               />
             ))}
           {response?.totalItems === 0 && <p>Nenalezeny žádné výsledky.</p>}

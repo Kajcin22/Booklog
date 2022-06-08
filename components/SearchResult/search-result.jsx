@@ -22,6 +22,7 @@ const SearchResult = ({
   description,
   setOpened,
   bookId,
+  pageNumber,
 }) => {
   const theme = useMantineTheme();
   const secondaryColor =
@@ -36,12 +37,19 @@ const SearchResult = ({
         .from('Book')
         .select()
         .eq('bookId', bookId);
-      console.log({ bookFound });
       if (bookFound.length === 0) {
         const { data, error } = await supabase
           .from('Book')
           .insert([
-            { title, author, description, imgUrl, state: 'unread', bookId },
+            {
+              title,
+              author,
+              description,
+              imgUrl,
+              state: 'unread',
+              bookId,
+              pageNumber,
+            },
           ]);
       }
       await supabase
