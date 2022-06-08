@@ -14,6 +14,7 @@ const SearchModal = ({ opened, setOpened }) => {
   });
 
   const [response, setResponse] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const createSearchParams = ({ title, author, ISBN }) => {
     let result = '';
@@ -42,19 +43,21 @@ const SearchModal = ({ opened, setOpened }) => {
       langRestrict: 'cs',
     });
 
+    setIsLoading(true);
     fetch(`https://www.googleapis.com/books/v1/volumes?${params}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         setResponse(data, '******');
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
     <>
       <Modal
         opened={opened}
-        overflow="inside"
+        overflow="auto"
         size="80%"
         onClose={() => setOpened(false)}
         title="Vyhledej knížku"
@@ -63,21 +66,32 @@ const SearchModal = ({ opened, setOpened }) => {
           <TextInput
             label="Název knihy"
             placeholder="zadejte název knihy"
+            rightSection={
+              <div onClick={() => form.setFieldValue('title', '')}>X</div>
+            }
             {...form.getInputProps('title')}
           />
           <TextInput
             label="Autor"
             placeholder="zadejte autora knihy"
+            rightSection={
+              <div onClick={() => form.setFieldValue('author', '')}>X</div>
+            }
             {...form.getInputProps('author')}
           />
           <TextInput
             label="ISBN"
             placeholder="zadejte ISBN knihy"
+            rightSection={
+              <div onClick={() => form.setFieldValue('ISBN', '')}>X</div>
+            }
             {...form.getInputProps('ISBN')}
           />
 
           <Group position="right" mt="md">
-            <Button type="submit">Vyhledej</Button>
+            <Button type="submit" loading={isLoading}>
+              Vyhledej
+            </Button>
           </Group>
         </form>
         <div className={styles.searchResults}>

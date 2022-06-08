@@ -1,0 +1,8 @@
+.commentForm > div {
+  margin-bottom: 1rem;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: flex-end;
+}

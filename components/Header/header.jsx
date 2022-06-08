@@ -42,8 +42,8 @@ const TopHeader = () => {
                   </a>
                 </Link>
               </li>
-              <li>
-                <Link href="/moje-zalozky">
+              {/* <li>
+                {/* <Link href="/moje-zalozky">
                   <a
                     className={
                       router.pathname == '/moje-zalozky' ? styles.active : ''
@@ -51,8 +51,8 @@ const TopHeader = () => {
                   >
                     Moje záložky
                   </a>
-                </Link>
-              </li>
+                </Link> 
+              </li> */}
               <li>
                 <Link href="/statistika">
                   <a

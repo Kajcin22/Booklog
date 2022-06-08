@@ -1,10 +1,11 @@
-import { Modal, TextInput, Button, Group } from '@mantine/core';
+import { Modal, TextInput, Button, Group, Textarea } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 import { useState } from 'react';
 import { supabase } from '../../lib/supabase_client';
 
 import { useRouter } from 'next/router';
+import styles from './CreateComment.module.css';
 
 const CreateComment = ({ opened, setOpened, bookId, userId }) => {
   const form = useForm({
@@ -41,30 +42,34 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
         onClose={() => setOpened(false)}
         title="Přidej komentář"
       >
-        <form onSubmit={form.onSubmit(handleComment)}>
+        <form
+          onSubmit={form.onSubmit(handleComment)}
+          className={styles.commentForm}
+        >
           <TextInput
             label="Název:"
             type="text"
             placeholder="název komentáře"
+            required
             {...form.getInputProps('commentName')}
-          />
-
-          <TextInput
-            label="Komentář:"
-            type="text"
-            placeholder="zde napište váš komentář"
-            {...form.getInputProps('commentInput')}
           />
           <TextInput
             label="Stránka:"
             type="number"
-            placeholder="zadejte číslo stránky"
+            placeholder="zadej číslo stránky"
+            required
             {...form.getInputProps('commentPage')}
           />
+          <Textarea
+            label="Komentář:"
+            placeholder="zde napiš svůj komentář"
+            required
+            {...form.getInputProps('commentInput')}
+          />
 
-          <Group position="right" mt="md">
+          <div className={styles.buttonWrapper}>
             <Button type="submit">Přidat</Button>
-          </Group>
+          </div>
         </form>
         {/* {response &&
           response.map((item) => (
