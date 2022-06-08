@@ -13,7 +13,7 @@ const SearchModal = ({ opened, setOpened }) => {
     },
   });
 
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState({});
 
   const createSearchParams = ({ title, author, ISBN }) => {
     let result = '';
@@ -46,7 +46,7 @@ const SearchModal = ({ opened, setOpened }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setResponse(data.items);
+        setResponse(data, '******');
       });
   };
 
@@ -82,7 +82,8 @@ const SearchModal = ({ opened, setOpened }) => {
         </form>
         <div className={styles.searchResults}>
           {response &&
-            response.map((item) => (
+            response?.items &&
+            response?.items?.map((item) => (
               <SearchResult
                 imgUrl={item?.volumeInfo?.imageLinks?.thumbnail}
                 author={item?.volumeInfo?.authors?.toString()}
@@ -93,6 +94,7 @@ const SearchModal = ({ opened, setOpened }) => {
                 bookId={item?.id}
               />
             ))}
+          {response?.totalItems === 0 && <p>Nenalezeny žádné výsledky.</p>}
         </div>
       </Modal>
     </>

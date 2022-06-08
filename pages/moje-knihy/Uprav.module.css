@@ -45,10 +45,8 @@
 .bookinfo {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   max-width: 80%;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 .bookinfo > div {
@@ -126,7 +124,7 @@
 
 .bookmarks_elm {
   background-image: url('/icon-bookmark.svg');
-  width: fit-content;
+  width: auto;
   height: auto;
   background-size: contain;
   background-repeat: no-repeat;

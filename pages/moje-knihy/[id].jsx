@@ -8,6 +8,7 @@ import {
   Group,
   useMantineTheme,
   SegmentedControl,
+  Tooltip,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
@@ -164,9 +165,18 @@ export default function Home() {
             </div>
             <div className={styles.bookauthor}>{singleBookResponse.author}</div>
 
-            <div className={styles.bookbio}>
-              {singleBookResponse.description}
-            </div>
+            <Tooltip
+              label={singleBookResponse.description}
+              wrapLines
+              withArrow
+              width={275}
+              color="blue"
+              position="top-end"
+            >
+              <div className={styles.bookbio}>
+                {singleBookResponse.description}
+              </div>
+            </Tooltip>
 
             <button className={styles.buttonDelete} onClick={onDelete}>
               Odebrat knihu

@@ -36,16 +36,6 @@
   text-overflow: ellipsis;
 }
 
-/* .bookbio {
-  font-family: var(--font);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  word-break: break-word;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-} */
-
 .createbutton {
   width: 100%;
   margin: 0 auto;
@@ -66,9 +56,9 @@
   right: 0px;
   top: 0px;
 
-  width: 2rem;
+  width: 2.5rem;
   height: 5vh;
-  font-size: 2vh;
+  font-size: 1.4em;
   text-align: center;
 
   color: var(--secondary-color);

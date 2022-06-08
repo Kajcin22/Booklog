@@ -6,7 +6,11 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { getAllBookmarks } from '../../lib/api';
 
-const readingStates = { A: 'Chci si přečíst', B: 'Čtu', C: 'Přečteno' };
+const readingStates = {
+  A: { status: 'Chci si přečíst', color: 'green' },
+  B: { status: 'Čtu', color: 'blue' },
+  C: { status: 'Přečteno', color: 'red' },
+};
 
 export default function Home() {
   const [bookResponse, setBookResponse] = useState([]);
@@ -56,12 +60,26 @@ export default function Home() {
         console.log(bookmark);
         return {
           ...book,
-          readingState: readingStates[state] || 'Chci si přečíst',
+          readingState: {
+            status: readingStates[state].status || 'Chci si přečíst',
+            color: readingStates[state].color,
+          },
           bookmark,
         };
       });
       setBookResponse(enrichedData);
     }
+  };
+
+  const getBookWithStatus = (condition) => {
+    const filteredBooks = bookResponse?.filter(
+      (book) => book.readingState.status === condition,
+    );
+    return !!filteredBooks.length ? (
+      filteredBooks?.map((book) => <BookCard key={book.id} book={book} />)
+    ) : (
+      <p>V této kategorii nemáš žádné knihy.</p>
+    );
   };
 
   const onSearch = () => {
@@ -79,9 +97,10 @@ export default function Home() {
     <>
       <div className={styles.container}>
         <div className={styles.searchWrapper}>
+          <label>Vyhledat v mých knihách:</label>
           <input
             type="text"
-            placeholder="Vyhledat v mých knihách"
+            placeholder="autor nebo název knihy"
             onChange={(event) => setSearchInput(event.target.value)}
           ></input>
           <button onClick={onSearch}>Hledat</button>
@@ -89,31 +108,21 @@ export default function Home() {
         <div className={styles.book_section}>
           <h2>Právě čtu</h2>
           <div className={styles.book_section_cards}>
-            {bookResponse
-              ?.filter((book) => book.readingState === 'Čtu')
-              ?.map((book) => {
-                return <BookCard key={book.id} book={book} />;
-              })}
+            {getBookWithStatus('Čtu')}
           </div>
+          <hr />
         </div>
         <div className={styles.book_section}>
           <h2>Chci si přečíst</h2>
           <div className={styles.book_section_cards}>
-            {bookResponse
-              ?.filter((book) => book.readingState === 'Chci si přečíst')
-              ?.map((book) => {
-                return <BookCard key={book.id} book={book} />;
-              })}
+            {getBookWithStatus('Chci si přečíst')}
           </div>
+          <hr />
         </div>
         <div className={styles.book_section}>
           <h2>Přečteno</h2>
           <div className={styles.book_section_cards}>
-            {bookResponse
-              ?.filter((book) => book.readingState === 'Přečteno')
-              ?.map((book) => {
-                return <BookCard key={book.id} book={book} />;
-              })}
+            {getBookWithStatus('Přečteno')}
           </div>
         </div>
       </div>

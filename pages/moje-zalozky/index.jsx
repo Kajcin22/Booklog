@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase_client';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
 import dayjs from 'dayjs';
+import styles from './Zalozky.module.css';
 
 export default function Home() {
   const [response, setResponse] = useState(null);
@@ -23,7 +24,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="container">
+      <div className={styles.bookmarkSection}>
         {response &&
           response.length > 0 &&
           response.map((bookmark) => {

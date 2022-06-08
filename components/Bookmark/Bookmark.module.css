@@ -1,13 +1,16 @@
 .bookmark {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-color: var(--secondary-color);
-  border-radius: 1rem;
+  background-color: white;
+  border: 2px solid var(--secondary-color);
+  border-radius: 10px;
   padding: 1rem;
-  margin: 1rem;
-  width: 100%;
+  width: 33%;
+  position: relative;
 }
+
 .bookmark p {
   text-align: left;
   font-size: 1.5vh;
@@ -19,8 +22,9 @@
 }
 
 .bookmark_title h2 {
+  color: var(--primary-color);
   font-size: 2vh;
-  width: 60%;
+  width: 100%;
 }
 
 .bookmark_title h2:hover {
@@ -28,7 +32,7 @@
 }
 
 .bookmark_title p {
-  font-size: 1.5vh;
+  font-size: 1.2vh;
 }
 
 .bookmark_page {
@@ -37,41 +41,31 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-
-  border-radius: 5rem;
   padding: 1rem;
-  width: 40%;
-
-  text-align: right;
+  width: 100%;
+  text-align: center;
 }
+
 .bookmark_page p {
   text-align: center;
 }
 
 .bookmark_pagenumb {
   color: var(--primary-color);
-  font-size: 4vh;
-  border-radius: 50%;
-}
-
-.pin {
-  background-image: url('/pin.png');
-  background-repeat: no-repeat;
-  background-size: contain;
+  font-size: 2em;
 }
 
 .delete_btn {
-  background-color: rgba(255, 0, 0, 0.684);
+  background-color: transparent;
   border-radius: 50%;
-  border: 0px dashed red;
+  border: none;
   text-align: center;
-
-  position: relative;
-  right: -10px;
-  top: 2px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 1.3em;
 }
 
 .delete_btn:hover {
-  background-color: rgba(255, 30, 30, 0.684);
   cursor: pointer;
 }
