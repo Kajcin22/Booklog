@@ -61,8 +61,8 @@ export default function Home() {
         return {
           ...book,
           readingState: {
-            status: readingStates[state].status || 'Chci si přečíst',
-            color: readingStates[state].color,
+            status: readingStates[state]?.status || 'Chci si přečíst',
+            color: readingStates[state]?.color,
           },
           bookmark,
         };

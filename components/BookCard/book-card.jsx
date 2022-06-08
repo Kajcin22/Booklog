@@ -21,48 +21,50 @@ const BookCard = ({ book }) => {
   return (
     <div style={{ width: 250 }}>
       <Card className={styles.bookcard} shadow="sm" p="lg">
-        <Card.Section>
-          <div
-            style={{
-              width: 150,
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              paddingTop: 15,
-            }}
+        <div>
+          <Card.Section>
+            <div
+              style={{
+                width: 150,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                paddingTop: 15,
+              }}
+            >
+              {book?.bookmark?.pageNum && (
+                <div className={styles.bookmark}>{book?.bookmark?.pageNum}</div>
+              )}
+              <Image
+                width={150}
+                height={200}
+                fit="contain"
+                className={styles.bookcover}
+                src={book.imgUrl || '/bookcover-icon.png'}
+                alt="bookcover"
+              />
+            </div>
+          </Card.Section>
+
+          <Group
+            position="apart"
+            style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
           >
-            {book?.bookmark?.pageNum && (
-              <div className={styles.bookmark}>{book?.bookmark?.pageNum}</div>
-            )}
-            <Image
-              width={150}
-              height={200}
-              fit="contain"
-              className={styles.bookcover}
-              src={book.imgUrl || '/bookcover-icon.png'}
-              alt="bookcover"
-            />
-          </div>
-        </Card.Section>
+            <Text className={styles.booktitle} weight={500}>
+              {book.title}
+            </Text>
 
-        <Group
-          position="apart"
-          style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
-        >
-          <Text className={styles.booktitle} weight={500}>
-            {book.title}
-          </Text>
+            <div
+              style={{ backgroundColor: book?.readingState?.color }}
+              className={styles.booktag}
+            >
+              {book?.readingState?.status}
+            </div>
 
-          <div
-            style={{ backgroundColor: book?.readingState?.color }}
-            className={styles.booktag}
-          >
-            {book?.readingState?.status}
-          </div>
-
-          <Text className={styles.bookauthor} weight={300}>
-            {book.author}
-          </Text>
-        </Group>
+            <Text className={styles.bookauthor} weight={300}>
+              {book.author}
+            </Text>
+          </Group>
+        </div>
 
         {/* <Text
           className={styles.bookbio}
@@ -71,9 +73,11 @@ const BookCard = ({ book }) => {
         >
           {book.description}
         </Text> */}
-        <Link href={`/moje-knihy/${book.id}`}>
-          <button className={styles.createbutton}>Upravit</button>
-        </Link>
+        <div>
+          <Link href={`/moje-knihy/${book.id}`}>
+            <button className={styles.createbutton}>Upravit</button>
+          </Link>
+        </div>
       </Card>
     </div>
   );

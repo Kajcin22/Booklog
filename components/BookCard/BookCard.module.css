@@ -6,6 +6,9 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   flex: 0 1 30%;
+
+  max-height: 26rem;
+  justify-content: space-between;
 }
 
 .bookcover {
@@ -34,6 +37,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-bottom: 1rem;
 }
 
 .createbutton {
@@ -45,10 +49,13 @@
   background-color: var(--button-color);
   font-family: var(--font);
   font-size: 2vh;
+  position: relative;
+  bottom: -20px;
 }
 
 .createbutton:hover {
   color: #002927;
+  cursor: pointer;
 }
 
 .bookmark {

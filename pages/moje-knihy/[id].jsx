@@ -30,6 +30,7 @@ import { getBookmark, getLibrary, getLibraryBookInfo } from '../../lib/api';
 
 import React from 'react';
 import ReactStars from 'react-stars';
+import dayjs from 'dayjs';
 
 export default function Home() {
   const theme = useMantineTheme();
@@ -220,6 +221,9 @@ export default function Home() {
                     content={comment.content}
                     page={comment.pageNum}
                     id={comment.id}
+                    dateCreated={dayjs(comment.created_at).format(
+                      'DD. MM. YYYY',
+                    )}
                   />
                 );
               })}
