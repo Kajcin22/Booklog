@@ -44,6 +44,7 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
         <form onSubmit={form.onSubmit(handleComment)}>
           <TextInput
             label="Název:"
+            required
             type="text"
             placeholder="název komentáře"
             {...form.getInputProps('commentName')}
@@ -52,12 +53,14 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
           <TextInput
             label="Komentář:"
             type="text"
+            required
             placeholder="zde napište váš komentář"
             {...form.getInputProps('commentInput')}
           />
           <TextInput
             label="Stránka:"
             type="number"
+            required
             placeholder="zadejte číslo stránky"
             {...form.getInputProps('commentPage')}
           />
