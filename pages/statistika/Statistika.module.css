@@ -1,0 +1,67 @@
+.statistika h1 {
+  font-family: var(--font-menu);
+  font-size: 2em;
+  color: var(--primary-color);
+  text-align: left;
+}
+
+.statistika h2 {
+  font-family: var(--font-menu);
+
+  color: var(--primary-color);
+  text-align: left;
+}
+
+.statistika_main {
+  text-align: center;
+  align-items: center;
+}
+
+.statistika_main_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.statistika_main_sectionElm {
+  display: flex;
+  align-items: center;
+}
+
+.statistika_num {
+  font-size: 5vh;
+  color: var(--button-color);
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.statistika_icon_page {
+  background-image: url(/open-book.png);
+}
+.statistika_icon_book {
+  background-image: url(/books.png);
+}
+
+.statistika_icon_page,
+.statistika_icon_book {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: white;
+  border: none;
+  margin: 1rem;
+
+  height: 7vh;
+  width: 7vh;
+}
+
+.statistika_section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  font-family: var(--font);
+  font-weight: bold;
+}
