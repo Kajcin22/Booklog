@@ -31,6 +31,7 @@ import { getBookmark, getLibrary, getLibraryBookInfo } from '../../lib/api';
 import React from 'react';
 import ReactStars from 'react-stars';
 import dayjs from 'dayjs';
+import { RiDeleteBinLine } from 'react-icons/ri';
 
 export default function Home() {
   const theme = useMantineTheme();
@@ -124,6 +125,14 @@ export default function Home() {
     setRatingvalue(userRating?.data?.[0]?.rating);
   };
 
+  const onBookmarkDelete = async () => {
+    await supabase
+      .from('Bookmark')
+      .delete()
+      .eq('title', singleBookResponse.title);
+    router.reload();
+  };
+
   if (!singleBookResponse) {
     return null;
   }
@@ -195,12 +204,24 @@ export default function Home() {
                 +
               </button>
             </div>
+
             {bookmarks && (
-              <div className={styles.bookmarks_elm}>
-                <p>{bookmarks.pageNum}</p>
-              </div>
+              <>
+                <div className={styles.bookmark}>
+                  <div className={styles.bookmarks_elm}>
+                    {bookmarks.pageNum}
+                  </div>
+                  <button className={styles.trashbin_btn}>
+                    <RiDeleteBinLine
+                      onClick={onBookmarkDelete}
+                      className={styles.trashbin_btn}
+                    />
+                  </button>
+                </div>
+              </>
             )}
           </div>
+
           <div className={styles.comments}>
             <div className={styles.commentsMain}>
               <h2>Poznámky</h2>

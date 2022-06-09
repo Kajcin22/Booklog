@@ -128,14 +128,16 @@
 .bookmarks_elm {
   background-image: url('/icon-bookmark.svg');
   height: auto;
+  width: auto;
   background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
   overflow: auto;
   margin-bottom: 2rem;
-}
+  padding: 1rem;
 
-.bookmarks_elm p {
-  font-size: 3vh;
+  font-size: 5vh;
+  text-align: right;
 }
 
 .bookmarksMain {
@@ -143,6 +145,23 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+}
+
+.bookmark {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.trashbin_btn {
+  fill: rgba(249, 45, 45, 0.664);
+  border-radius: 50%;
+  border: none;
+}
+
+.trashbin_btn:hover {
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 .bookmarksMain h2,
