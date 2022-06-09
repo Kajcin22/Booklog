@@ -20,7 +20,7 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div>
-          <h2>Vítej {session?.user?.email}</h2>
+          <h2>Vítej, {session?.user?.email}</h2>
           <LandingPage />
         </div>
       </div>

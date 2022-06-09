@@ -9,10 +9,10 @@
   color: white;
   background-color: var(--button-color);
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .registrace__input {
   display: flex;
-  border-radius: 10px;
+  border-radius: 5px;
 }

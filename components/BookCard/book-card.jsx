@@ -28,7 +28,6 @@ const BookCard = ({ book }) => {
                 width: 150,
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                paddingTop: 15,
               }}
             >
               {book?.bookmark?.pageNum && (
@@ -44,14 +43,8 @@ const BookCard = ({ book }) => {
               />
             </div>
           </Card.Section>
-
-          <Group
-            position="apart"
-            style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
-          >
-            <Text className={styles.booktitle} weight={500}>
-              {book.title}
-            </Text>
+          <div className={styles.bookcardWrapper}>
+            <div className={styles.booktitle}>{book.title}</div>
 
             <div
               style={{ backgroundColor: book?.readingState?.color }}
@@ -60,19 +53,11 @@ const BookCard = ({ book }) => {
               {book?.readingState?.status}
             </div>
 
-            <Text className={styles.bookauthor} weight={300}>
-              {book.author}
-            </Text>
-          </Group>
+            <div className={styles.bookauthor} weight={300}>
+              {book?.author}
+            </div>
+          </div>
         </div>
-
-        {/* <Text
-          className={styles.bookbio}
-          size="sm"
-          style={{ color: secondaryColor, lineHeight: 1.5 }}
-        >
-          {book.description}
-        </Text> */}
         <div>
           <Link href={`/moje-knihy/${book.id}`}>
             <button className={styles.createbutton}>Upravit</button>

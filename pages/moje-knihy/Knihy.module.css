@@ -26,8 +26,9 @@
 }
 
 .searchWrapper input {
-  line-height: 1em;
+  line-height: 1.45em;
   padding: 5px;
+  border-radius: 5px;
 }
 
 .searchWrapper {
@@ -35,4 +36,5 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  font-size: 1.2em;
 }

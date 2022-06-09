@@ -31,16 +31,16 @@
 
 .header__logo {
   color: var(--primary-color);
-  font-size: 10vh;
+  font-size: 3em;
 }
 
 .header__btn {
-  font-size: large;
-  padding: 2vh;
+  font-size: 1em;
+  padding: 10px;
   color: white;
   background-color: var(--button-color);
   border: none;
-  border-radius: 10rem;
+  border-radius: 5px;
 }
 
 .header__signIn {

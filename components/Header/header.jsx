@@ -72,15 +72,15 @@ const TopHeader = () => {
               onClick={() => setOpened(true)}
               src="/icon-search.svg"
               alt="hledej"
-              width={30}
-              height={30}
+              width={35}
+              height={35}
             />
             <Image
               onClick={() => setOpenedSignout(true)}
               src={'/user_icon.png'}
               alt="prihlaseni"
-              width={25}
-              height={25}
+              width={30}
+              height={30}
             />
           </div>
         </div>
