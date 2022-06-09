@@ -1,6 +1,7 @@
 .bookcard {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border-radius: 5px;
   font-family: var(--font);
   height: 500px;
@@ -14,6 +15,7 @@
 
 .bookcard:hover {
   transform: scale(1.02);
+  transition: all 0.3s ease-in;
 }
 
 .bookcardWrapper {
@@ -31,13 +33,13 @@
   display: flex;
   align-self: center;
   width: fit-content;
-  padding: 5px;
+  padding: 8px;
   border-radius: 5px;
   text-align: center;
   color: white;
   background-color: var(--accent-color);
   font-family: var(--font);
-  font-size: 1vh;
+  font-size: 1.2vh;
 }
 
 .booktitle {
@@ -50,6 +52,8 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   text-align: center;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .bookauthor {
@@ -73,10 +77,11 @@
   border-radius: 5px;
   background-color: var(--button-color);
   font-family: var(--font);
-  font-size: 1.5vh;
+  font-size: 1.3vh;
   position: relative;
-  bottom: -20px;
-  padding: 5px;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .createbutton:hover {

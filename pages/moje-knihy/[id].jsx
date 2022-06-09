@@ -38,8 +38,8 @@ export default function Home() {
   const router = useRouter();
   const { userId } = useAuth();
   const { getBook, singleBookResponse } = useAddedBooks();
-  const secondaryColor =
-    theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
+  // const secondaryColor =
+  //   theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
 
   const [opened, setOpened] = useState(false);
   const [openedBookmark, setOpenedBookmark] = useState(false);
@@ -157,7 +157,7 @@ export default function Home() {
                 onChange={onStateUpdate}
                 data={[
                   { label: 'Chci si přečíst', value: 'A' },
-                  { label: 'Čtu', value: 'B' },
+                  { label: 'Právě čtu', value: 'B' },
                   { label: 'Přečteno', value: 'C' },
                 ]}
               />
@@ -173,20 +173,24 @@ export default function Home() {
                 value={ratingValue}
               />
             </div>
-            <div className={styles.bookauthor}>{singleBookResponse.author}</div>
+            <div className={styles.bookauthor}>
+              {singleBookResponse?.author || 'Autor neznámý'}
+            </div>
 
-            <Tooltip
-              label={singleBookResponse.description}
-              wrapLines
-              withArrow
-              width={275}
-              color="blue"
-              position="top-end"
-            >
-              <div className={styles.bookbio}>
-                {singleBookResponse.description}
-              </div>
-            </Tooltip>
+            {singleBookResponse?.description && (
+              <Tooltip
+                label={singleBookResponse?.description}
+                wrapLines
+                withArrow
+                width={275}
+                color="blue"
+                position="top-end"
+              >
+                <div className={styles.bookbio}>
+                  {singleBookResponse?.description}
+                </div>
+              </Tooltip>
+            )}
 
             <button className={styles.buttonDelete} onClick={onDelete}>
               Odebrat knihu
@@ -210,13 +214,13 @@ export default function Home() {
                 <div className={styles.bookmark}>
                   <div className={styles.bookmarks_elm}>
                     {bookmarks.pageNum}
+                    <button className={styles.trashbin_btn}>
+                      <RiDeleteBinLine
+                        onClick={onBookmarkDelete}
+                        className={styles.trashbin_btn}
+                      />
+                    </button>
                   </div>
-                  <button className={styles.trashbin_btn}>
-                    <RiDeleteBinLine
-                      onClick={onBookmarkDelete}
-                      className={styles.trashbin_btn}
-                    />
-                  </button>
                 </div>
               </>
             )}

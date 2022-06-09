@@ -9,14 +9,31 @@ import {
 import Link from 'next/link';
 import styles from './BookCard.module.css';
 import Image from 'next/image';
+import ReactStars from 'react-stars';
 import { useEffect, useState } from 'react';
+import { useAddedBooks } from '../AddedBooksProvider/added-books-provider';
+import { useAuth } from '../AuthProvider/auth-provider';
+import { supabase } from '../../lib/supabase_client';
 
 const BookCard = ({ book }) => {
+  const [ratingValue, setRatingvalue] = useState(null);
+  const { userId } = useAuth();
   const theme = useMantineTheme();
-  const secondaryColor =
-    theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
+  const { getBook, singleBookResponse } = useAddedBooks();
+
+  // const secondaryColor =
+  //   theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
 
   console.log(book);
+
+  const onRating = async (newRating) => {
+    const userRating = await supabase
+      .from('Library')
+      .update({ rating: newRating })
+      .match({ userId, bookId: book?.bookId });
+    console.log('Rating: ' + newRating);
+    setRatingvalue(userRating?.data?.[0]?.rating);
+  };
 
   return (
     <div style={{ width: 250 }}>
@@ -54,7 +71,18 @@ const BookCard = ({ book }) => {
             </div>
 
             <div className={styles.bookauthor} weight={300}>
-              {book?.author}
+              {book?.author || 'Autor neznámý'}
+            </div>
+            <div className={styles.bookRating}>
+              <ReactStars
+                onChange={onRating}
+                edit={false}
+                count={5}
+                size={30}
+                isHalf={false}
+                color2={'#ffd700'}
+                value={book?.rating}
+              />
             </div>
           </div>
         </div>

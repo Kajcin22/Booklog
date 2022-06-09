@@ -6,3 +6,8 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.commentContent {
+  /* word-wrap: break-word; */
+  word-break: break-all;
+}

@@ -34,6 +34,7 @@
 .comment_content {
   font-family: var(--font);
   font-size: 2vh;
+  word-break: break-all;
 }
 
 .delete_btn {

@@ -8,33 +8,33 @@ import { getAllBookmarks } from '../../lib/api';
 
 const readingStates = {
   A: { status: 'Chci si přečíst', color: '#035e7b' },
-  B: { status: 'Čtu', color: '#a2a77f' },
+  B: { status: 'Právě čtu', color: '#a2a77f' },
   C: { status: 'Přečteno', color: '#0795c5' },
 };
 
 export default function Home() {
   const [bookResponse, setBookResponse] = useState([]);
-  const [readingState, setReadingState] = useState(null);
   const [searchInput, setSearchInput] = useState(null);
-  const [filtered, setFiltered] = useState([]);
+  const [loader, setLoader] = useState(false);
 
-  const condition2 = (book) =>
-    book?.author || book?.title === searchInput || true;
+  // const condition2 = (book) =>
+  //   book?.author || book?.title === searchInput || true;
 
-  const showCorrectResult = (arr, condition1) =>
-    arr
-      ?.filter((book) => condition1 && condition2(book))
-      ?.map((book) => {
-        return <BookCard key={book?.id} book={book} />;
-      });
+  // const showCorrectResult = (arr, condition1) =>
+  //   arr
+  //     ?.filter((book) => condition1 && condition2(book))
+  //     ?.map((book) => {
+  //       return <BookCard key={book?.id} book={book} />;
+  //     });
 
   const router = useRouter();
   const { userId } = useAuth();
 
   const getBooks = async (searchQuery) => {
+    setLoader(true);
     const { data: library } = await supabase
       .from('Library')
-      .select('bookId, readingState')
+      .select('bookId, readingState, rating')
       .eq('userId', userId);
 
     const bookIds = library?.map((it) => it?.bookId);
@@ -51,9 +51,8 @@ export default function Home() {
 
     if (data) {
       const enrichedData = data.map((book) => {
-        const state = library?.find(
-          (item) => item?.bookId === book?.bookId,
-        )?.readingState;
+        const { readingState: state, rating } =
+          library?.find((item) => item?.bookId === book?.bookId) || {};
         const bookmark = allBookmarks?.find(
           (item) => parseInt(item?.bookId) === book?.id,
         );
@@ -65,9 +64,11 @@ export default function Home() {
             color: readingStates[state]?.color,
           },
           bookmark,
+          rating,
         };
       });
       setBookResponse(enrichedData);
+      setLoader(false);
     }
   };
 
@@ -95,37 +96,45 @@ export default function Home() {
 
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.searchWrapper}>
-          <label>Vyhledat v mých knihách:</label>
-          <input
-            type="text"
-            placeholder="autor nebo název knihy"
-            onChange={(event) => setSearchInput(event?.target?.value)}
-          ></input>
-          <button onClick={onSearch}>Hledat</button>
+      {loader ? (
+        <div id={styles.preloader_1}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <div className={styles.book_section}>
-          <h2>Právě čtu</h2>
-          <div className={styles.book_section_cards}>
-            {getBookWithStatus('Čtu')}
+      ) : (
+        <div className={styles.container}>
+          <div className={styles.searchWrapper}>
+            <label>Vyhledat v mých knihách:</label>
+            <input
+              type="text"
+              placeholder="autor nebo název knihy"
+              onChange={(event) => setSearchInput(event?.target?.value)}
+            ></input>
+            <button onClick={onSearch}>Hledat</button>
           </div>
-          <hr />
-        </div>
-        <div className={styles.book_section}>
-          <h2>Chci si přečíst</h2>
-          <div className={styles.book_section_cards}>
-            {getBookWithStatus('Chci si přečíst')}
+          <div className={styles.book_section}>
+            <h2>Právě čtu</h2>
+            <div className={styles.book_section_cards}>
+              {getBookWithStatus('Právě čtu')}
+            </div>
           </div>
-          <hr />
-        </div>
-        <div className={styles.book_section}>
-          <h2>Přečteno</h2>
-          <div className={styles.book_section_cards}>
-            {getBookWithStatus('Přečteno')}
+          <div className={styles.book_section}>
+            <h2>Chci si přečíst</h2>
+            <div className={styles.book_section_cards}>
+              {getBookWithStatus('Chci si přečíst')}
+            </div>
+          </div>
+          <div className={styles.book_section}>
+            <h2>Přečteno</h2>
+            <div className={styles.book_section_cards}>
+              {getBookWithStatus('Přečteno')}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

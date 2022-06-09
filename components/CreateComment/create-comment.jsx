@@ -67,6 +67,7 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
             {...form.getInputProps('commentPage')}
           />
           <Textarea
+            className={styles.commentContent}
             label="Poznámka:"
             placeholder="zde napiš svoji poznámku"
             required

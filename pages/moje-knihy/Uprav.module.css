@@ -10,11 +10,13 @@
 .bookMain {
   flex-wrap: wrap;
   background-color: white;
-  margin: 0 2rem 2rem 0;
+  margin: 0 5rem 2rem 0;
   padding-bottom: 30px;
   border-radius: 10px;
   box-shadow: 0 1px 30px rgb(0 0 0 / 5%);
   height: min-content;
+  min-width: 40%;
+  max-width: 40%;
 }
 
 @media screen and (min-width: 800px) {
@@ -28,8 +30,8 @@
   flex-direction: column;
   margin: 0 auto;
   justify-content: center;
-  overflow: hidden;
-  height: 62.5vh;
+  /* overflow: hidden; */
+  /* height: 62.5vh; */
 }
 
 @media screen and (min-width: 800px) {
@@ -41,7 +43,7 @@
   .bookMain {
     display: flex;
     flex-direction: column;
-    max-width: 40%;
+    width: 40%;
   }
 }
 
@@ -118,11 +120,11 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 1vh;
-  height: 100%;
 }
 
 .bookmarks {
   width: 100%;
+  margin-bottom: 2.5rem;
 }
 
 .bookmarks_elm {
@@ -132,10 +134,10 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: auto;
+  /* overflow: auto; */
   margin-bottom: 2rem;
   padding: 1rem;
-
+  position: relative;
   font-size: 5vh;
   text-align: right;
 }
@@ -157,6 +159,9 @@
   fill: rgba(249, 45, 45, 0.664);
   border-radius: 50%;
   border: none;
+  position: absolute;
+  top: -0.2rem;
+  right: -0.1rem;
 }
 
 .trashbin_btn:hover {
@@ -180,7 +185,7 @@
 
 .commentsBookmarks {
   width: 100%;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .buttonDelete {

@@ -78,8 +78,8 @@ export default function Home() {
             ).toFixed(2);
 
             return (
-              <div key={book.id}>
-                <p>{book.title}</p>
+              <div key={book?.id}>
+                <p>{book?.title}</p>
                 <Progress
                   value={value}
                   label={`${value}%`}
@@ -94,7 +94,7 @@ export default function Home() {
         <div className={styles.statistika_section}>
           <h2>Doporučení na další četbu:</h2>
           {recommendation?.map((book) => {
-            return <BookPreview key={book.id} book={book} />;
+            return <BookPreview key={book?.id} book={book} />;
           })}
         </div>
       </div>
