@@ -35,7 +35,7 @@ export default function Login() {
 
   if (success) {
     return (
-      <Notification title="Default notification">
+      <Notification title="Magic link odeslán!">
         Mrkni se do e-mailu a klikni na potvrzovací link.
       </Notification>
     );

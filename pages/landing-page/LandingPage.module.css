@@ -36,13 +36,14 @@
   flex-direction: column;
   background-color: var(--secondary-color);
   width: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-bottom: 20px;
   font-family: var(--font-menu);
   color: var(--primary-color);
   text-align: center;
   justify-content: center;
   align-items: center;
+  padding: 0 10px;
 }
 
 .registrace label {
@@ -51,7 +52,7 @@
 }
 
 .registrace input {
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 /*-------------- media queries----------------------------*/
