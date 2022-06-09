@@ -51,6 +51,9 @@ export default function Login() {
                 required
                 label="Zadej e-mail:"
                 placeholder="muj@mail.com"
+                rightSection={
+                  <div onClick={() => form.setFieldValue('email', '')}>X</div>
+                }
                 {...form.getInputProps('email')}
               />
             </div>

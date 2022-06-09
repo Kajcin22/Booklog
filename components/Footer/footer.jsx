@@ -26,17 +26,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/domu">
+                <Link href="/moje-knihy">
                   <a>Moje knihy</a>
                 </Link>
               </li>
               <li>
-                <Link href="/domu">
-                  <a>Moje záložky</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/domu">
+                <Link href="/statistika">
                   <a>Statistika</a>
                 </Link>
               </li>

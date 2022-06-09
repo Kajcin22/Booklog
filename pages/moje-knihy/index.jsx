@@ -7,9 +7,9 @@ import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { getAllBookmarks } from '../../lib/api';
 
 const readingStates = {
-  A: { status: 'Chci si přečíst', color: 'green' },
-  B: { status: 'Čtu', color: 'blue' },
-  C: { status: 'Přečteno', color: 'red' },
+  A: { status: 'Chci si přečíst', color: '#035e7b' },
+  B: { status: 'Čtu', color: '#a2a77f' },
+  C: { status: 'Přečteno', color: '#0795c5' },
 };
 
 export default function Home() {
@@ -19,13 +19,13 @@ export default function Home() {
   const [filtered, setFiltered] = useState([]);
 
   const condition2 = (book) =>
-    book.author || book.title === searchInput || true;
+    book?.author || book?.title === searchInput || true;
 
   const showCorrectResult = (arr, condition1) =>
     arr
       ?.filter((book) => condition1 && condition2(book))
       ?.map((book) => {
-        return <BookCard key={book.id} book={book} />;
+        return <BookCard key={book?.id} book={book} />;
       });
 
   const router = useRouter();
@@ -37,12 +37,12 @@ export default function Home() {
       .select('bookId, readingState')
       .eq('userId', userId);
 
-    const bookIds = library?.map((it) => it.bookId);
+    const bookIds = library?.map((it) => it?.bookId);
 
     const query = supabase.from('Book').select().in('bookId', bookIds);
 
     if (searchQuery) {
-      query.or(`title.ilike.%${searchQuery}%,author.ilike.%${searchQuery}%`);
+      query?.or(`title.ilike.%${searchQuery}%,author.ilike.%${searchQuery}%`);
     }
 
     const { data, error } = await query;
@@ -52,10 +52,10 @@ export default function Home() {
     if (data) {
       const enrichedData = data.map((book) => {
         const state = library?.find(
-          (item) => item.bookId === book.bookId,
+          (item) => item?.bookId === book?.bookId,
         )?.readingState;
         const bookmark = allBookmarks?.find(
-          (item) => parseInt(item.bookId) === book.id,
+          (item) => parseInt(item?.bookId) === book?.id,
         );
         console.log(bookmark);
         return {
@@ -73,10 +73,10 @@ export default function Home() {
 
   const getBookWithStatus = (condition) => {
     const filteredBooks = bookResponse?.filter(
-      (book) => book.readingState.status === condition,
+      (book) => book?.readingState?.status === condition,
     );
     return !!filteredBooks.length ? (
-      filteredBooks?.map((book) => <BookCard key={book.id} book={book} />)
+      filteredBooks?.map((book) => <BookCard key={book?.id} book={book} />)
     ) : (
       <p>V této kategorii nemáš žádné knihy.</p>
     );
@@ -101,7 +101,7 @@ export default function Home() {
           <input
             type="text"
             placeholder="autor nebo název knihy"
-            onChange={(event) => setSearchInput(event.target.value)}
+            onChange={(event) => setSearchInput(event?.target?.value)}
           ></input>
           <button onClick={onSearch}>Hledat</button>
         </div>

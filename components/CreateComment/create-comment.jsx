@@ -40,7 +40,7 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
       <Modal
         opened={opened}
         onClose={() => setOpened(false)}
-        title="Přidej komentář"
+        title="Přidej poznámku"
       >
         <form
           onSubmit={form.onSubmit(handleComment)}
@@ -50,7 +50,10 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
             label="Název:"
             required
             type="text"
-            placeholder="název komentáře"
+            placeholder="název poznámky"
+            rightSection={
+              <div onClick={() => form.setFieldValue('commentName', '')}>X</div>
+            }
             {...form.getInputProps('commentName')}
           />
           <TextInput
@@ -58,12 +61,20 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
             type="number"
             placeholder="zadej číslo stránky"
             required
+            rightSection={
+              <div onClick={() => form.setFieldValue('commentPage', '')}>X</div>
+            }
             {...form.getInputProps('commentPage')}
           />
           <Textarea
-            label="Komentář:"
-            placeholder="zde napiš svůj komentář"
+            label="Poznámka:"
+            placeholder="zde napiš svoji poznámku"
             required
+            rightSection={
+              <div onClick={() => form.setFieldValue('commentInput', '')}>
+                X
+              </div>
+            }
             {...form.getInputProps('commentInput')}
           />
 

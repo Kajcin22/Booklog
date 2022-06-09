@@ -36,11 +36,9 @@
 
 .header__btn {
   font-size: larger;
-  padding: 5px;
-  width: 35px;
-  height: 35px;
+  padding: 10px;
   color: white;
-  background-color: var(--button-color);
+  /* background-color: var(--button-color); */
   border: none;
   border-radius: 50%;
 }
@@ -48,7 +46,7 @@
 .header__signIn {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 15px;
 }
 
 .header__btn:hover,

@@ -25,7 +25,7 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
     await supabase.from('Bookmark').upsert([
       {
         id: data?.id,
-        pageNum: formValues.pageNumber,
+        pageNum: formValues?.pageNumber,
         title: bookTitle,
         userId,
         bookId,
@@ -47,6 +47,9 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
             label="Stránka"
             type="number"
             placeholder="číslo stránky"
+            rightSection={
+              <div onClick={() => form.setFieldValue('pageNumber', '')}>X</div>
+            }
             {...form.getInputProps('pageNumber')}
           />
 
