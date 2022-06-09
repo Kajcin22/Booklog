@@ -86,7 +86,7 @@ const BookCard = ({ book }) => {
             </div>
           </div>
         </div>
-        <div>
+        <div className={styles.createbutton_container}>
           <Link href={`/moje-knihy/${book.id}`}>
             <button className={styles.createbutton}>Upravit</button>
           </Link>
