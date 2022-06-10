@@ -6,13 +6,72 @@ export default function Home() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className="container">
         <div className={styles.welcome}>
-          <h2>Vítej {session?.user?.email}</h2>
+          <div className={styles.welcome_user}>
+            <h2>
+              Vítej {<span className="username">{session?.user?.email}</span>}
+            </h2>
+            <img src="/hero_img_old.png" alt="icon" />
+          </div>
+
+          <h3>Jak používat Booklog?</h3>
           <p>
-            {' '}
-            Tady bude návod na používání Booklogu - přejmenovat z Domů na Návod
-            nebo whatever
+            Knížku vyhledáš pomocí lupy{' '}
+            <button className={styles.text_icon_search}></button>
+            vpravo nahoře - vyhledávat lze podle <strong>
+              názvu, autora
+            </strong>{' '}
+            nebo čísla <strong>ISBN</strong>.
+          </p>
+          <p>
+            Zvolenou knihu přidej tlačítkem{' '}
+            <span className={styles.text_button}>Přidat do mých knih</span> a
+            následně ji můžeš zobrazit v sekci
+            <h4>"Moje knihy"</h4>
+          </p>
+          <p>
+            Správný knihomol si ve své četbě udržuje pořádek - každé knížce
+            můžeš nastavit <span className={styles.highlight}>kategorii</span>{' '}
+            <div className={styles.section}>
+              <span className={styles.text_button_category}>Právě čtu</span>,
+              <span className={styles.text_button_category}>
+                Chci si přečíst
+              </span>{' '}
+              nebo <span className={styles.text_button_category}>Přečteno</span>{' '}
+            </div>
+            podle aktuální fáze tvého čtenářského cyklu.
+          </p>
+          <p className={styles.section}>
+            Pomocí hvězdiček <button className={styles.text_icon_rate}></button>{' '}
+            pak ohodnotíš, jak se ti knížka líbila.{' '}
+          </p>
+
+          <p>
+            Po kliknutí na tlačítko{' '}
+            <span className={styles.text_button}>upravit</span> u náhledu se
+            můžeš pustit do vytváření{' '}
+            <span className={styles.highlight}>poznámek</span> ke své knížce.{' '}
+          </p>
+          <div>
+            Můžeš si zde také poznačit číslo stránky, na které jsi naposledy
+            skončil(a) - velká výhoda{' '}
+            <span className={styles.highlight}>virtuální záložky</span> je ta,
+            že ji neztratíš. Při opětovném zadání čísla stránky se záložka
+            automaticky updatuje.{' '}
+          </div>
+
+          <p>
+            Když budeš pravidelně přidávat knížky a ukládat záložky, Booklog z
+            tvých dat vytvoří tvoji osobní
+            <span className={styles.highlight}> čtenářskou statistiku</span>,
+            kterou nalezneš v sekci nečekaně nazvané
+          </p>
+          <h4>"Statistika"</h4>
+          <p>
+            Nalezneš zde přehled <strong>počtu přečtených knížek</strong>,{' '}
+            <strong>stránek</strong>, <strong>progres</strong> v rozečtených
+            titulech a <strong>tipy na další četbu</strong>.
           </p>
         </div>
       </div>

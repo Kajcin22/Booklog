@@ -84,3 +84,10 @@ a {
   padding: 3px;
   transform: rotate(-45deg);
 }
+
+.username {
+  color: var(--primary-color);
+  font-family: var(--font-menu);
+  letter-spacing: 0.1em;
+  padding: 1rem;
+}
