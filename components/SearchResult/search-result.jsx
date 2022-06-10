@@ -1,16 +1,5 @@
-import {
-  Card,
-  Text,
-  Badge,
-  Button,
-  Group,
-  useMantineTheme,
-} from '@mantine/core';
-import Link from 'next/link';
-// import styles from '../BookCard/BookCard.module.css';
 import styles from './SearchResult.module.css';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase_client';
 import { useRouter } from 'next/router';
 import { useAuth } from '../AuthProvider/auth-provider';
@@ -24,10 +13,6 @@ const SearchResult = ({
   bookId,
   pageNumber,
 }) => {
-  const theme = useMantineTheme();
-  const secondaryColor =
-    theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
-
   const router = useRouter();
   const { session } = useAuth();
 
@@ -38,23 +23,21 @@ const SearchResult = ({
         .select()
         .eq('bookId', bookId);
       if (bookFound.length === 0) {
-        const { data, error } = await supabase
-          .from('Book')
-          .insert([
-            {
-              title,
-              author,
-              description,
-              imgUrl,
-              state: 'unread',
-              bookId,
-              pageNumber,
-            },
-          ]);
+        const { data, error } = await supabase?.from('Book')?.insert([
+          {
+            title,
+            author,
+            description,
+            imgUrl,
+            state: 'unread',
+            bookId,
+            pageNumber,
+          },
+        ]);
       }
       await supabase
         .from('Library')
-        .insert([{ userId: session.user.id, bookId }]);
+        .insert([{ userId: session?.user?.id, bookId }]);
       if (!error) {
         setOpened(false);
         router.push(`/moje-knihy?q=${title}`);

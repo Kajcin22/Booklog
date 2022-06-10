@@ -11,7 +11,7 @@ const Comment = ({ title, dateCreated, content, page, id }) => {
   const router = useRouter();
 
   const onDeleteComment = async () => {
-    await supabase.from('Comment').delete().eq('id', id);
+    await supabase?.from('Comment')?.delete()?.eq('id', id);
     router.reload();
   };
 

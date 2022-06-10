@@ -1,4 +1,4 @@
-import { TextInput, Button, Group, Box } from '@mantine/core';
+import { Button, Group, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { Notification, Checkbox } from '@mantine/core';
@@ -9,20 +9,11 @@ export default function Logout() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const router = useRouter();
-  /*  const form = useForm({
-    initialValues: {
-      email: '',
-    },
-
-    validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-    },
-  }); */
 
   const onLogout = async () => {
     setLoading(true);
     try {
-      await supabase.auth.signOut();
+      await supabase?.auth?.signOut();
       setLoading(false);
       setSuccess(true);
       router.push('/');
@@ -34,7 +25,7 @@ export default function Logout() {
 
   if (success) {
     return (
-      <Notification title="Default notification">
+      <Notification title="Odhlášení proběhlo v pořádku.">
         Byli jste odhlášeni.
       </Notification>
     );

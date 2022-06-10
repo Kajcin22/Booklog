@@ -29,14 +29,14 @@ export default function Home() {
           response.length > 0 &&
           response.map((bookmark) => {
             return (
-              <div key={bookmark.id}>
+              <div key={bookmark?.id}>
                 <Bookmark
-                  bookId={bookmark.bookId}
-                  pageNum={bookmark.pageNum}
-                  dateCreated={dayjs(bookmark.created_at).format(
+                  bookId={bookmark?.bookId}
+                  pageNum={bookmark?.pageNum}
+                  dateCreated={dayjs(bookmark?.created_at).format(
                     'DD. MM. YYYY',
                   )}
-                  bookTitle={bookmark.title}
+                  bookTitle={bookmark?.title}
                 />
               </div>
             );

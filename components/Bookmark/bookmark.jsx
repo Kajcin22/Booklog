@@ -1,21 +1,14 @@
-import { Collapse, Button } from '@mantine/core';
-import { useState, useEffect } from 'react';
 import styles from './Bookmark.module.css';
 import Link from 'next/link';
 
 import { supabase } from '../../lib/supabase_client';
-import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { useRouter } from 'next/router';
-import { useAddedBooks } from '../../components/AddedBooksProvider/added-books-provider';
 
 const Bookmark = ({ pageNum, dateCreated, bookTitle, bookId }) => {
   const router = useRouter();
 
-  const { userId } = useAuth();
-  const { singleBookResponse } = useAddedBooks();
-
   const onDeleteBookmark = async () => {
-    await supabase.from('Bookmark').delete().eq('title', bookTitle);
+    await supabase?.from('Bookmark')?.delete()?.eq('title', bookTitle);
 
     router.reload('/moje-zalozky');
   };

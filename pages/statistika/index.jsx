@@ -21,19 +21,19 @@ export default function Home() {
 
   useEffect(() => {
     if (userId) {
-      getFinishedPages(userId).then((response) => setFinishedPages(response));
+      getFinishedPages(userId)?.then((response) => setFinishedPages(response));
     }
   }, [userId]);
 
   useEffect(() => {
     if (userId) {
-      getFinishedBooks(userId).then((response) => setFinishedBooks(response));
+      getFinishedBooks(userId)?.then((response) => setFinishedBooks(response));
     }
   }, [userId]);
 
   useEffect(() => {
     if (userId) {
-      getBooksInProgress(userId).then((response) =>
+      getBooksInProgress(userId)?.then((response) =>
         setBooksInProgress(response),
       );
     }
@@ -41,7 +41,9 @@ export default function Home() {
 
   useEffect(() => {
     if (userId) {
-      getRecommendation(userId).then((response) => setRecommendation(response));
+      getRecommendation(userId)?.then((response) =>
+        setRecommendation(response),
+      );
     }
   }, [userId]);
 
@@ -73,7 +75,7 @@ export default function Home() {
           <h2>Progres čtení:</h2>
           {booksInProgress?.map((book) => {
             const value = (
-              (book.bookmark.pageNum / book.pageNumber) *
+              (book?.bookmark?.pageNum / book?.pageNumber) *
               100
             ).toFixed(2);
 

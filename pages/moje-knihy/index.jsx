@@ -17,16 +17,6 @@ export default function Home() {
   const [searchInput, setSearchInput] = useState(null);
   const [loader, setLoader] = useState(false);
 
-  // const condition2 = (book) =>
-  //   book?.author || book?.title === searchInput || true;
-
-  // const showCorrectResult = (arr, condition1) =>
-  //   arr
-  //     ?.filter((book) => condition1 && condition2(book))
-  //     ?.map((book) => {
-  //       return <BookCard key={book?.id} book={book} />;
-  //     });
-
   const router = useRouter();
   const { userId } = useAuth();
 
@@ -39,7 +29,7 @@ export default function Home() {
 
     const bookIds = library?.map((it) => it?.bookId);
 
-    const query = supabase.from('Book').select().in('bookId', bookIds);
+    const query = supabase?.from('Book')?.select()?.in('bookId', bookIds);
 
     if (searchQuery) {
       query?.or(`title.ilike.%${searchQuery}%,author.ilike.%${searchQuery}%`);
@@ -76,7 +66,7 @@ export default function Home() {
     const filteredBooks = bookResponse?.filter(
       (book) => book?.readingState?.status === condition,
     );
-    return !!filteredBooks.length ? (
+    return !!filteredBooks?.length ? (
       filteredBooks?.map((book) => <BookCard key={book?.id} book={book} />)
     ) : (
       <p>V této kategorii nemáš žádné knihy.</p>

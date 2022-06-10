@@ -22,8 +22,8 @@ export default function Login() {
     console.log(values);
     setLoading(true);
     try {
-      await supabase.auth.signIn({
-        email: values.email,
+      await supabase?.auth?.signIn({
+        email: values?.email,
       });
       setLoading(false);
       setSuccess(true);
@@ -44,7 +44,7 @@ export default function Login() {
   return (
     <>
       <div className={styles.registrace}>
-        <form onSubmit={form.onSubmit(onLogin)}>
+        <form onSubmit={form?.onSubmit(onLogin)}>
           <div className={styles.registrace}>
             <div className={styles.registrace__input}>
               <TextInput
@@ -52,9 +52,9 @@ export default function Login() {
                 label="Zadej e-mail:"
                 placeholder="muj@mail.com"
                 rightSection={
-                  <div onClick={() => form.setFieldValue('email', '')}>X</div>
+                  <div onClick={() => form?.setFieldValue('email', '')}>X</div>
                 }
-                {...form.getInputProps('email')}
+                {...form?.getInputProps('email')}
               />
             </div>
             <div className={styles.registrace__button}>

@@ -4,8 +4,6 @@ import { supabase } from '../../lib/supabase_client';
 import { useAuth } from '../AuthProvider/auth-provider';
 import { useRouter } from 'next/router';
 
-import { useState } from 'react';
-
 const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
   const router = useRouter();
   const form = useForm({
@@ -22,7 +20,7 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
       .select()
       .eq('title', bookTitle)
       .maybeSingle();
-    await supabase.from('Bookmark').upsert([
+    await supabase?.from('Bookmark')?.upsert([
       {
         id: data?.id,
         pageNum: formValues?.pageNumber,
@@ -48,7 +46,7 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
             type="number"
             placeholder="číslo stránky"
             rightSection={
-              <div onClick={() => form.setFieldValue('pageNumber', '')}>X</div>
+              <div onClick={() => form?.setFieldValue('pageNumber', '')}>X</div>
             }
             {...form.getInputProps('pageNumber')}
           />
@@ -57,10 +55,6 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
             <Button type="submit">Přidat</Button>
           </Group>
         </form>
-        {/* {response &&
-          response.map((item) => (
-           
-          ))} */}
       </Modal>
     </>
   );

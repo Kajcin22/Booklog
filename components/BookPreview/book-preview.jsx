@@ -1,21 +1,7 @@
-import {
-  Card,
-  Text,
-  Badge,
-  Button,
-  Group,
-  useMantineTheme,
-} from '@mantine/core';
-import Link from 'next/link';
 import Image from 'next/image';
 import styles from './BookPreview.module.css';
-import { useEffect, useState } from 'react';
 
 const BookPreview = ({ book }) => {
-  const theme = useMantineTheme();
-  const secondaryColor =
-    theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
-
   console.log(book);
 
   return (

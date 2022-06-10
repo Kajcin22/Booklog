@@ -2,8 +2,6 @@ import styles from './Header.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { Modal, TextInput, Group, Button } from '@mantine/core';
-import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import SearchModal from '../SearchModal/search-modal';
 import LogoutModal from '../Logout/logoutModal';
@@ -42,17 +40,6 @@ const TopHeader = () => {
                   </a>
                 </Link>
               </li>
-              {/* <li>
-                {/* <Link href="/moje-zalozky">
-                  <a
-                    className={
-                      router.pathname == '/moje-zalozky' ? styles.active : ''
-                    }
-                  >
-                    Moje záložky
-                  </a>
-                </Link> 
-              </li> */}
               <li>
                 <Link href="/statistika">
                   <a

@@ -1,6 +1,4 @@
 import styles from './Domu.module.css';
-import { supabase } from '../../lib/supabase_client';
-import { useState, useEffect } from 'react';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
 
 export default function Home() {

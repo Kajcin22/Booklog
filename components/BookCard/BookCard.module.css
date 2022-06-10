@@ -40,11 +40,7 @@
   color: white;
   background-color: var(--accent-color);
   font-family: var(--font);
-<<<<<<< HEAD
   font-size: 1.2vh;
-=======
-  font-size: 1.5vh;
->>>>>>> 399f78273f7100e3bd2615878805ebe9010ccfef
 }
 
 .booktitle {
@@ -57,10 +53,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   text-align: center;
-<<<<<<< HEAD
-=======
-
->>>>>>> 399f78273f7100e3bd2615878805ebe9010ccfef
   margin-top: 1vh;
   margin-bottom: 1vh;
 }
@@ -86,16 +78,9 @@
   border-radius: 5px;
   background-color: var(--button-color);
   font-family: var(--font);
-<<<<<<< HEAD
   font-size: 1.3vh;
   position: relative;
   padding: 0.5rem;
-=======
-  font-size: 2vh;
-  position: relative;
-  bottom: -20px;
-  padding: 1rem;
->>>>>>> 399f78273f7100e3bd2615878805ebe9010ccfef
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }

@@ -29,7 +29,7 @@ const SearchModal = ({ opened, setOpened }) => {
       result = result + `+isbn:${ISBN}`;
     }
     if (result.startsWith('+')) {
-      result = result.slice(1);
+      result = result?.slice(1);
     }
     console.log(result);
     return result;
@@ -62,30 +62,30 @@ const SearchModal = ({ opened, setOpened }) => {
         onClose={() => setOpened(false)}
         title="Vyhledej knížku"
       >
-        <form onSubmit={form.onSubmit(handleSearch)}>
+        <form onSubmit={form?.onSubmit(handleSearch)}>
           <TextInput
             label="Název knihy"
             placeholder="zadejte název knihy"
             rightSection={
-              <div onClick={() => form.setFieldValue('title', '')}>X</div>
+              <div onClick={() => form?.setFieldValue('title', '')}>X</div>
             }
-            {...form.getInputProps('title')}
+            {...form?.getInputProps('title')}
           />
           <TextInput
             label="Autor"
             placeholder="zadejte autora knihy"
             rightSection={
-              <div onClick={() => form.setFieldValue('author', '')}>X</div>
+              <div onClick={() => form?.setFieldValue('author', '')}>X</div>
             }
-            {...form.getInputProps('author')}
+            {...form?.getInputProps('author')}
           />
           <TextInput
             label="ISBN"
             placeholder="zadejte ISBN knihy"
             rightSection={
-              <div onClick={() => form.setFieldValue('ISBN', '')}>X</div>
+              <div onClick={() => form?.setFieldValue('ISBN', '')}>X</div>
             }
-            {...form.getInputProps('ISBN')}
+            {...form?.getInputProps('ISBN')}
           />
 
           <Group position="right" mt="md">

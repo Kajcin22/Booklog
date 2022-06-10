@@ -61,7 +61,7 @@ const BookCard = ({ book }) => {
             </div>
           </Card.Section>
           <div className={styles.bookcardWrapper}>
-            <div className={styles.booktitle}>{book.title}</div>
+            <div className={styles.booktitle}>{book?.title}</div>
 
             <div
               style={{ backgroundColor: book?.readingState?.color }}
@@ -87,7 +87,7 @@ const BookCard = ({ book }) => {
           </div>
         </div>
         <div className={styles.createbutton_container}>
-          <Link href={`/moje-knihy/${book.id}`}>
+          <Link href={`/moje-knihy/${book?.id}`}>
             <button className={styles.createbutton}>Upravit</button>
           </Link>
         </div>

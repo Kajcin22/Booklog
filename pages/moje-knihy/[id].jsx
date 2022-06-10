@@ -1,45 +1,24 @@
-import {
-  Modal,
-  TextInput,
-  Card,
-  Text,
-  Badge,
-  Button,
-  Group,
-  useMantineTheme,
-  SegmentedControl,
-  Tooltip,
-} from '@mantine/core';
-import { useForm } from '@mantine/form';
-
-import Link from 'next/link';
+import { SegmentedControl, Tooltip } from '@mantine/core';
 import { useRouter } from 'next/router';
 import Image from 'next/dist/client/image';
-
 import { useState, useEffect } from 'react';
-
 import styles from './Uprav.module.css';
 import CreateComment from '../../components/CreateComment/create-comment';
 import Comment from '../../components/Comment/comment';
 import CreateBookmark from '../../components/CreateBookmark/create-bookmark';
 import { useAddedBooks } from '../../components/AddedBooksProvider/added-books-provider';
-
 import { supabase } from '../../lib/supabase_client';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { getBookmark, getLibrary, getLibraryBookInfo } from '../../lib/api';
-
 import React from 'react';
 import ReactStars from 'react-stars';
 import dayjs from 'dayjs';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
 export default function Home() {
-  const theme = useMantineTheme();
   const router = useRouter();
   const { userId } = useAuth();
   const { getBook, singleBookResponse } = useAddedBooks();
-  // const secondaryColor =
-  //   theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
 
   const [opened, setOpened] = useState(false);
   const [openedBookmark, setOpenedBookmark] = useState(false);
@@ -49,10 +28,10 @@ export default function Home() {
   const [ratingValue, setRatingvalue] = useState(null);
 
   useEffect(() => {
-    if (router.query.id) {
-      getBook(router.query.id);
+    if (router?.query?.id) {
+      getBook(router?.query?.id);
     }
-  }, [router.query.id]);
+  }, [router?.query?.id]);
 
   useEffect(() => {
     if (singleBookResponse && userId) {
@@ -67,7 +46,7 @@ export default function Home() {
       .from('Comment')
       .select()
       .eq('userId', userId)
-      .eq('bookId', singleBookResponse.bookId);
+      .eq('bookId', singleBookResponse?.bookId);
 
     setComments(data);
   };
@@ -88,7 +67,7 @@ export default function Home() {
 
   useEffect(() => {
     if (singleBookResponse?.bookId && userId) {
-      getLibraryBookInfo(userId, singleBookResponse.bookId).then((response) =>
+      getLibraryBookInfo(userId, singleBookResponse?.bookId).then((response) =>
         setRatingvalue(response?.rating),
       );
     }
@@ -98,13 +77,13 @@ export default function Home() {
     await supabase
       .from('Bookmark')
       .delete()
-      .eq('title', singleBookResponse.title);
+      .eq('title', singleBookResponse?.title);
     await supabase
       .from('Library')
       .delete()
       .eq('userId', userId)
-      .eq('bookId', singleBookResponse.bookId);
-    await supabase.from('Book').delete().eq('id', router.query.id);
+      .eq('bookId', singleBookResponse?.bookId);
+    await supabase?.from('Book')?.delete()?.eq('id', router?.query?.id);
     router.push('/moje-knihy');
   };
 
@@ -112,7 +91,7 @@ export default function Home() {
     const response = await supabase
       .from('Library')
       .update({ readingState: value })
-      .match({ userId, bookId: singleBookResponse.bookId });
+      .match({ userId, bookId: singleBookResponse?.bookId });
     setValue(response?.data?.[0]?.readingState);
   };
 
@@ -120,7 +99,7 @@ export default function Home() {
     const userRating = await supabase
       .from('Library')
       .update({ rating: newRating })
-      .match({ userId, bookId: singleBookResponse.bookId });
+      .match({ userId, bookId: singleBookResponse?.bookId });
     console.log('Rating: ' + newRating);
     setRatingvalue(userRating?.data?.[0]?.rating);
   };
@@ -129,7 +108,7 @@ export default function Home() {
     await supabase
       .from('Bookmark')
       .delete()
-      .eq('title', singleBookResponse.title);
+      .eq('title', singleBookResponse?.title);
     router.reload();
   };
 
@@ -145,12 +124,12 @@ export default function Home() {
             <Image
               width={200}
               height={300}
-              src={singleBookResponse.imgUrl || '/bookcover-icon.png'}
+              src={singleBookResponse?.imgUrl || '/bookcover-icon.png'}
               alt="bookcover"
             />
           </div>
           <div className={styles.bookinfo}>
-            <div className={styles.booktitle}>{singleBookResponse.title}</div>
+            <div className={styles.booktitle}>{singleBookResponse?.title}</div>
             <div className={styles.bookReadingStatus}>
               <SegmentedControl
                 value={value}
@@ -213,7 +192,7 @@ export default function Home() {
               <>
                 <div className={styles.bookmark}>
                   <div className={styles.bookmarks_elm}>
-                    {bookmarks.pageNum}
+                    {bookmarks?.pageNum}
                     <button className={styles.trashbin_btn}>
                       <RiDeleteBinLine
                         onClick={onBookmarkDelete}
@@ -237,16 +216,16 @@ export default function Home() {
               </button>
             </div>
             {comments &&
-              comments.length > 0 &&
-              comments.map((comment) => {
+              comments?.length > 0 &&
+              comments?.map((comment) => {
                 return (
                   <Comment
-                    key={comment.id}
-                    title={comment.title}
-                    content={comment.content}
-                    page={comment.pageNum}
-                    id={comment.id}
-                    dateCreated={dayjs(comment.created_at).format(
+                    key={comment?.id}
+                    title={comment?.title}
+                    content={comment?.content}
+                    page={comment?.pageNum}
+                    id={comment?.id}
+                    dateCreated={dayjs(comment?.created_at).format(
                       'DD. MM. YYYY',
                     )}
                   />
@@ -258,14 +237,14 @@ export default function Home() {
       <CreateComment
         opened={opened}
         setOpened={setOpened}
-        bookId={singleBookResponse.bookId}
+        bookId={singleBookResponse?.bookId}
         userId={userId}
       />
       <CreateBookmark
         opened={openedBookmark}
         setOpenedBookmark={setOpenedBookmark}
-        bookTitle={singleBookResponse.title}
-        bookId={singleBookResponse.id}
+        bookTitle={singleBookResponse?.title}
+        bookId={singleBookResponse?.id}
       />
     </>
   );

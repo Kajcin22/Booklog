@@ -1,9 +1,6 @@
 import { Modal, TextInput, Button, Group, Textarea } from '@mantine/core';
 import { useForm } from '@mantine/form';
-
-import { useState } from 'react';
 import { supabase } from '../../lib/supabase_client';
-
 import { useRouter } from 'next/router';
 import styles from './CreateComment.module.css';
 
@@ -19,13 +16,13 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
   const router = useRouter();
 
   const handleComment = async (formValues) => {
-    const { data, error } = await supabase.from('Comment').insert([
+    const { data, error } = await supabase?.from('Comment')?.insert([
       {
         userId,
         bookId,
-        title: formValues.commentName,
-        content: formValues.commentInput,
-        pageNum: formValues.commentPage,
+        title: formValues?.commentName,
+        content: formValues?.commentInput,
+        pageNum: formValues?.commentPage,
       },
     ]);
 
@@ -43,7 +40,7 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
         title="Přidej poznámku"
       >
         <form
-          onSubmit={form.onSubmit(handleComment)}
+          onSubmit={form?.onSubmit(handleComment)}
           className={styles.commentForm}
         >
           <TextInput
@@ -52,9 +49,11 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
             type="text"
             placeholder="název poznámky"
             rightSection={
-              <div onClick={() => form.setFieldValue('commentName', '')}>X</div>
+              <div onClick={() => form?.setFieldValue('commentName', '')}>
+                X
+              </div>
             }
-            {...form.getInputProps('commentName')}
+            {...form?.getInputProps('commentName')}
           />
           <TextInput
             label="Stránka:"
@@ -62,9 +61,11 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
             placeholder="zadej číslo stránky"
             required
             rightSection={
-              <div onClick={() => form.setFieldValue('commentPage', '')}>X</div>
+              <div onClick={() => form?.setFieldValue('commentPage', '')}>
+                X
+              </div>
             }
-            {...form.getInputProps('commentPage')}
+            {...form?.getInputProps('commentPage')}
           />
           <Textarea
             className={styles.commentContent}
@@ -72,21 +73,17 @@ const CreateComment = ({ opened, setOpened, bookId, userId }) => {
             placeholder="zde napiš svoji poznámku"
             required
             rightSection={
-              <div onClick={() => form.setFieldValue('commentInput', '')}>
+              <div onClick={() => form?.setFieldValue('commentInput', '')}>
                 X
               </div>
             }
-            {...form.getInputProps('commentInput')}
+            {...form?.getInputProps('commentInput')}
           />
 
           <div className={styles.buttonWrapper}>
             <Button type="submit">Přidat</Button>
           </div>
         </form>
-        {/* {response &&
-          response.map((item) => (
-           
-          ))} */}
       </Modal>
     </>
   );

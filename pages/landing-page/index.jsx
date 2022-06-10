@@ -10,7 +10,6 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import BookPreview from '../../components/BookPreview/book-preview';
-import { supabase } from '../../lib/supabase_client';
 import { getBookPopularBooks, getBookNewestBooks } from '../../lib/api';
 
 export default function LandingPage() {
@@ -24,13 +23,13 @@ export default function LandingPage() {
   const { session } = useAuth();
 
   useEffect(() => {
-    getBookNewestBooks().then((response) => {
+    getBookNewestBooks()?.then((response) => {
       setNewestBooks(response);
     });
   }, []);
 
   useEffect(() => {
-    getBookPopularBooks().then((response) => {
+    getBookPopularBooks()?.then((response) => {
       setPopularBooks(response);
     });
   }, []);
@@ -71,7 +70,7 @@ export default function LandingPage() {
               pagination={{ clickable: true }}
             >
               {popularBooks?.map((book) => (
-                <SwiperSlide key={book.id}>
+                <SwiperSlide key={book?.id}>
                   <BookPreview book={book} />
                 </SwiperSlide>
               ))}
@@ -110,7 +109,7 @@ export default function LandingPage() {
               pagination={{ clickable: true }}
             >
               {newestBooks?.map((book) => (
-                <SwiperSlide key={book.id}>
+                <SwiperSlide key={book?.id}>
                   <BookPreview book={book} />
                 </SwiperSlide>
               ))}
