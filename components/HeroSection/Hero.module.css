@@ -4,10 +4,17 @@
   border-radius: 20px;
   padding: 2rem;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   margin-top: 3rem;
   margin-bottom: 3rem;
+}
+
+@media screen and (min-width: 800px) {
+  .hero__section {
+    flex-direction: row;
+  }
 }
 
 .hero__image {

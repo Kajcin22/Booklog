@@ -200,6 +200,14 @@ export default function Home() {
                       />
                     </button>
                   </div>
+                  <div>
+                    z počtu stran:{' '}
+                    {singleBookResponse?.pageNumber ? (
+                      singleBookResponse?.pageNumber
+                    ) : (
+                      <span>neznámý</span>
+                    )}{' '}
+                  </div>
                 </div>
               </>
             )}

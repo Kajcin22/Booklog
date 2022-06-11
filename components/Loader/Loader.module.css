@@ -1,7 +1,8 @@
 #preloader_1 {
   position: relative;
-  top: 30vh;
-  left: 50%;
+  /* transform: translate(50%, 50%);
+  width: 100%;
+  height: 100%; */
 }
 #preloader_1 span {
   display: block;

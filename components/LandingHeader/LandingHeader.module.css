@@ -2,12 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 2rem;
   text-align: center;
   font-family: var(--font-menu);
   width: 100%;
-  margin-left: 2rem;
-
+  margin-top: 2rem;
   margin-bottom: 4rem;
 }
 
@@ -47,7 +45,6 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-right: 2rem;
 }
 
 .header__signIn:hover,

@@ -43,12 +43,25 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
         <form onSubmit={form.onSubmit(handleBookmark)}>
           <TextInput
             label="Stránka"
+            required
             type="number"
             placeholder="číslo stránky"
             rightSection={
               <div onClick={() => form?.setFieldValue('pageNumber', '')}>X</div>
             }
             {...form.getInputProps('pageNumber')}
+          />
+          <TextInput
+            label="Z celkového počtu"
+            required
+            type="number"
+            placeholder="celkový počet stran"
+            rightSection={
+              <div onClick={() => form?.setFieldValue('bookPagesNumber', '')}>
+                X
+              </div>
+            }
+            {...form.getInputProps('bookPagesNumber')}
           />
 
           <Group position="right" mt="md">

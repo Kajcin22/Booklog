@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import styles from './Footer.module.css';
+import { useState } from 'react';
+import LinkModal from '../LinkModal/link-modal';
+import { supabase } from '../../lib/supabase_client';
 
 const Footer = () => {
+  const [opened, setOpened] = useState(false);
+
   return (
     <>
       <footer className={styles.footer}>
@@ -20,26 +25,45 @@ const Footer = () => {
             <ul>
               <li>
                 <Link href="/">
-                  <a>Domů</a>
+                  <p>Domů</p>
                 </Link>
               </li>
               <li>
                 <Link href="/navod">
-                  <a>Návod</a>
+                  <p>Návod</p>
                 </Link>
               </li>
               <li>
-                <Link href="/moje-knihy">
-                  <a>Moje knihy</a>
-                </Link>
+                {!supabase.auth.user() ? (
+                  <p
+                    onClick={() => setOpened(true)}
+                    className={styles.paragraph}
+                  >
+                    Moje knihy
+                  </p>
+                ) : (
+                  <Link href="/moje-knihy">
+                    <p>Moje knihy</p>
+                  </Link>
+                )}
               </li>
               <li>
-                <Link href="/statistika">
-                  <a>Statistika</a>
-                </Link>
+                {!supabase.auth.user() ? (
+                  <p
+                    onClick={() => setOpened(true)}
+                    className={styles.paragraph}
+                  >
+                    Statistika
+                  </p>
+                ) : (
+                  <Link href="/statistika">
+                    <p>Statistika</p>
+                  </Link>
+                )}
               </li>
             </ul>
           </div>
+          <LinkModal opened={opened} setOpened={setOpened} />
         </div>
       </footer>
     </>

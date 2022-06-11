@@ -1,5 +1,16 @@
 /*-------------- styly sekce "populární knihy" a " naposledy čteno" ------------------------*/
 
+.loaderWrapper {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  z-index: 1;
+}
+
 .book_section {
   display: flex;
   flex-direction: column;

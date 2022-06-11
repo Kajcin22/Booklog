@@ -17,13 +17,12 @@ const readingStates = {
 export default function Home() {
   const [bookResponse, setBookResponse] = useState([]);
   const [searchInput, setSearchInput] = useState(null);
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
 
   const router = useRouter();
   const { userId } = useAuth();
 
   const getBooks = async (searchQuery) => {
-    setLoader(true);
     const { data: library } = await supabase
       .from('Library')
       .select('bookId, readingState, rating')
@@ -88,19 +87,23 @@ export default function Home() {
 
   return (
     <>
+      <div className={styles.container}>
+        <div className={styles.searchWrapper}>
+          <label>Vyhledat v mých knihách:</label>
+          <Input
+            type="text"
+            placeholder="autor nebo název knihy"
+            onChange={(event) => setSearchInput(event?.target?.value)}
+          ></Input>
+          <button onClick={onSearch}>Hledat</button>
+        </div>
+      </div>
       {loader ? (
-        <Loader />
+        <div className={styles.sectionsWrapper}>
+          <Loader />
+        </div>
       ) : (
-        <div className={styles.container}>
-          <div className={styles.searchWrapper}>
-            <label>Vyhledat v mých knihách:</label>
-            <Input
-              type="text"
-              placeholder="autor nebo název knihy"
-              onChange={(event) => setSearchInput(event?.target?.value)}
-            ></Input>
-            <button onClick={onSearch}>Hledat</button>
-          </div>
+        <>
           <div className={styles.book_section}>
             <h2>Právě čtu</h2>
             <div className={styles.book_section_cards}>
@@ -119,7 +122,7 @@ export default function Home() {
               {getBookWithStatus('Přečteno')}
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );

@@ -10,12 +10,12 @@
 .bookMain {
   flex-wrap: wrap;
   background-color: white;
-  margin: 0 5rem 2rem 0;
   padding-bottom: 30px;
   border-radius: 10px;
   box-shadow: 0 1px 30px rgb(0 0 0 / 5%);
   height: min-content;
   margin: 0.5rem auto;
+  max-width: 90vw;
 }
 
 @media screen and (min-width: 800px) {
@@ -26,6 +26,7 @@
   .bookMain {
     min-width: 40%;
     max-width: 40%;
+    margin: 0 5rem 2rem 0;
   }
 }
 
@@ -153,7 +154,8 @@
 .bookmark {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: flex-start;
+  width: fit-content;
 }
 
 .trashbin_btn {

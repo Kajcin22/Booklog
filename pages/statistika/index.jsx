@@ -64,9 +64,9 @@ export default function Home() {
             <div className={styles.statistika_main_sectionElm}>
               <button className={styles.statistika_icon_book}></button>
               <h3>
-                Celkem přečteno{' '}
+                z celkem přečtených{' '}
                 <span className={styles.statistika_num}>{finishedBooks}</span>{' '}
-                knížek
+                knížek.
               </h3>
             </div>
           </div>
@@ -82,11 +82,13 @@ export default function Home() {
             return (
               <div key={book?.id}>
                 <p>{book?.title}</p>
+                <br />
                 <Progress
                   value={value}
                   label={`${value}%`}
                   size="xl"
                   radius="xl"
+                  color="#035e7b"
                 />
               </div>
             );

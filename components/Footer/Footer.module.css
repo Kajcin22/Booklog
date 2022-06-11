@@ -42,6 +42,11 @@
   color: var(--primary-color);
 }
 
+.paragraph {
+  padding: 0;
+  margin: 0;
+}
+
 @media screen and (min-width: 800px) {
   .footer__content {
     max-width: 80%;
