@@ -30,8 +30,6 @@
   flex-direction: column;
   margin: 0 auto;
   justify-content: center;
-  /* overflow: hidden; */
-  /* height: 62.5vh; */
 }
 
 @media screen and (min-width: 800px) {
@@ -134,7 +132,6 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  /* overflow: auto; */
   margin-bottom: 2rem;
   padding: 1rem;
   position: relative;
@@ -185,7 +182,6 @@
 
 .commentsBookmarks {
   width: 100%;
-  /* overflow: auto; */
 }
 
 .buttonDelete {
@@ -200,4 +196,8 @@
 .buttonDelete:hover {
   cursor: pointer;
   font-weight: 700;
+}
+
+.bookRating {
+  justify-content: center;
 }

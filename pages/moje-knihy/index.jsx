@@ -5,6 +5,7 @@ import { supabase } from '../../lib/supabase_client';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { getAllBookmarks } from '../../lib/api';
+import Loader from '../../components/Loader/loader';
 
 const readingStates = {
   A: { status: 'Chci si přečíst', color: '#035e7b' },
@@ -87,13 +88,7 @@ export default function Home() {
   return (
     <>
       {loader ? (
-        <div id={styles.preloader_1}>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <Loader />
       ) : (
         <div className={styles.container}>
           <div className={styles.searchWrapper}>

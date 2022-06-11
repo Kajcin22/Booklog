@@ -21,7 +21,7 @@ export default function Home() {
         </Head>
         <div>
           <h2>
-            Vítej <span className="username">{session?.user?.email}</span>{' '}
+            Vítej, <span className="username">{session?.user?.email}</span>{' '}
           </h2>
           <LandingPage />
         </div>

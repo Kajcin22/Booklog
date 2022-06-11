@@ -24,6 +24,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/navod">
+                  <a>Návod</a>
+                </Link>
+              </li>
+              <li>
                 <Link href="/moje-knihy">
                   <a>Moje knihy</a>
                 </Link>
