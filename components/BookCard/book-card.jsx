@@ -5,6 +5,7 @@ import {
   Button,
   Group,
   useMantineTheme,
+  Tooltip,
 } from '@mantine/core';
 import Link from 'next/link';
 import styles from './BookCard.module.css';
@@ -61,7 +62,18 @@ const BookCard = ({ book }) => {
             </div>
           </Card.Section>
           <div className={styles.bookcardWrapper}>
-            <div className={styles.booktitle}>{book?.title}</div>
+            {book?.title && (
+              <Tooltip
+                label={book?.title}
+                wrapLines
+                withArrow
+                width={200}
+                color="#035e7b"
+                position="top-end"
+              >
+                <div className={styles.booktitle}>{book?.title}</div>
+              </Tooltip>
+            )}
 
             <div
               style={{ backgroundColor: book?.readingState?.color }}
@@ -70,9 +82,20 @@ const BookCard = ({ book }) => {
               {book?.readingState?.status}
             </div>
 
-            <div className={styles.bookauthor} weight={300}>
-              {book?.author || 'Autor neznámý'}
-            </div>
+            {book?.author && (
+              <Tooltip
+                label={book?.author}
+                wrapLines
+                withArrow
+                width={200}
+                color="#035e7b"
+                position="top-end"
+              >
+                <div className={styles.bookauthor} weight={300}>
+                  {book?.author || 'Autor neznámý'}
+                </div>
+              </Tooltip>
+            )}
             <div className={styles.bookRating}>
               <ReactStars
                 onChange={onRating}

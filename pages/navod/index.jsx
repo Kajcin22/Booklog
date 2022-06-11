@@ -1,4 +1,4 @@
-import styles from './Domu.module.css';
+import styles from './Navod.module.css';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
         <div className={styles.welcome}>
           <div className={styles.welcome_user}>
             <h2>
-              Vítej {<span className="username">{session?.user?.email}</span>}
+              Vítej, {<span className="username">{session?.user?.email}</span>}
             </h2>
             <img src="/hero_img_old.png" alt="icon" />
           </div>

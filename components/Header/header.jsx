@@ -23,9 +23,11 @@ const TopHeader = () => {
           <div className={styles.header__navigation}>
             <ul>
               <li>
-                <Link href="/domu">
-                  <a className={router.pathname == '/' ? styles.active : ''}>
-                    Domů
+                <Link href="/navod">
+                  <a
+                    className={router.pathname == '/navod' ? styles.active : ''}
+                  >
+                    Návod
                   </a>
                 </Link>
               </li>
@@ -64,7 +66,7 @@ const TopHeader = () => {
             />
             <Image
               onClick={() => setOpenedSignout(true)}
-              src={'/user_icon.png'}
+              src={'/logout_icon.png'}
               alt="prihlaseni"
               width={30}
               height={30}

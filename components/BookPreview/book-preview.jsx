@@ -13,7 +13,7 @@ const BookPreview = ({ book }) => {
         alt="bookcover"
       />
       <h4 className={styles.bookTitle}>{book?.title}</h4>
-      <p className={styles.bookAuthor}>{book?.author}</p>
+      <p className={styles.bookAuthor}>{book?.author || 'Autor neznámý'}</p>
     </div>
   );
 };
