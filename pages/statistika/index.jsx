@@ -6,7 +6,7 @@ import {
   getRecommendation,
 } from '../../lib/api';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
-import BookPreview from '../../components/BookPreview/book-preview';
+import SearchResult from '../../components/SearchResult/search-result';
 import { Progress } from '@mantine/core';
 
 import styles from './Statistika.module.css';
@@ -95,8 +95,21 @@ export default function Home() {
 
         <div className={styles.statistika_section}>
           <h2>Doporučení na další četbu:</h2>
+        </div>
+        <div className={styles.statistika_sectionRecommendation}>
           {recommendation?.map((book) => {
-            return <BookPreview key={book?.id} book={book} />;
+            return (
+              <SearchResult
+                imgUrl={book?.imgUrl}
+                author={book?.author || 'Autor neznámý'}
+                title={book?.title}
+                description={book?.description}
+                bookId={book?.bookId}
+                setOpened={() => {}}
+                pageNumber={book?.pageNumber}
+                key={book?.id}
+              />
+            );
           })}
         </div>
       </div>

@@ -22,9 +22,9 @@
 }
 .welcome h4 {
   text-align: center;
-  font-size: 1.7vw;
+  font-size: 1.5em;
   background-color: white;
-  border-radius: 1rem;
+  border-radius: 10px;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
@@ -63,16 +63,16 @@
   color: white;
   padding: 0.3em;
   margin: 0.3em;
-  border-radius: 1rem;
-  font-size: 1.5vw;
+  border-radius: 10px;
+  font-size: 1.2em;
 }
 
 .text_button_category {
   background-color: var(--accent-color);
   padding: 0.3em;
   margin: 0.5em;
-  border-radius: 1rem;
-  font-size: 1.5vw;
+  border-radius: 10px;
+  font-size: 1.3em;
   white-space: nowrap;
 }
 

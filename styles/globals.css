@@ -55,6 +55,7 @@ a {
 
 .swiper-wrapper {
   max-width: 80%;
+  padding-bottom: 0.3rem;
 }
 
 .swiper-button-prev {

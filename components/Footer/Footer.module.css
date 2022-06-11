@@ -12,6 +12,7 @@
   justify-content: space-between;
   align-items: baseline;
   font-family: var(--font-menu);
+  width: 80%;
 }
 
 .footer__main {

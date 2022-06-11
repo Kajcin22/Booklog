@@ -1,5 +1,6 @@
 import styles from './Navod.module.css';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
+import Image from 'next/image';
 
 export default function Home() {
   const { session } = useAuth();
@@ -12,7 +13,12 @@ export default function Home() {
             <h2>
               Vítej, {<span className="username">{session?.user?.email}</span>}
             </h2>
-            <img src="/hero_img_old.png" alt="icon" />
+            <Image
+              width={300}
+              height={200}
+              src="/hero_img_old.png"
+              alt="icon"
+            />
           </div>
 
           <h3>Jak používat Booklog?</h3>
@@ -33,13 +39,11 @@ export default function Home() {
           <p>
             Správný knihomol si ve své četbě udržuje pořádek - každé knížce
             můžeš nastavit <span className={styles.highlight}>kategorii</span>{' '}
-            <div className={styles.section}>
-              <span className={styles.text_button_category}>Právě čtu</span>,
-              <span className={styles.text_button_category}>
-                Chci si přečíst
-              </span>{' '}
-              nebo <span className={styles.text_button_category}>Přečteno</span>{' '}
-            </div>
+            {/* <div className={styles.section}> */}
+            <span className={styles.text_button_category}>Právě čtu</span>,
+            <span className={styles.text_button_category}>Chci si přečíst</span>{' '}
+            nebo <span className={styles.text_button_category}>Přečteno</span>{' '}
+            {/* </div> */}
             podle aktuální fáze tvého čtenářského cyklu.
           </p>
           <p className={styles.section}>

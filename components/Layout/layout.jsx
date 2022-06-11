@@ -3,13 +3,14 @@ import TopHeader from '../Header/header';
 import { supabase } from '../../lib/supabase_client';
 import LandingHeader from '../LandingHeader';
 import { useAuth } from '../AuthProvider/auth-provider';
+import styles from './Layout.module.css';
 
 const Layout = ({ children }) => {
   const { userId } = useAuth();
 
   return (
     <>
-      <div style={{ width: '80%', margin: '0 auto' }}>
+      <div className={styles.contentWrapper}>
         {userId ? <TopHeader /> : <LandingHeader />}
 
         {children}

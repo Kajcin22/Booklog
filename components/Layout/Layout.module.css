@@ -1,0 +1,22 @@
+.contentWrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 800px) {
+  .contentWrapper {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .contentWrapper {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .contentWrapper {
+    width: 60%;
+  }
+}

@@ -7,7 +7,6 @@
 
 .statistika h2 {
   font-family: var(--font-menu);
-
   color: var(--primary-color);
   text-align: left;
 }
@@ -61,7 +60,14 @@
 .statistika_section {
   margin-top: 2rem;
   margin-bottom: 2rem;
-
   font-family: var(--font);
   font-weight: bold;
+}
+
+.statistika_sectionRecommendation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  gap: 0 2rem;
+  margin-bottom: 2rem;
 }

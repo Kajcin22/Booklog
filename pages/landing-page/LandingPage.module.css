@@ -36,7 +36,7 @@
   flex-direction: column;
   background-color: var(--secondary-color);
   width: 100%;
-  border-radius: 10px;
+  border-radius: 20px;
   margin-bottom: 20px;
   font-family: var(--font-menu);
   color: var(--primary-color);

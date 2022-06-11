@@ -15,13 +15,17 @@
   border-radius: 10px;
   box-shadow: 0 1px 30px rgb(0 0 0 / 5%);
   height: min-content;
-  min-width: 40%;
-  max-width: 40%;
+  margin: 0.5rem auto;
 }
 
 @media screen and (min-width: 800px) {
   .book {
     flex-direction: row;
+  }
+
+  .bookMain {
+    min-width: 40%;
+    max-width: 40%;
   }
 }
 

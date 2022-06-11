@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
 import { getAllBookmarks } from '../../lib/api';
 import Loader from '../../components/Loader/loader';
+import { Input } from '@mantine/core';
 
 const readingStates = {
   A: { status: 'Chci si přečíst', color: '#035e7b' },
@@ -93,11 +94,11 @@ export default function Home() {
         <div className={styles.container}>
           <div className={styles.searchWrapper}>
             <label>Vyhledat v mých knihách:</label>
-            <input
+            <Input
               type="text"
               placeholder="autor nebo název knihy"
               onChange={(event) => setSearchInput(event?.target?.value)}
-            ></input>
+            ></Input>
             <button onClick={onSearch}>Hledat</button>
           </div>
           <div className={styles.book_section}>

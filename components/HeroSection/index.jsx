@@ -12,12 +12,9 @@ const Hero = () => {
         <div className={styles.hero__textcontent}>
           <h1>Kniha je okno do celého vesmíru</h1>
           <p>probuď své sny každodenním čtením</p>
-          <button
-            onClick={() => setOpened(true)}
-            className={styles.header__btn}
-          >
-            Číst nyní!
-          </button>
+          <a href="/moje-knihy">
+            <button className={styles.header__btn}>Číst nyní!</button>
+          </a>
         </div>
         <div className={styles.hero__image}>
           <Image src="/hero_img.png" width={350} height={200} />

@@ -62,18 +62,16 @@ const BookCard = ({ book }) => {
             </div>
           </Card.Section>
           <div className={styles.bookcardWrapper}>
-            {book?.title && (
-              <Tooltip
-                label={book?.title}
-                wrapLines
-                withArrow
-                width={200}
-                color="#035e7b"
-                position="top-end"
-              >
-                <div className={styles.booktitle}>{book?.title}</div>
-              </Tooltip>
-            )}
+            <Tooltip
+              label={book?.title}
+              wrapLines
+              withArrow
+              width={200}
+              color="blue"
+              disabled={book?.title?.length < 27}
+            >
+              <div className={styles.booktitle}>{book?.title}</div>
+            </Tooltip>
 
             <div
               style={{ backgroundColor: book?.readingState?.color }}
@@ -82,20 +80,19 @@ const BookCard = ({ book }) => {
               {book?.readingState?.status}
             </div>
 
-            {book?.author && (
-              <Tooltip
-                label={book?.author}
-                wrapLines
-                withArrow
-                width={200}
-                color="#035e7b"
-                position="top-end"
-              >
-                <div className={styles.bookauthor} weight={300}>
-                  {book?.author || 'Autor neznámý'}
-                </div>
-              </Tooltip>
-            )}
+            <Tooltip
+              label={book?.author}
+              wrapLines
+              withArrow
+              width={200}
+              color="blue"
+              disabled={book?.author?.length < 23}
+            >
+              <div className={styles.bookauthor} weight={300}>
+                {book?.author || 'Autor neznámý'}
+              </div>
+            </Tooltip>
+
             <div className={styles.bookRating}>
               <ReactStars
                 onChange={onRating}
