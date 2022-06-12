@@ -10,11 +10,11 @@ import { supabase } from '../lib/supabase_client';
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
-  useEffect(() => {
-    if (!supabase.auth.user() && router.pathname !== '/') {
-      router?.push('/');
-    }
-  }, [router?.pathname]);
+  // useEffect(() => {
+  //   if (!supabase.auth.user() && router.pathname !== '/') {
+  //     router?.push('/');
+  //   }
+  // }, [router?.pathname]);
 
   return (
     <AuthProvider>
