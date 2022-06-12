@@ -35,6 +35,7 @@ const Recommendation = ({
       console.log(err);
     }
     setLoader(false);
+    router.reload();
   };
 
   return (

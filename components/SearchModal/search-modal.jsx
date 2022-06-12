@@ -27,9 +27,9 @@ const SearchModal = ({ opened, setOpened }) => {
   };
 
   const onPageChanged = async (value) => {
-    setPage(value);
+    setPage(value?.toFixed(0));
     setIsLoading(true);
-    const result = await searchBooks(form.values, value);
+    const result = await searchBooks(form?.values, value);
     setResponse(result);
     setIsLoading(false);
   };
@@ -97,7 +97,7 @@ const SearchModal = ({ opened, setOpened }) => {
               initialPage={1}
               page={page}
               onChange={onPageChanged}
-              total={response?.totalItems / 10}
+              total={(response?.totalItems / 20)?.toFixed(0)}
             />
           )}
         </div>
