@@ -1,4 +1,4 @@
-import { Modal, TextInput, Button, Group, Textarea } from '@mantine/core';
+import { Modal, TextInput, Button, Textarea } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { supabase } from '../../lib/supabase_client';
 import { useRouter } from 'next/router';

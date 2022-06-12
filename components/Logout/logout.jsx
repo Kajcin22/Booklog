@@ -1,7 +1,6 @@
 import { Button, Group, Box } from '@mantine/core';
-import { useForm } from '@mantine/form';
 import { useState } from 'react';
-import { Notification, Checkbox } from '@mantine/core';
+import { Notification } from '@mantine/core';
 import { supabase } from '../../lib/supabase_client';
 import { useRouter } from 'next/router';
 

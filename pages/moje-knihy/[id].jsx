@@ -100,7 +100,6 @@ export default function Home() {
       .from('Library')
       .update({ rating: newRating })
       .match({ userId, bookId: singleBookResponse?.bookId });
-    console.log('Rating: ' + newRating);
     setRatingvalue(userRating?.data?.[0]?.rating);
   };
 

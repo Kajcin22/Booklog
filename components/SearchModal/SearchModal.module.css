@@ -2,9 +2,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .bookcard {
   flex: 0 1 50%;
+}
+
+@media screen and (min-width: 920px) {
+  .searchResults {
+    gap: 2rem;
+  }
 }

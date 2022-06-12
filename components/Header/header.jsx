@@ -11,7 +11,6 @@ const TopHeader = () => {
   const router = useRouter();
   const [openedModal, setOpenedModal] = useState(false);
   const [openedSignout, setOpenedSignout] = useState(false);
-  const [openHamburger, setOpenHamburger] = useState(false);
 
   return (
     <>
@@ -57,22 +56,24 @@ const TopHeader = () => {
               </li>
             </ul>
           </div>
-          <div className={styles.header__signIn}>
-            <Image
-              className={styles.header__btn}
-              onClick={() => setOpenedModal(true)}
-              src="/icon-search.svg"
-              alt="hledej"
-              width={35}
-              height={35}
-            />
-            <Image
-              onClick={() => setOpenedSignout(true)}
-              src={'/logout_icon.png'}
-              alt="prihlaseni"
-              width={30}
-              height={30}
-            />
+          <div className={styles.header__wrapper}>
+            <div className={styles.header__signIn}>
+              <Image
+                className={styles.header__btn}
+                onClick={() => setOpenedModal(true)}
+                src="/icon-search.svg"
+                alt="hledej"
+                width={35}
+                height={35}
+              />
+              <Image
+                onClick={() => setOpenedSignout(true)}
+                src={'/logout_icon.png'}
+                alt="prihlaseni"
+                width={30}
+                height={30}
+              />
+            </div>
             <HamburgerMenu />
           </div>
         </div>

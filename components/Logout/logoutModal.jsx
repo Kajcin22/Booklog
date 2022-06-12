@@ -1,6 +1,4 @@
-import { Modal, TextInput, Group, Button } from '@mantine/core';
-import { useForm } from '@mantine/form';
-import { useState } from 'react';
+import { Modal } from '@mantine/core';
 import Logout from './logout';
 
 const LogoutModal = ({ opened, setOpened }) => {

@@ -20,9 +20,11 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div>
-          <h2>
-            Vítej, <span className="username">{session?.user?.email}</span>{' '}
-          </h2>
+          {session?.user?.email && (
+            <h2>
+              Vítej, <span className="username">{session?.user?.email}</span>{' '}
+            </h2>
+          )}
           <LandingPage />
         </div>
       </div>

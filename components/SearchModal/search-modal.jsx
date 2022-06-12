@@ -1,8 +1,9 @@
-import { Modal, TextInput, Group, Button } from '@mantine/core';
+import { Modal, TextInput, Group, Button, Pagination } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import SearchResult from '../SearchResult/search-result';
 import styles from './SearchModal.module.css';
+import { searchBooks } from '../../lib/api';
 
 const SearchModal = ({ opened, setOpened }) => {
   const form = useForm({
@@ -16,43 +17,23 @@ const SearchModal = ({ opened, setOpened }) => {
   const [response, setResponse] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const createSearchParams = ({ title, author, ISBN }) => {
-    let result = '';
-    if (title) {
-      result = result + `intitle:${title}`;
-    }
+  const [page, setPage] = useState(0);
 
-    if (author) {
-      result = result + `+inauthor:${author}`;
-    }
-    if (ISBN) {
-      result = result + `+isbn:${ISBN}`;
-    }
-    if (result.startsWith('+')) {
-      result = result?.slice(1);
-    }
-    console.log(result);
-    return result;
-  };
-
-  const handleSearch = (formValues) => {
-    const params = new URLSearchParams({
-      q: createSearchParams(formValues),
-      key: process.env.NEXT_PUBLIC_BOOKS_API_KEY || '',
-      maxResults: '20',
-      langRestrict: 'cs',
-    });
-
+  const handleSearch = async (formValues) => {
     setIsLoading(true);
-    fetch(`https://www.googleapis.com/books/v1/volumes?${params}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setResponse(data, '******');
-      })
-      .finally(() => setIsLoading(false));
+    const result = await searchBooks(formValues, 1);
+    setResponse(result);
+    setIsLoading(false);
   };
 
+  const onPageChanged = async (value) => {
+    setPage(value);
+    setIsLoading(true);
+    const result = await searchBooks(form.values, value);
+    setResponse(result);
+    setIsLoading(false);
+  };
+  console.log(response, 'response');
   return (
     <>
       <Modal
@@ -110,6 +91,15 @@ const SearchModal = ({ opened, setOpened }) => {
               />
             ))}
           {response?.totalItems === 0 && <p>Nenalezeny žádné výsledky.</p>}
+          {response?.totalItems && (
+            <Pagination
+              styles={{ active: { backgroundColor: '#0795c5' } }}
+              initialPage={1}
+              page={page}
+              onChange={onPageChanged}
+              total={response?.totalItems / 10}
+            />
+          )}
         </div>
       </Modal>
     </>

@@ -1,41 +1,12 @@
-import {
-  Card,
-  Text,
-  Badge,
-  Button,
-  Group,
-  useMantineTheme,
-  Tooltip,
-} from '@mantine/core';
+import { Card, Tooltip } from '@mantine/core';
 import Link from 'next/link';
 import styles from './BookCard.module.css';
 import Image from 'next/image';
 import ReactStars from 'react-stars';
-import { useEffect, useState } from 'react';
-import { useAddedBooks } from '../AddedBooksProvider/added-books-provider';
+
 import { useAuth } from '../AuthProvider/auth-provider';
-import { supabase } from '../../lib/supabase_client';
 
 const BookCard = ({ book }) => {
-  const [ratingValue, setRatingvalue] = useState(null);
-  const { userId } = useAuth();
-  const theme = useMantineTheme();
-  const { getBook, singleBookResponse } = useAddedBooks();
-
-  // const secondaryColor =
-  //   theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
-
-  console.log(book);
-
-  const onRating = async (newRating) => {
-    const userRating = await supabase
-      .from('Library')
-      .update({ rating: newRating })
-      .match({ userId, bookId: book?.bookId });
-    console.log('Rating: ' + newRating);
-    setRatingvalue(userRating?.data?.[0]?.rating);
-  };
-
   return (
     <>
       <Card className={styles.bookcard} shadow="sm" p="lg">
@@ -95,7 +66,6 @@ const BookCard = ({ book }) => {
 
             <div className={styles.bookRating}>
               <ReactStars
-                onChange={onRating}
                 edit={false}
                 count={5}
                 size={30}

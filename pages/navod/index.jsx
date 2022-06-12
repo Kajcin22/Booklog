@@ -9,9 +9,14 @@ export default function Home() {
     <>
       <div className={styles.welcome}>
         <div className={styles.welcome_user}>
-          <h2>
-            Vítej, {<span className="username">{session?.user?.email}</span>}
-          </h2>
+          <div>
+            {session?.user?.email && (
+              <h2>
+                Vítej,{' '}
+                {<span className="username">{session?.user?.email}</span>}
+              </h2>
+            )}
+          </div>
           <div className={styles.welcome_user_img}>
             <Image
               width={300}

@@ -47,7 +47,6 @@ export default function Home() {
         const bookmark = allBookmarks?.find(
           (item) => parseInt(item?.bookId) === book?.id,
         );
-        console.log(bookmark);
         return {
           ...book,
           readingState: {
@@ -87,7 +86,6 @@ export default function Home() {
       getBooks();
     }
   }, [router?.query?.q, userId]);
-  console.log(bookResponse);
 
   return (
     <>

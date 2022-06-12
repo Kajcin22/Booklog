@@ -1,4 +1,4 @@
-import { Collapse, Button } from '@mantine/core';
+import { Collapse } from '@mantine/core';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../../lib/supabase_client';

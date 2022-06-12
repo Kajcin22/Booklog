@@ -1,13 +1,9 @@
-import BookCard from '../../components/BookCard/book-card';
 import styles from './LandingHeader.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import Hero from '../../components/HeroSection';
-import { Modal, TextInput, Group, Button } from '@mantine/core';
 import LoginModal from '../../components/Login/login-modal';
 import { useState } from 'react';
 
-import SearchModal from '../../components/SearchModal/search-modal';
 export default function LandingHeader() {
   const [opened, setOpened] = useState(false);
 

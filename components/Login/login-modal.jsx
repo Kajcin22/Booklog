@@ -1,5 +1,4 @@
-import { Modal, TextInput, Group, Button } from '@mantine/core';
-import { useState } from 'react';
+import { Modal } from '@mantine/core';
 import Login from './login';
 
 const LoginModal = ({ opened, setOpened }) => {

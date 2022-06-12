@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const HamburgerMenu = () => {
   const router = useRouter();
-  const [opened, setOpened] = useState(false);
+  const [opened, setOpened] = useState(null);
 
   const title = opened ? 'Zavřít menu' : 'Otevřít menu';
 
@@ -22,41 +22,44 @@ const HamburgerMenu = () => {
           color="#035e7b"
         />
         {opened ? (
-          <>
-            <ul className={styles.burgerMenu}>
+          <div className={styles.burgerMenu}>
+            <ul>
               <li>
                 <Link href="/navod">
-                  <a
+                  <p
                     className={router.pathname == '/navod' ? styles.active : ''}
+                    onClick={() => setOpened(false)}
                   >
                     Návod
-                  </a>
+                  </p>
                 </Link>
               </li>
               <li>
                 <Link href="/moje-knihy">
-                  <a
+                  <p
                     className={
                       router.pathname == '/moje-knihy' ? styles.active : ''
                     }
+                    onClick={() => setOpened(false)}
                   >
                     Moje knihy
-                  </a>
+                  </p>
                 </Link>
               </li>
               <li>
                 <Link href="/statistika">
-                  <a
+                  <p
                     className={
                       router.pathname == '/statistika' ? styles.active : ''
                     }
+                    onClick={() => setOpened(false)}
                   >
                     Statistika
-                  </a>
+                  </p>
                 </Link>
               </li>
             </ul>
-          </>
+          </div>
         ) : null}
       </div>
     </>

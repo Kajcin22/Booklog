@@ -6,8 +6,9 @@ import {
   getRecommendation,
 } from '../../lib/api';
 import { useAuth } from '../../components/AuthProvider/auth-provider';
-import SearchResult from '../../components/SearchResult/search-result';
+import Recommendation from '../../components/RecommendationBook/recommendation';
 import { Progress } from '@mantine/core';
+import Loader from '../../components/Loader/loader';
 
 import styles from './Statistika.module.css';
 
@@ -46,6 +47,7 @@ export default function Home() {
       );
     }
   }, [userId]);
+  console.log(recommendation, 'recommend');
 
   return (
     <>
@@ -71,6 +73,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <br />
         <div className={styles.statistika_section}>
           <h2>Progres čtení:</h2>
           {booksInProgress?.map((book) => {
@@ -94,26 +97,36 @@ export default function Home() {
             );
           })}
         </div>
-
+        <br />
         <div className={styles.statistika_section}>
           <h2>Doporučení na další četbu:</h2>
         </div>
-        <div className={styles.statistika_sectionRecommendation}>
-          {recommendation?.map((book) => {
-            return (
-              <SearchResult
-                imgUrl={book?.imgUrl}
-                author={book?.author || 'Autor neznámý'}
-                title={book?.title}
-                description={book?.description}
-                bookId={book?.bookId}
-                setOpened={() => {}}
-                pageNumber={book?.pageNumber}
-                key={book?.id}
-              />
-            );
-          })}
-        </div>
+        {recommendation?.recommendation?.length === 0 ? (
+          <p className={styles.recommendationParagraph}>
+            Momentálně nemáme co doporučit.
+          </p>
+        ) : recommendation?.status === 200 ? (
+          <div className={styles.statistika_sectionRecommendation}>
+            {recommendation?.recommendation?.map((book) => {
+              return (
+                <Recommendation
+                  imgUrl={book?.imgUrl}
+                  author={book?.author || 'Autor neznámý'}
+                  title={book?.title}
+                  description={book?.description}
+                  bookId={book?.bookId}
+                  setOpened={() => {}}
+                  pageNumber={book?.pageNumber}
+                  key={book?.id}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <div className={styles.loaderWrapper}>
+            <Loader />
+          </div>
+        )}
       </div>
     </>
   );

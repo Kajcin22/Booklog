@@ -3,8 +3,6 @@ import styles from './BookPreview.module.css';
 import { Tooltip } from '@mantine/core';
 
 const BookPreview = ({ book }) => {
-  console.log(book);
-
   return (
     <div className={styles.bookCard}>
       <div className={styles.imageWrapper}>

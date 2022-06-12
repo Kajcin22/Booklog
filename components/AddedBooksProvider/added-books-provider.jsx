@@ -1,11 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
 import { supabase } from '../../lib/supabase_client';
 import { useAuth } from '../AuthProvider/auth-provider';
 
@@ -33,16 +26,11 @@ export function AddedBooksProvider({ children }) {
       .select(`*,Library(userId)`)
       .eq('Library.userId', session?.user?.id)
       .order('created_at', { ascending: false });
-    console.log({ data });
     console.log({ error });
     if (data) {
       setBookResponse(data);
     }
   };
-
-  // useEffect(() => {
-  //   getBooks();
-  // }, []);
 
   const value = useMemo(
     () => ({

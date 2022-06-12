@@ -69,8 +69,22 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0 2rem;
+  gap: 2rem;
   margin-bottom: 2rem;
+}
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+}
+
+.recommendationParagraph {
+  margin-top: 4rem;
+  font-family: var(--font);
+  font-style: italic;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {

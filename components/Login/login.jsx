@@ -1,4 +1,4 @@
-import { TextInput, Button, Group, Box } from '@mantine/core';
+import { TextInput, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { Notification } from '@mantine/core';
@@ -19,7 +19,6 @@ export default function Login() {
   });
 
   const onLogin = async (values) => {
-    console.log(values);
     setLoading(true);
     try {
       await supabase?.auth?.signIn({
