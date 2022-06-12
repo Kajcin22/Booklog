@@ -1,4 +1,5 @@
 import styles from './LandingPage.module.css';
+import Link from 'next/link';
 import Hero from '../../components/HeroSection';
 import Login from '../../components/Login/login';
 import { useState, useEffect } from 'react';
@@ -7,10 +8,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import BookPreview from '../../components/BookPreview/book-preview';
 import { getBookPopularBooks, getBookNewestBooks } from '../../lib/api';
 import Loader from '../../components/Loader/loader';
+import { useAuth } from '../../components/AuthProvider/auth-provider';
 
 export default function LandingPage() {
   const [popularBooks, setPopularBooks] = useState(null);
   const [newestBooks, setNewestBooks] = useState(null);
+  const { session } = useAuth();
 
   useEffect(() => {
     getBookNewestBooks()?.then((response) => {
@@ -75,7 +78,7 @@ export default function LandingPage() {
         </div>
         <div className={styles.book_section}>
           <div className={styles.book_section_heading}>
-            <h3>Naposledy čteno</h3>
+            <h3>Ostatní právě čtou</h3>
           </div>
           <div className={styles.book_section_cards}>
             {newestBooks?.status === 200 ? (
@@ -118,14 +121,27 @@ export default function LandingPage() {
             )}
           </div>
         </div>
-        <div className={styles.registrace}>
-          <div className={styles.registrace__main}>
-            <h1>Zaregistruj se nyní a měj svou četbu pod kontrolou!</h1>
+
+        {!session?.user?.email ? (
+          <div className={styles.registrace}>
+            <div className={styles.registrace__main}>
+              <h1>Zaregistruj se nyní a měj svou četbu pod kontrolou!</h1>
+            </div>
+            <div className={styles.registrace__form}>
+              <Login />
+            </div>
           </div>
-          <div className={styles.registrace__form}>
-            <Login />
+        ) : (
+          <div className={styles.registrace}>
+            <div className={styles.registrace__main}>
+              <h1>Nezapomeň také omrknout svoji statistiku.</h1>
+              <Link href="/statistika">
+                <p className={styles.header__btn}>Jdu na to!</p>
+              </Link>
+              <br />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

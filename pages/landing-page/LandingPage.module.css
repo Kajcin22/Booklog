@@ -54,7 +54,7 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  padding: 0 10px;
+  padding: 1rem;
 }
 
 .registrace label {
@@ -64,6 +64,18 @@
 
 .registrace input {
   border-radius: 5px;
+}
+
+.header__btn {
+  width: fit-content;
+  margin: 0 auto;
+  background-color: var(--button-color);
+  font-size: larger;
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /*-------------- media queries----------------------------*/

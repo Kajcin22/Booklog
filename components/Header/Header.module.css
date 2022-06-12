@@ -66,6 +66,7 @@
 
 .header__wrapper {
   display: flex;
+  align-items: center;
 }
 
 @media screen and (min-width: 1060px) {

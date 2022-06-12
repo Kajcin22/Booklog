@@ -4,6 +4,10 @@
   }
 }
 
+.burgerWrapper {
+  margin-left: 0.5rem;
+}
+
 .burgerMenu {
   width: 50%;
   height: 40%;

@@ -188,7 +188,7 @@ export default function Home() {
               </button>
             </div>
 
-            {bookmarks && (
+            {bookmarks ? (
               <>
                 <div className={styles.bookmark}>
                   <div className={styles.bookmarks_elm}>
@@ -210,6 +210,8 @@ export default function Home() {
                   </div>
                 </div>
               </>
+            ) : (
+              <p>Zatím nemáš žádnou záložku.</p>
             )}
           </div>
 
@@ -223,8 +225,7 @@ export default function Home() {
                 +
               </button>
             </div>
-            {comments &&
-              comments?.length > 0 &&
+            {comments && comments?.length > 0 ? (
               comments?.map((comment) => {
                 return (
                   <Comment
@@ -238,7 +239,10 @@ export default function Home() {
                     )}
                   />
                 );
-              })}
+              })
+            ) : (
+              <p>Zatím nemáš žádnou poznámku.</p>
+            )}
           </div>
         </div>
       </div>

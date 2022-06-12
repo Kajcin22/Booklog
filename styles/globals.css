@@ -46,7 +46,7 @@ a {
 
 .swiper {
   width: 100%;
-  margin: 30px auto;
+  margin: 0 auto 30px auto;
 }
 
 .swiper-slide {
