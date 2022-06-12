@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   gap: 0 2rem;
   margin-bottom: 2rem;
+  justify-content: center;
 }
 
 .book_section {
@@ -42,8 +43,9 @@
 }
 
 .searchWrapper {
-  line-height: 1em;
   display: flex;
+  flex-direction: column;
+  line-height: 1em;
   gap: 10px;
   align-items: center;
   font-size: 1.2em;
@@ -55,4 +57,14 @@
   justify-content: center;
   align-items: center;
   height: 60vh;
+}
+
+@media screen and (min-width: 600px) {
+  .searchWrapper {
+    flex-direction: row;
+  }
+
+  .book_section_cards {
+    justify-content: flex-start;
+  }
 }

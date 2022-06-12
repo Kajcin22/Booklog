@@ -12,7 +12,14 @@ export default function Home() {
           <h2>
             Vítej, {<span className="username">{session?.user?.email}</span>}
           </h2>
-          <Image width={300} height={200} src="/hero_img_old.png" alt="icon" />
+          <div className={styles.welcome_user_img}>
+            <Image
+              width={300}
+              height={200}
+              src="/hero_img_old.png"
+              alt="icon"
+            />
+          </div>
         </div>
 
         <h3>Jak používat Booklog?</h3>

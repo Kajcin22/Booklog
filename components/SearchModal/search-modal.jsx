@@ -62,7 +62,7 @@ const SearchModal = ({ opened, setOpened }) => {
         onClose={() => setOpened(false)}
         title="Vyhledej knížku"
       >
-        <form onSubmit={form?.onSubmit(handleSearch)}>
+        <form onSubmit={form?.onSubmit(handleSearch)} className="commentForm">
           <TextInput
             label="Název knihy"
             placeholder="zadejte název knihy"

@@ -1,6 +1,6 @@
 .bookcard {
   border-radius: 5px;
-  width: 30%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   font-family: var(--font);
@@ -42,17 +42,38 @@
 
 .createbutton {
   cursor: pointer;
-  width: 60%;
-  margin: auto;
+  width: 100%;
+  margin: 0 auto;
   color: white;
-  padding: 5px;
   border: 1px solid var(--button-color);
   border-radius: 5px;
   background-color: var(--button-color);
   font-family: var(--font);
-  font-size: 1em;
+  font-size: 1.3vh;
+  position: relative;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .createbutton:hover {
-  color: #002927;
+  background-color: transparent;
+  border: 1px solid var(--button-color);
+  color: var(--button-color);
+}
+
+.createbutton_container {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 800px) {
+  .bookcard {
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .bookcard {
+    width: 20%;
+  }
 }

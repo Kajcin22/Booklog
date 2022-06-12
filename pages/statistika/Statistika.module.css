@@ -66,8 +66,15 @@
 
 .statistika_sectionRecommendation {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-items: center;
+  align-items: center;
   gap: 0 2rem;
   margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 800px) {
+  .statistika_sectionRecommendation {
+    flex-direction: row;
+  }
 }

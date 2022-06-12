@@ -17,10 +17,10 @@
   color: var(--primary-color);
 }
 .welcome h2 {
-  font-size: 3.5vh;
+  font-size: 1.1em;
 }
 .welcome h3 {
-  font-size: 2vw;
+  font-size: 1.1em;
 }
 .welcome h4 {
   text-align: center;
@@ -28,13 +28,15 @@
   background-color: white;
   border-radius: 10px;
 }
+
 .welcome_user {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
-.welcome img {
-  width: 30%;
+.welcome_user_img {
+  display: none;
 }
 
 .text_icon_search,
@@ -85,4 +87,11 @@
   text-shadow: 2px 2px 12px #a2a77f;
   font-weight: bold;
   font-family: var(--font-menu);
+}
+
+@media screen and (min-width: 800px) {
+  .welcome_user_img {
+    display: flex;
+    width: 30%;
+  }
 }

@@ -132,6 +132,7 @@ export default function Home() {
             <div className={styles.booktitle}>{singleBookResponse?.title}</div>
             <div className={styles.bookReadingStatus}>
               <SegmentedControl
+                className="readingState"
                 value={value}
                 onChange={onStateUpdate}
                 data={[

@@ -92,3 +92,18 @@ a {
   letter-spacing: 0.1em;
   padding: 1rem;
 }
+
+.readingState {
+  display: flex;
+  flex-direction: column;
+}
+
+.commentForm > div {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 1000px) {
+  .readingState {
+    flex-direction: row;
+  }
+}

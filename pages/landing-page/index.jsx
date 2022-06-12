@@ -15,8 +15,8 @@ import Loader from '../../components/Loader/loader';
 
 export default function LandingPage() {
   const [opened, setOpened] = useState(false);
-  const [popularBooks, setPopularBooks] = useState([]);
-  const [newestBooks, setNewestBooks] = useState([]);
+  const [popularBooks, setPopularBooks] = useState(null);
+  const [newestBooks, setNewestBooks] = useState(null);
 
   const { bookResponse, getBooks } = useAddedBooks();
 
@@ -45,7 +45,7 @@ export default function LandingPage() {
             <h3>Populární knihy</h3>
           </div>
           <div className={styles.book_section_cards}>
-            {popularBooks ? (
+            {popularBooks?.status === 200 ? (
               <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 onSwiper={(swiper) => (window.swiper = swiper)}
@@ -57,12 +57,12 @@ export default function LandingPage() {
                     spaceBetween: 25,
                   },
                   1000: {
-                    slidesPerView: !popularBooks ? 1 : 3,
-                    slidesPerGroup: !popularBooks ? 1 : 3,
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
                     spaceBetween: 50,
                   },
                   1400: {
-                    slidesPerView: !popularBooks ? 1 : 4,
+                    slidesPerView: 4,
                     slidesPerGroup: 4,
                     spaceBetween: 50,
                   },
@@ -72,7 +72,7 @@ export default function LandingPage() {
                 scrollbar={{ draggable: true }}
                 pagination={{ clickable: true }}
               >
-                {popularBooks?.map((book) => (
+                {popularBooks?.popularBooks?.map((book) => (
                   <SwiperSlide key={book?.id}>
                     <BookPreview book={book} />
                   </SwiperSlide>
@@ -90,38 +90,44 @@ export default function LandingPage() {
             <h3>Naposledy čteno</h3>
           </div>
           <div className={styles.book_section_cards}>
-            <Swiper
-              modules={[Navigation, Pagination, Scrollbar, A11y]}
-              onSwiper={(swiper) => (window.swiper = swiper)}
-              setWrapperSize
-              breakpoints={{
-                320: {
-                  slidesPerView: 2,
-                  slidesPerGroup: 2,
-                  spaceBetween: 25,
-                },
-                1000: {
-                  slidesPerView: 3,
-                  slidesPerGroup: 3,
-                  spaceBetween: 50,
-                },
-                1400: {
-                  slidesPerView: 4,
-                  slidesPerGroup: 4,
-                  spaceBetween: 50,
-                },
-              }}
-              navigation
-              loop
-              scrollbar={{ draggable: true }}
-              pagination={{ clickable: true }}
-            >
-              {newestBooks?.map((book) => (
-                <SwiperSlide key={book?.id}>
-                  <BookPreview book={book} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            {newestBooks?.status === 200 ? (
+              <Swiper
+                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                onSwiper={(swiper) => (window.swiper = swiper)}
+                setWrapperSize
+                breakpoints={{
+                  320: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                    spaceBetween: 25,
+                  },
+                  1000: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                    spaceBetween: 50,
+                  },
+                  1400: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                    spaceBetween: 50,
+                  },
+                }}
+                navigation
+                loop
+                scrollbar={{ draggable: true }}
+                pagination={{ clickable: true }}
+              >
+                {newestBooks?.newestBooks?.map((book) => (
+                  <SwiperSlide key={book?.id}>
+                    <BookPreview book={book} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : (
+              <div className={styles.loaderWrapper}>
+                <Loader />
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.registrace}>

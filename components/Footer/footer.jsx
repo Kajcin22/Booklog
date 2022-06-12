@@ -25,12 +25,12 @@ const Footer = () => {
             <ul>
               <li>
                 <Link href="/">
-                  <p>Domů</p>
+                  <p className={styles.paragraph}>Domů</p>
                 </Link>
               </li>
               <li>
                 <Link href="/navod">
-                  <p>Návod</p>
+                  <p className={styles.paragraph}>Návod</p>
                 </Link>
               </li>
               <li>
@@ -43,7 +43,7 @@ const Footer = () => {
                   </p>
                 ) : (
                   <Link href="/moje-knihy">
-                    <p>Moje knihy</p>
+                    <p className={styles.paragraph}>Moje knihy</p>
                   </Link>
                 )}
               </li>
@@ -57,7 +57,7 @@ const Footer = () => {
                   </p>
                 ) : (
                   <Link href="/statistika">
-                    <p>Statistika</p>
+                    <p className={styles.paragraph}>Statistika</p>
                   </Link>
                 )}
               </li>

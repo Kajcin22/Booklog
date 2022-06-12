@@ -40,7 +40,7 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
         onClose={() => setOpenedBookmark(false)}
         title="Vytvoř záložku"
       >
-        <form onSubmit={form.onSubmit(handleBookmark)}>
+        <form onSubmit={form.onSubmit(handleBookmark)} className="commentForm">
           <TextInput
             label="Stránka"
             required
