@@ -16,17 +16,17 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
   const { userId } = useAuth();
 
   const handleBookmark = async (formValues) => {
-    const { data } = await supabase
+    const { data: book } = await supabase
       .from('Bookmark')
       .select()
       .eq('title', bookTitle)
       .maybeSingle();
     await supabase?.from('Bookmark')?.upsert([
       {
-        id: data?.id,
+        id: book?.id,
         pageNum: formValues?.pageNumber,
-        totalPages: formValues?.bookPagesNumber,
         title: bookTitle,
+        // totalPages: formValues?.bookPagesNumber,
         userId,
         bookId,
       },
@@ -53,9 +53,8 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
             }
             {...form.getInputProps('pageNumber')}
           />
-          <TextInput
+          {/*   <TextInput
             label="Z celkového počtu"
-            required
             type="number"
             placeholder="celkový počet stran"
             rightSection={
@@ -64,7 +63,7 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
               </div>
             }
             {...form.getInputProps('bookPagesNumber')}
-          />
+          /> */}
 
           <Group position="right" mt="md">
             <Button type="submit">Přidat</Button>
