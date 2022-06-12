@@ -9,6 +9,7 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
   const form = useForm({
     initialValues: {
       pageNumber: '',
+      pagesTotal: '',
     },
   });
 
@@ -24,6 +25,7 @@ const CreateBookmark = ({ opened, setOpenedBookmark, bookTitle, bookId }) => {
       {
         id: data?.id,
         pageNum: formValues?.pageNumber,
+        totalPages: formValues?.bookPagesNumber,
         title: bookTitle,
         userId,
         bookId,
