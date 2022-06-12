@@ -36,7 +36,7 @@ export default function Home() {
           <span className={styles.text_button}>Přidat do mých knih</span> a
           následně ji můžeš zobrazit v sekci
         </p>
-        <h4>"Moje knihy"</h4>
+        <h4>Moje knihy</h4>
         <p>
           Správný knihomol si ve své četbě udržuje pořádek - každé knížce můžeš
           nastavit <span className={styles.highlight}>kategorii</span>{' '}
@@ -66,7 +66,7 @@ export default function Home() {
           <span className={styles.highlight}> čtenářskou statistiku</span>,
           kterou nalezneš v sekci nečekaně nazvané
         </p>
-        <h4>"Statistika"</h4>
+        <h4>Statistika</h4>
         <p>
           Nalezneš zde přehled <strong>počtu přečtených knížek</strong>,{' '}
           <strong>stránek</strong>, <strong>progres</strong> v rozečtených
