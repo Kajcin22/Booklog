@@ -62,6 +62,13 @@
   line-height: 1.45em;
   padding: 5px;
   border-radius: 5px;
+  width: 43vw;
+}
+
+@media screen and (min-width: 1020px) {
+  .searchWrapper input {
+    width: 20vw;
+  }
 }
 
 .searchWrapper {

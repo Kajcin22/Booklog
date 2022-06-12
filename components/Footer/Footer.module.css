@@ -62,3 +62,15 @@
     border-bottom: solid 1px var(--primary-color);
   }
 }
+
+@media screen and (min-width: 1920px) {
+  .footer__content {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .footer__content {
+    width: 60%;
+  }
+}
