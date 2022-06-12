@@ -68,7 +68,11 @@ export default function Home() {
       (book) => book?.readingState?.status === condition,
     );
     return !!filteredBooks?.length ? (
-      filteredBooks?.map((book) => <BookCard key={book?.id} book={book} />)
+      filteredBooks?.map((book) => (
+        <div key={book?.id} className={styles.bookCardWrapper}>
+          <BookCard book={book} />
+        </div>
+      ))
     ) : (
       <p>V této kategorii nemáš žádné knihy.</p>
     );

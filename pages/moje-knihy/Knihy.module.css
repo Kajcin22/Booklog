@@ -6,6 +6,28 @@
   justify-content: center;
 }
 
+.bookCardWrapper {
+  width: 100%;
+}
+
+@media screen and (min-width: 480px) {
+  .bookCardWrapper {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media screen and (min-width: 1020px) {
+  .bookCardWrapper {
+    width: calc(33% - 2rem);
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .bookCardWrapper {
+    width: calc(25% - 2rem);
+  }
+}
+
 .book_section {
   border-bottom: 1px solid var(--primary-color);
   margin-bottom: 2rem;

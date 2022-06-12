@@ -37,7 +37,7 @@ const BookCard = ({ book }) => {
   };
 
   return (
-    <div style={{ width: 250 }}>
+    <>
       <Card className={styles.bookcard} shadow="sm" p="lg">
         <div>
           <Card.Section>
@@ -112,7 +112,7 @@ const BookCard = ({ book }) => {
           </Link>
         </div>
       </Card>
-    </div>
+    </>
   );
 };
 

@@ -73,13 +73,10 @@ const SearchResult = ({
             <Tooltip
               label={title}
               wrapLines
-              transition="fade"
-              transitionDuration={200}
               withArrow
               width={200}
               color="blue"
-              position="top-end"
-              gutter={-10}
+              disabled={title?.length < 15}
             >
               <p className={styles.booktitle}>{title}</p>
             </Tooltip>
@@ -88,13 +85,10 @@ const SearchResult = ({
             <Tooltip
               label={author}
               wrapLines
-              transition="fade"
-              transitionDuration={200}
               withArrow
               width={200}
               color="blue"
-              position="top-end"
-              gutter={-10}
+              disabled={author?.length < 15}
             >
               <p className={styles.bookauthor}>{author || 'Autor neznámý'}</p>
             </Tooltip>

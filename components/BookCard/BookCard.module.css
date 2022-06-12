@@ -5,6 +5,7 @@
   border-radius: 5px;
   font-family: var(--font);
   height: 500px;
+  width: 100%;
   background-color: #fafbef;
   margin: 1rem 0;
   flex: 1 1 30%;

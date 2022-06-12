@@ -26,6 +26,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     getBookNewestBooks()?.then((response) => {
+      console.log(response, 'response');
       setNewestBooks(response);
     });
   }, []);
@@ -117,7 +118,7 @@ export default function LandingPage() {
                 scrollbar={{ draggable: true }}
                 pagination={{ clickable: true }}
               >
-                {newestBooks?.newestBooks?.map((book) => (
+                {newestBooks?.data?.map((book) => (
                   <SwiperSlide key={book?.id}>
                     <BookPreview book={book} />
                   </SwiperSlide>

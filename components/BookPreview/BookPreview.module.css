@@ -1,17 +1,19 @@
 .bookCard {
-  height: 400px;
-  font-family: var(--font);
-  background-color: #fafbef;
-  margin-top: 1rem;
-  flex: 0 1 30%;
-  padding: 15px;
-  box-shadow: 0 1px 10px rgb(0 0 0 / 10%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 5px;
+  font-family: var(--font);
+  min-height: 400px;
+  background-color: #fafbef;
+  margin: 1rem 0;
+  padding: 1.5rem;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 10%);
+  gap: 15px;
 }
 
 .cardImg {
-  margin-bottom: 0;
-  max-width: 100%;
+  margin: auto;
 }
 
 .bookTitle {
@@ -26,6 +28,7 @@
 }
 
 .bookAuthor {
+  margin-bottom: 1rem;
   font-family: var(--font);
   color: #003d3a;
   font-size: 1.5vh;

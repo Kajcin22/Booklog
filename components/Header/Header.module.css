@@ -8,6 +8,31 @@
   line-height: 2.5;
 }
 
+.burgerWrapper {
+  position: relative;
+}
+
+.burgerMenu {
+  width: 90%;
+  height: 40%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 1rem;
+  list-style: none;
+}
+
+.header__navigation {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .header__navigation {
+    display: flex;
+  }
+}
+
 .header__navigation ul {
   display: flex;
   list-style: none;
