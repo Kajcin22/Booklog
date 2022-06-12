@@ -48,7 +48,7 @@
   margin: 0;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 768px) {
   .footer__content {
     max-width: 80%;
     margin: 0 auto;

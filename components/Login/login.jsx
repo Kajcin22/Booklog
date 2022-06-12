@@ -36,7 +36,8 @@ export default function Login() {
   if (success) {
     return (
       <Notification title="Magic link odeslán!">
-        Mrkni se do e-mailu a klikni na potvrzovací link.
+        Mrkni se do e-mailu a klikni na potvrzovací link. Raději si zkontroluj i
+        hromadné zprávy nebo spam.
       </Notification>
     );
   }

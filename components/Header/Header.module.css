@@ -1,26 +1,11 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   text-align: center;
   font-family: var(--font-menu);
   margin: 0 auto 2rem auto;
   line-height: 2.5;
-}
-
-.burgerWrapper {
-  position: relative;
-}
-
-.burgerMenu {
-  width: 90%;
-  height: 40%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  padding: 1rem;
-  list-style: none;
 }
 
 .header__navigation {
@@ -63,7 +48,6 @@
   font-size: larger;
   padding: 10px;
   color: white;
-  /* background-color: var(--button-color); */
   border: none;
   border-radius: 50%;
 }

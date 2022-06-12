@@ -5,62 +5,16 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import SearchModal from '../SearchModal/search-modal';
 import LogoutModal from '../Logout/logoutModal';
-import { Burger } from '@mantine/core';
+import HamburgerMenu from '../HamburgerMenu/burgerMenu';
 
 const TopHeader = () => {
   const router = useRouter();
   const [openedModal, setOpenedModal] = useState(false);
   const [openedSignout, setOpenedSignout] = useState(false);
-  const [opened, setOpened] = useState(false);
-
-  const title = opened ? 'Close navigation' : 'Open navigation';
 
   return (
     <>
       <header>
-        <div className={styles.burgerWrapper}>
-          {' '}
-          <Burger
-            opened={opened}
-            onClick={() => setOpened((o) => !o)}
-            title={title}
-          />
-          {opened && (
-            <ul className={styles.burgerMenu}>
-              <li>
-                <Link href="/navod">
-                  <a
-                    className={router.pathname == '/navod' ? styles.active : ''}
-                  >
-                    Návod
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/moje-knihy">
-                  <a
-                    className={
-                      router.pathname == '/moje-knihy' ? styles.active : ''
-                    }
-                  >
-                    Moje knihy
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/statistika">
-                  <a
-                    className={
-                      router.pathname == '/statistika' ? styles.active : ''
-                    }
-                  >
-                    Statistika
-                  </a>
-                </Link>
-              </li>
-            </ul>
-          )}
-        </div>
         <div className={styles.header}>
           <div className={styles.header__logo}>
             <Link href="/">
@@ -118,6 +72,7 @@ const TopHeader = () => {
               width={30}
               height={30}
             />
+            <HamburgerMenu />
           </div>
         </div>
         <SearchModal opened={openedModal} setOpened={setOpenedModal} />
