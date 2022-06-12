@@ -11,6 +11,7 @@ const TopHeader = () => {
   const router = useRouter();
   const [openedModal, setOpenedModal] = useState(false);
   const [openedSignout, setOpenedSignout] = useState(false);
+  const [openHamburger, setOpenHamburger] = useState(false);
 
   return (
     <>

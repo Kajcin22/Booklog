@@ -21,39 +21,43 @@ const HamburgerMenu = () => {
           title={title}
           color="#035e7b"
         />
-        {opened && (
-          <ul className={styles.burgerMenu}>
-            <li>
-              <Link href="/navod">
-                <a className={router.pathname == '/navod' ? styles.active : ''}>
-                  Návod
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/moje-knihy">
-                <a
-                  className={
-                    router.pathname == '/moje-knihy' ? styles.active : ''
-                  }
-                >
-                  Moje knihy
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/statistika">
-                <a
-                  className={
-                    router.pathname == '/statistika' ? styles.active : ''
-                  }
-                >
-                  Statistika
-                </a>
-              </Link>
-            </li>
-          </ul>
-        )}
+        {opened ? (
+          <>
+            <ul className={styles.burgerMenu}>
+              <li>
+                <Link href="/navod">
+                  <a
+                    className={router.pathname == '/navod' ? styles.active : ''}
+                  >
+                    Návod
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/moje-knihy">
+                  <a
+                    className={
+                      router.pathname == '/moje-knihy' ? styles.active : ''
+                    }
+                  >
+                    Moje knihy
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/statistika">
+                  <a
+                    className={
+                      router.pathname == '/statistika' ? styles.active : ''
+                    }
+                  >
+                    Statistika
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </>
+        ) : null}
       </div>
     </>
   );
